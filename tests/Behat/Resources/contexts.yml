@@ -1,0 +1,10 @@
+services:
+    bitbag.shipping_export_plugin.context.ui.admin.shipping_gateway:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin\ShippingGatewayContext
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.shipping_export_plugin.setup.shipping_gateway:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup\ShippingGatewayContext
+        tags:
+            - { name: fob.context_service }

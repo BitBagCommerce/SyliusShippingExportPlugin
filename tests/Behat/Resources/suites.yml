@@ -1,0 +1,14 @@
+default:
+    suites:
+        managing_shipping_gateway:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - bitbag.shipping_export_plugin.setup.shipping_gateway
+
+                - bitbag.shipping_export_plugin.context.ui.admin.shipping_gateway
+
+            filters:
+                tags: "@managing_shipping_gateway && @ui"

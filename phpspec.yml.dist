@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: BitBag\ShippingExportPlugin
+        psr4_prefix: BitBag\ShippingExportPlugin

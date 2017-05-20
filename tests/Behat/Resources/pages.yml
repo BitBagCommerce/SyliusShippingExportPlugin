@@ -1,0 +1,15 @@
+services:
+    bitbag.shipping_export_plugin.behat.page.admin.shipping_gateway.create:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\CreatePage
+        parent: sylius.behat.page.admin.crud.create
+        public: false
+
+    bitbag.shipping_export_plugin.behat.page.admin.shipping_export.index:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport\IndexPage
+        parent: sylius.behat.page.admin.crud.index
+        public: false
+
+    bitbag.shipping_export_plugin.behat.page.admin.shipping_export.update:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport\UpdatePage
+        parent: sylius.behat.page.admin.crud.update
+        public: false
