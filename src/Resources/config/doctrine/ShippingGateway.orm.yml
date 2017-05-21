@@ -1,0 +1,23 @@
+BitBag\ShippingExportPlugin\Entity\ShippingGateway:
+    type: entity
+    table: shipping_gateway
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        code:
+            type: string
+            column: code
+
+        configuration:
+            type: json_array
+            columnd: configuration
+
+    manyToOne:
+        shippingMethod:
+            targetEntity: Sylius\Component\Core\Model\ShippingMethod
+            joinColumn:
+                name: shipping_method_id
+                referencedColumnName: id
+                onDelete: CASCADE

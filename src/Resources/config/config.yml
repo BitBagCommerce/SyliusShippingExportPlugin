@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@ShippingExportPlugin/Resources/config/resource/bitbag_shipping_gateway.yml" }

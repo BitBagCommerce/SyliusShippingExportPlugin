@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BitBag\ShippingExportPlugin\Model;
+namespace spec\BitBag\ShippingExportPlugin\Entity;
 
-use BitBag\ShippingExportPlugin\Model\ShippingGateway;
-use BitBag\ShippingExportPlugin\Model\ShippingGatewayInterface;
+use BitBag\ShippingExportPlugin\Entity\ShippingGateway;
+use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
 use PhpSpec\ObjectBehavior;
 
 class ShippingGatewaySpec extends ObjectBehavior

@@ -1,6 +1,6 @@
 <?php
 
-namespace BitBag\ShippingExportPlugin\Model;
+namespace BitBag\ShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -12,11 +12,6 @@ interface ShippingGatewayInterface extends ResourceInterface, TranslatableInterf
      * @param string $code
      */
     public function setCode($code);
-
-    /**
-     * @param string $name
-     */
-    public function setName($name);
 
     /**
      * @param ShippingMethodInterface $shippingMethod

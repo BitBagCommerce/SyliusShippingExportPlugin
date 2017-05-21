@@ -3,7 +3,7 @@
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\ShippingExportPlugin\Model\ShippingGatewayInterface;
+use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
