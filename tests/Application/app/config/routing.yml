@@ -3,5 +3,6 @@ sylius:
 
 # Put your own routes here
 
-acme_example_shop:
-    resource: "@AcmeExamplePlugin/Resources/config/app/shop_routing.yml"
+bitbag_shipping_export_plugin:
+    resource: "@ShippingExportPlugin/Resources/config/routing.yml"
+    prefix: /admin

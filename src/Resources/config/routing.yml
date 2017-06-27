@@ -1,0 +1,2 @@
+bitbag_shipping_export_plugin_shipping_gateway:
+    resource: "@ShippingExportPlugin/Resources/config/routing/shipping_gateway.yml"

@@ -14,6 +14,11 @@ interface ShippingGatewayInterface extends ResourceInterface, TranslatableInterf
     public function setCode($code);
 
     /**
+     * @param string $name
+     */
+    public function setName($name);
+
+    /**
      * @param ShippingMethodInterface $shippingMethod
      */
     public function setShippingMethod(ShippingMethodInterface $shippingMethod);

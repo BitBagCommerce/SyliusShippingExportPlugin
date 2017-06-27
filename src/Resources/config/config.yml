@@ -1,2 +1,4 @@
 imports:
     - { resource: "@ShippingExportPlugin/Resources/config/resource/bitbag_shipping_gateway.yml" }
+    - { resource: "@ShippingExportPlugin/Resources/config/grids/shipping_gateway.yml" }
+    - { resource: "@ShippingExportPlugin/Resources/config/services.yml" }

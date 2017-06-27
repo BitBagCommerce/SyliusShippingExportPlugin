@@ -22,6 +22,11 @@ class ShippingGateway implements ShippingGatewayInterface
     private $code;
 
     /**
+     * @var string
+     */
+    private $name;
+
+    /**
      * @var ShippingMethodInterface
      */
     private $shippingMethod;
@@ -32,7 +37,7 @@ class ShippingGateway implements ShippingGatewayInterface
     private $configuration;
 
     /**
-     * {@inheritdoc}
+     * @return int
      */
     public function getId()
     {
@@ -40,34 +45,90 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
-    public function setCode($code)
+    public function getCode()
     {
         return $this->code;
     }
 
     /**
-     * {@inheritdoc}
+     * @param string $code
+     *
+     * @return ShippingGateway
      */
-    public function setShippingMethod(ShippingMethodInterface $shippingMethod)
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return ShippingMethodInterface
+     */
+    public function getShippingMethod()
     {
         return $this->shippingMethod;
     }
 
     /**
-     * {@inheritdoc}
+     * @param ShippingMethodInterface $shippingMethod
+     *
+     * @return ShippingGateway
      */
-    public function setConfiguration(array $config)
+    public function setShippingMethod(ShippingMethodInterface $shippingMethod)
+    {
+        $this->shippingMethod = $shippingMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfiguration()
     {
         return $this->configuration;
     }
 
     /**
-     * {@inheritdoc}
+     * @param array $configuration
+     *
+     * @return ShippingGateway
+     */
+    public function setConfiguration(array $configuration)
+    {
+        $this->configuration = $configuration;
+
+        return $this;
+    }
+
+    /**
+     * @return ShippingGatewayTranslation
      */
     protected function createTranslation()
     {
         return new ShippingGatewayTranslation();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return ShippingGateway
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 }

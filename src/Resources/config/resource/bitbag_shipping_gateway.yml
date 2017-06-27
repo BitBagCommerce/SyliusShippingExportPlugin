@@ -1,9 +1,9 @@
-sylius_resoruce:
-    shipping_gateway:
-        product:
+sylius_resource:
+    resources:
+        bitbag.shipping_gateway:
             classes:
                 model: BitBag\ShippingExportPlugin\Entity\ShippingGateway
-#                form: BitBag\ShippingExportPlugin\Form\Type\ShippingGatewayType
+                form: BitBag\ShippingExportPlugin\Form\Type\ShippingGatewayType
             translation:
                 classes:
                     model: BitBag\ShippingExportPlugin\Entity\ShippingGatewayTranslation

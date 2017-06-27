@@ -1,0 +1,28 @@
+BitBag\ShippingExportPlugin\Entity\ShippingExport:
+    type: entity
+    table: bitbag_shipping_export
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        date:
+            type: datetime
+            column: date
+
+        label:
+            nullable: true
+            type: string
+            column: label
+
+        status:
+            type: string
+            column: status
+
+    manyToOne:
+        shipment:
+            targetEntity: Sylius\Component\Core\Model\Shipment
+            joinColumn:
+                name: shipment_id
+                referencedColumnName: id
+                onDelete: CASCADE

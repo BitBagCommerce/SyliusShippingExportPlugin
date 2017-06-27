@@ -1,10 +1,16 @@
 services:
     bitbag.shipping_export_plugin.context.ui.admin.shipping_gateway:
         class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin\ShippingGatewayContext
+        arguments:
+            - '@bitbag.shipping_export_plugin.behat.page.admin.shipping_gateway.create'
+            - '@sylius.behat.shared_storage'
         tags:
             - { name: fob.context_service }
 
     bitbag.shipping_export_plugin.setup.shipping_gateway:
         class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup\ShippingGatewayContext
+        arguments:
+            - '@__symfony__.sylius.factory.shipping_method'
+            - '@__symfony__.bitbag.factory.shipping_gateway'
         tags:
             - { name: fob.context_service }

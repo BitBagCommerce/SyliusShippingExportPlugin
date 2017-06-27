@@ -1,0 +1,6 @@
+bitbag:
+    shipping_export_plugin:
+        menu:
+            admin:
+                shipping_gateway: Bramy przesyłek
+                deliveries: Dostawy

@@ -1,0 +1,11 @@
+services:
+    bitbag.shipping_export_plugin.listener.admin.menu_builder:
+        class: BitBag\ShippingExportPlugin\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: configureShippingGatewayMenu }
+
+    bitbag.shipping_export_plugin.shipping_gateway.form.type:
+        class: BitBag\ShippingExportPlugin\Form\Type\ShippingGatewayType
+        tags:
+            - { name: form.type }
+        arguments: ['%bitbag.model.shipping_gateway.class%', ['sylius']]

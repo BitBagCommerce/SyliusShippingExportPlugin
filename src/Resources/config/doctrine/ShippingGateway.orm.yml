@@ -1,6 +1,6 @@
 BitBag\ShippingExportPlugin\Entity\ShippingGateway:
     type: entity
-    table: shipping_gateway
+    table: bitbag_shipping_gateway
     id:
         id:
             type: integer
@@ -12,7 +12,11 @@ BitBag\ShippingExportPlugin\Entity\ShippingGateway:
 
         configuration:
             type: json_array
-            columnd: configuration
+            column: configuration
+
+        name:
+            type: string
+            column: name
 
     manyToOne:
         shippingMethod:
