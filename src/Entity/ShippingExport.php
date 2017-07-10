@@ -1,9 +1,20 @@
 <?php
 
+/**
+ * This file was created by the developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on kontakt@bitbag.pl.
+ */
+
 namespace BitBag\ShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShipmentInterface;
 
+/**
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ */
 class ShippingExport implements ShippingExportInterface
 {
     /**
@@ -32,7 +43,7 @@ class ShippingExport implements ShippingExportInterface
     private $status;
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -40,7 +51,7 @@ class ShippingExport implements ShippingExportInterface
     }
 
     /**
-     * @return ShipmentInterface
+     * {@inheritdoc}
      */
     public function getShipment()
     {
@@ -48,19 +59,15 @@ class ShippingExport implements ShippingExportInterface
     }
 
     /**
-     * @param ShipmentInterface $shipment
-     *
-     * @return ShippingExport
+     * {@inheritdoc}
      */
     public function setShipment(ShipmentInterface $shipment)
     {
         $this->shipment = $shipment;
-
-        return $this;
     }
 
     /**
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getDate()
     {
@@ -70,17 +77,15 @@ class ShippingExport implements ShippingExportInterface
     /**
      * @param \DateTime $date
      *
-     * @return ShippingExport
+     * {@inheritdoc}
      */
     public function setDate($date)
     {
         $this->date = $date;
-
-        return $this;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getLabel()
     {
@@ -88,19 +93,15 @@ class ShippingExport implements ShippingExportInterface
     }
 
     /**
-     * @param string $label
-     *
-     * @return ShippingExport
+     * {@inheritdoc}
      */
     public function setLabel($label)
     {
         $this->label = $label;
-
-        return $this;
     }
 
     /**
-     * @return ShippingExport
+     * {@inheritdoc}
      */
     public function getStatus()
     {
@@ -108,14 +109,10 @@ class ShippingExport implements ShippingExportInterface
     }
 
     /**
-     * @param ShippingExport $status
-     *
-     * @return ShippingExport
+     * {@inheritdoc}
      */
     public function setStatus($status)
     {
         $this->status = $status;
-
-        return $this;
     }
 }

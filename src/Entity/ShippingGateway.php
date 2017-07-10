@@ -1,10 +1,21 @@
 <?php
 
+/**
+ * This file was created by the developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on kontakt@bitbag.pl.
+ */
+
 namespace BitBag\ShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 
+/**
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ */
 class ShippingGateway implements ShippingGatewayInterface
 {
     use TranslatableTrait  {
@@ -37,7 +48,7 @@ class ShippingGateway implements ShippingGatewayInterface
     private $configuration;
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -45,7 +56,7 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getCode()
     {
@@ -53,19 +64,15 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @param string $code
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
     public function setCode($code)
     {
         $this->code = $code;
-
-        return $this;
     }
 
     /**
-     * @return ShippingMethodInterface
+     * {@inheritdoc}
      */
     public function getShippingMethod()
     {
@@ -73,19 +80,15 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @param ShippingMethodInterface $shippingMethod
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
     public function setShippingMethod(ShippingMethodInterface $shippingMethod)
     {
         $this->shippingMethod = $shippingMethod;
-
-        return $this;
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getConfiguration()
     {
@@ -93,19 +96,15 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @param array $configuration
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
     public function setConfiguration(array $configuration)
     {
         $this->configuration = $configuration;
-
-        return $this;
     }
 
     /**
-     * @return ShippingGatewayTranslation
+     * {@inheritdoc}
      */
     protected function createTranslation()
     {
@@ -113,7 +112,7 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -121,14 +120,10 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @param string $name
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
     }
 }
