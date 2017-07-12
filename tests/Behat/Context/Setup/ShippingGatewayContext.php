@@ -54,6 +54,11 @@ final class ShippingGatewayContext implements Context
     private $sharedStorage;
 
     /**
+     * @var array
+     */
+    private $config = [];
+
+    /**
      * @param FactoryInterface $shippingMethodFactory
      * @param FactoryInterface $shippingGatewayFactory
      * @param RepositoryInterface $shippingMethodRepository
@@ -89,23 +94,8 @@ final class ShippingGatewayContext implements Context
         $shippingMethod->setName($name);
         $shippingMethod->setCode($code);
 
-        $this->shippingMethodRepository->add($shippingMethod);
         $this->sharedStorage->set('shipping_method', $shippingMethod);
-    }
-
-    /**
-     * @Given I am able to create a shipping gateway with :name name and :code code
-     */
-    public function iAmAbleToCreateAShippingGatewayWithNameForThisShippingMethod($name, $code)
-    {
-        /** @var ShippingGatewayInterface $shippingGateway */
-        $shippingGateway = $this->shippingGatewayFactory->createNew();
-
-        $shippingGateway->setName($name);
-        $shippingGateway->setCode($code);
-
-        $this->shippingGatewayRepository->add($shippingGateway);
-        $this->sharedStorage->set('shipping_gateway', $shippingGateway);
+        $this->shippingMethodRepository->add($shippingMethod);
     }
 
     /**
@@ -116,7 +106,50 @@ final class ShippingGatewayContext implements Context
         $shippingGateway = $this->sharedStorage->get('shipping_gateway');
         $shippingGateway->setConfiguration($fields);
 
+        $this->saveShippingGateway($shippingGateway);
+    }
+
+    /**
+     * @Given there is a registered shipping gateway for this shipping method
+     */
+    public function thereIsARegisteredShippingGatewayForThisShippingMethod()
+    {
+        /** @var ShippingGatewayInterface $shippingGateway */
+        $shippingGateway = $this->shippingGatewayFactory->createNew();
+        /** @var ShippingMethodInterface $shippingMethod */
+        $shippingMethod = $this->sharedStorage->get('shipping_method');
+
+        $shippingGateway->setShippingMethod($shippingMethod);
+
         $this->sharedStorage->set('shipping_gateway', $shippingGateway);
-        $this->entityManager->flush($shippingGateway);
+    }
+
+    /**
+     * @Given this shipping gateway has :code code and :label label
+     */
+    public function thisShippingGatewayHasCodeAndLabel($code, $label)
+    {
+        /** @var ShippingGatewayInterface $shippingGateway */
+        $shippingGateway = $this->sharedStorage->get('shipping_gateway');
+
+        $shippingGateway->setCode($code);
+        $shippingGateway->setLabel($label);
+
+        $this->sharedStorage->set('shipping_gateway', $shippingGateway);
+        $this->shippingGatewayRepository->add($shippingGateway);
+    }
+
+    /**
+     * @Given it has :field field set to :value
+     */
+    public function itHasFieldSetTo($field, $value)
+    {
+        /** @var ShippingGatewayInterface $shippingGateway */
+        $shippingGateway = $this->sharedStorage->get('shipping_gateway');
+
+        $this->config[$field] = $value;
+        $shippingGateway->setConfig($this->config);
+
+        $this->sharedStorage->set('shipping_gateway', $shippingGateway);
     }
 }

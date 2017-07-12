@@ -106,6 +106,14 @@ final class ShippingGatewayContext implements Context
     }
 
     /**
+     * @When I clear the :field field
+     */
+    public function iClearTheField($field)
+    {
+        $this->resolveCurrentPage()->fillField($field, "");
+    }
+
+    /**
      * @When I add it
      * @When I save it
      */
@@ -116,11 +124,12 @@ final class ShippingGatewayContext implements Context
 
     /**
      * @Then I should be notified that the shipping gateway has been created
+     * @Then I should be notified that the shipping gateway has been updated
      */
     public function iShouldBeNotifiedThatTheShippingGatewayWasCreated()
     {
         $this->notificationChecker->checkNotification(
-            "Shipping gateway has been successfully created.",
+            "Shipping gateway has been successfully",
             NotificationType::success()
         );
     }

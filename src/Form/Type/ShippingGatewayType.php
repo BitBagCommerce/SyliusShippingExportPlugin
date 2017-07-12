@@ -88,6 +88,7 @@ final class ShippingGatewayType extends AbstractResourceType
                 'label' => 'sylius.ui.shipping_method',
                 'class' => $this->shippingMethodModelClass,
                 'data' => $this->shippingMethodRepository->findAll(),
+                'placeholder' => 'bitbag.ui.choose_shipping_method',
             ])
             ->add('config', $shippingGatewayType, [
                 'label' => false,

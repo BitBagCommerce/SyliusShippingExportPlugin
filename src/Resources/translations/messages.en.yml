@@ -5,3 +5,4 @@ bitbag:
         shipping_gateways: Shipping gateways
         create_shipping_gateway: Create shipping gateway
         manage_shipping_gateways: Manage shipping gateways
+        choose_shipping_method: Choose shipping method
