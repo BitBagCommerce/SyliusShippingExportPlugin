@@ -10,12 +10,12 @@
 
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway;
 
-use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class CreatePage extends BaseCreatePage implements CreatePageInterface
+final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     /**
      * {@inheritdoc}
@@ -38,6 +38,6 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
      */
     public function submit()
     {
-        $this->create();
+        $this->saveChanges();
     }
 }

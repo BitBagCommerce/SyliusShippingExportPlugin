@@ -1,32 +1,83 @@
 <?php
 
+/**
+ * This file was created by the developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on kontakt@bitbag.pl.
+ */
+
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
+use Sylius\Behat\NotificationType;
+use Sylius\Behat\Page\SymfonyPageInterface;
+use Sylius\Behat\Service\NotificationCheckerInterface;
+use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\CreatePageInterface;
+use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\UpdatePageInterface;
 
+/**
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ */
 final class ShippingGatewayContext implements Context
 {
+    /**
+     * @var CreatePageInterface
+     */
     private $createPage;
 
+    /**
+     * @var UpdatePageInterface
+     */
+    private $updatePage;
+
+    /**
+     * @var CurrentPageResolverInterface
+     */
+    private $currentPageResolver;
+
+    /**
+     * @var SharedStorageInterface
+     */
     private $sharedStorage;
 
+    /**
+     * @var NotificationCheckerInterface
+     */
+    private $notificationChecker;
+
+    /**
+     * @param CreatePageInterface $createPage
+     * @param UpdatePageInterface $updatePage
+     * @param CurrentPageResolverInterface $currentPageResolver
+     * @param SharedStorageInterface $sharedStorage
+     * @param NotificationCheckerInterface $notificationChecker
+     */
     public function __construct(
         CreatePageInterface $createPage,
-        SharedStorageInterface $sharedStorage
+        UpdatePageInterface $updatePage,
+        CurrentPageResolverInterface $currentPageResolver,
+        SharedStorageInterface $sharedStorage,
+        NotificationCheckerInterface $notificationChecker
     )
     {
         $this->createPage = $createPage;
+        $this->updatePage = $updatePage;
+        $this->currentPageResolver = $currentPageResolver;
         $this->sharedStorage = $sharedStorage;
+        $this->notificationChecker = $notificationChecker;
     }
 
     /**
      * @When I visit the create shipping gateway configuration page
+     * @When I visit the update shipping gateway configuration page
      */
-    public function iVisitTheCreateShippingGatewayConfigurationPage()
+    public function iVisitTheShippingGatewayConfigurationPage()
     {
-        $this->createPage->open();
+        $this->resolveCurrentPage()->open();
     }
 
     /**
@@ -34,7 +85,7 @@ final class ShippingGatewayContext implements Context
      */
     public function iSelectTheShippingMethod($name)
     {
-        $this->createPage->selectShippingMethod($name);
+        $this->resolveCurrentPage()->selectShippingMethod($name);
     }
 
     /**
@@ -42,15 +93,16 @@ final class ShippingGatewayContext implements Context
      */
     public function iFillTheFieldWith($field, $value)
     {
-        $this->createPage->fillField($field, $value);
+        $this->resolveCurrentPage()->fillField($field, $value);
     }
 
     /**
      * @When I try to add it
+     * @When I save it
      */
     public function iTryToAddIt()
     {
-        $this->createPage->submit();
+        $this->resolveCurrentPage()->submit();
     }
 
     /**
@@ -58,7 +110,7 @@ final class ShippingGatewayContext implements Context
      */
     public function iShouldBeNotifiedThatTheShippingGatewayWasCreated()
     {
-        $this->createPage->containsSuccessNotification("Shipping gateway was created");
+        $this->notificationChecker->checkNotification("Shipping gateway was created.", NotificationType::success());
     }
 
     /**
@@ -66,6 +118,18 @@ final class ShippingGatewayContext implements Context
      */
     public function emptyFieldsErrorShouldBeDisplayed()
     {
-        $this->createPage->containsErrorNotification("Cannot be empty");
+        $this->resolveCurrentPage()->getValidationMessage("Cannot be empty.");
     }
+
+    /**
+     * @return CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
+     */
+    private function resolveCurrentPage()
+    {
+        return $this->currentPageResolver->getCurrentPageWithForm([
+            $this->createPage,
+            $this->updatePage
+        ]);
+    }
+
 }

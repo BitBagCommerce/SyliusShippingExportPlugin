@@ -14,6 +14,7 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <partryk.drapik@bitbag.pl>
  */
 class ShippingGatewayTranslation extends AbstractTranslation implements ShippingGatewayTranslationInterface
 {

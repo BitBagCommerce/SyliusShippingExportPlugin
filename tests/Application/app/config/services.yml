@@ -1,0 +1,3 @@
+services:
+    bitbag.form_registry.shipping_gateway_config:
+        class: Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry

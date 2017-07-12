@@ -10,12 +10,12 @@
 
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway;
 
-use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
+use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePage;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface CreatePageInterface extends BaseCreatePageInterface
+interface UpdatePageInterface extends BaseUpdatePage
 {
     /**
      * @param string $name

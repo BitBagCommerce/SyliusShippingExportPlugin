@@ -14,6 +14,7 @@ use Sylius\Component\Core\Model\ShipmentInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 class ShippingExport implements ShippingExportInterface
 {
@@ -75,11 +76,9 @@ class ShippingExport implements ShippingExportInterface
     }
 
     /**
-     * @param \DateTime $date
-     *
      * {@inheritdoc}
      */
-    public function setDate($date)
+    public function setDate(\DateTime $date)
     {
         $this->date = $date;
     }

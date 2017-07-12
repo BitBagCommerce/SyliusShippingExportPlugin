@@ -1,16 +1,23 @@
 services:
-    bitbag.shipping_export_plugin.context.ui.admin.shipping_gateway:
-        class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin\ShippingGatewayContext
-        arguments:
-            - '@bitbag.shipping_export_plugin.behat.page.admin.shipping_gateway.create'
-            - '@sylius.behat.shared_storage'
-        tags:
-            - { name: fob.context_service }
-
-    bitbag.shipping_export_plugin.setup.shipping_gateway:
+    bitbag.shipping_export_plugin.behat.setup.shipping_gateway:
         class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup\ShippingGatewayContext
         arguments:
             - '@__symfony__.sylius.factory.shipping_method'
             - '@__symfony__.bitbag.factory.shipping_gateway'
+            - "@__symfony__.sylius.repository.shipping_method"
+            - "@__symfony__.bitbag.repository.shipping_gateway"
+            - "@__symfony_shared__.doctrine.orm.entity_manager"
+            - "@sylius.behat.shared_storage"
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.shipping_export_plugin.behat.context.ui.admin.shipping_gateway:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin\ShippingGatewayContext
+        arguments:
+            - '@bitbag.shipping_export_plugin.behat.page.admin.shipping_gateway.create'
+            - "@bitbag.shipping_export_plugin.behat.page.admin.shipping_gateway.update"
+            - "@sylius.behat.current_page_resolver"
+            - "@sylius.behat.shared_storage"
+            - '@sylius.behat.notification_checker'
         tags:
             - { name: fob.context_service }

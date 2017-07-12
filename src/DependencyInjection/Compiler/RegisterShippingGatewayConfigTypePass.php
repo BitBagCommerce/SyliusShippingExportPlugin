@@ -34,7 +34,7 @@ final class RegisterShippingGatewayConfigTypePass implements CompilerPassInterfa
 
         foreach ($gatewayConfigurationTypes as $id => $attributes) {
             if (!isset($attributes[0]['type']) || !isset($attributes[0]['label'])) {
-                throw new \InvalidArgumentException('Tagged gateway configuration type needs to have `type` and `label` attributes.');
+                throw new \InvalidArgumentException('Tagged shipping gateway configuration type needs to have `type` and `label` attributes.');
             }
 
             $gatewayFactories[$attributes[0]['type']] = $attributes[0]['label'];

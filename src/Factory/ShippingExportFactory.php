@@ -16,6 +16,7 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 final class ShippingExportFactory implements ShippingExportFactoryInterface
 {

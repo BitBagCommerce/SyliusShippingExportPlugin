@@ -15,6 +15,7 @@ use Sylius\Component\Resource\Model\TranslatableTrait;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 class ShippingGateway implements ShippingGatewayInterface
 {
