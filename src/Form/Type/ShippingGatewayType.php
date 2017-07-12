@@ -10,9 +10,11 @@
 
 namespace BitBag\ShippingExportPlugin\Form\Type;
 
+use BitBag\ShippingExportPlugin\Context\ShippingGatewayContextInterface;
 use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
-use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\Component\Core\Repository\ShippingMethodRepositoryInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -24,23 +26,40 @@ use Symfony\Component\Form\FormEvents;
 final class ShippingGatewayType extends AbstractResourceType
 {
     /**
-     * @var FormTypeRegistryInterface
+     * @var ShippingGatewayContextInterface
      */
-    private $gatewayConfigurationTypeRegistry;
+    private $shippingGatewayTypeContext;
+
+    /**
+     * @var ShippingMethodRepositoryInterface
+     */
+    private $shippingMethodRepository;
+
+    /**
+     * @var string
+     */
+    private $shippingMethodModelClass;
 
     /**
      * {@inheritdoc}
      *
-     * @param FormTypeRegistryInterface $gatewayConfigurationTypeRegistry
+     * @param ShippingGatewayContextInterface $shippingGatewayTypeContext
+     * @param ShippingMethodRepositoryInterface $shippingMethodRepository
+     * @param string $shippingMethodModelClass
      */
     public function __construct(
         $dataClass,
         array $validationGroups = [],
-        FormTypeRegistryInterface $gatewayConfigurationTypeRegistry
-    ) {
+        ShippingGatewayContextInterface $shippingGatewayTypeContext,
+        ShippingMethodRepositoryInterface $shippingMethodRepository,
+        $shippingMethodModelClass
+    )
+    {
         parent::__construct($dataClass, $validationGroups);
 
-        $this->gatewayConfigurationTypeRegistry = $gatewayConfigurationTypeRegistry;
+        $this->shippingGatewayTypeContext = $shippingGatewayTypeContext;
+        $this->shippingMethodRepository = $shippingMethodRepository;
+        $this->shippingMethodModelClass = $shippingMethodModelClass;
     }
 
     /**
@@ -48,30 +67,38 @@ final class ShippingGatewayType extends AbstractResourceType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $factoryName = $options['data']->getFactoryName();
+        $code = $this->shippingGatewayTypeContext->getCode();
+        $label = $this->shippingGatewayTypeContext->getLabelByCode($code);
+        $shippingGatewayType = $this->shippingGatewayTypeContext->getFormType();
 
         $builder
-            ->add('factoryName', TextType::class, [
-                'label' => 'bitbag.form.gateway_config.type',
+            ->add('code', TextType::class, [
+                'label' => 'bitbag.ui.code',
+                'data' => $code,
+                'required' => false,
                 'disabled' => true,
-                'data' => $factoryName,
             ])
-            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($factoryName) {
+            ->add('label', TextType::class, [
+                'label' => 'bitbag.ui.name',
+                'data' => $label,
+                'required' => false,
+                'disabled' => true,
+            ])
+            ->add('shippingMethod', EntityType::class, [
+                'label' => 'sylius.ui.shipping_method',
+                'class' => $this->shippingMethodModelClass,
+                'data' => $this->shippingMethodRepository->findAll(),
+            ])
+            ->add('config', $shippingGatewayType, [
+                'label' => false,
+                'auto_initialize' => false,
+            ])
+            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) use ($code, $label) {
+                /** @var ShippingGatewayInterface $shippingGateway */
                 $shippingGateway = $event->getData();
 
-                if (!$shippingGateway instanceof ShippingGatewayInterface) {
-                    return;
-                }
-
-                if (!$this->gatewayConfigurationTypeRegistry->has('shipping_gateway_config', $factoryName)) {
-                    return;
-                }
-
-                $configType = $this->gatewayConfigurationTypeRegistry->get('shipping_gateway_config', $factoryName);
-                $event->getForm()->add('config', $configType, [
-                    'label' => false,
-                    'auto_initialize' => false,
-                ]);
+                $shippingGateway->setCode($code);
+                $shippingGateway->setLabel($label);
             })
         ;
     }
@@ -81,6 +108,6 @@ final class ShippingGatewayType extends AbstractResourceType
      */
     public function getBlockPrefix()
     {
-        return 'sylius_payum_gateway_config';
+        return 'bitbag_shipping_gateway_config';
     }
 }

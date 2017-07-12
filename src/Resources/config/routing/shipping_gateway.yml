@@ -9,30 +9,31 @@ bitbag_admin_shipping_gateway:
         permission: true
         vars:
             all:
-                subheader: bitbag.ui.manage_shipping_gateways_available_to_your_customers
-                templates:
-                    form: ShippingGatewayPlugin:ShippingGateway:_form.html.twig
+                header: bitbag.ui.shipping_gateways
+                subheader: bitbag.ui.manage_shipping_gateways
             index:
-                icon: payment
+                icon: cloud
+            route:
+                parameters:
+                    code: $code
     type: sylius.resource
 
 bitbag_admin_shipping_gateway_create:
-    path: /shipping-gateways/new/{factory}
+    path: /shipping-gateways/new/{code}
     methods: [GET, POST]
     defaults:
         _controller: bitbag.controller.shipping_gateway:createAction
         _sylius:
             section: admin
             template: SyliusAdminBundle:Crud:create.html.twig
-            redirect: bitbag_admin_shipping_gateway_update
+            redirect: bitbag_admin_shipping_gateway_index
             permission: true
             vars:
-                subheader: bitbag.ui.manage_shipping_gateways_available_to_your_customers
-                templates:
-                    form: ShippingGatewayPlugin:ShippingGateway:_form.html.twig
+                header: bitbag.ui.shipping_gateways
+                subheader: bitbag.ui.create_shipping_gateway
                 route:
                     parameters:
-                        factory: $factory
+                        code: $code
 
 bitbag_admin_get_shipping_gateways:
     path: /shipping-gateways/list

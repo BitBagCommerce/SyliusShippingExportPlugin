@@ -34,7 +34,7 @@ final class ShippingGatewayController extends ResourceController
             ->setTemplate($template)
             ->setTemplateVar($this->metadata->getPluralName())
             ->setData([
-                'gatewayFactories' => $this->getParameter('bitbag.shipping_gateway_factories'),
+                'shippingGateways' => $this->getParameter('bitbag.shipping_gateways'),
                 'metadata' => $this->metadata,
             ])
         ;

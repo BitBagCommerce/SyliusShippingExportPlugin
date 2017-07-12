@@ -7,19 +7,12 @@ sylius_grid:
                     class: "%bitbag.model.shipping_gateway.class%"
                     repository:
                         method: createListQueryBuilder
-                        arguments: ["%locale%"]
             fields:
-                position:
-                    type: twig
-                    label: sylius.ui.position
-                    sortable: ~
-                    options:
-                        template: "@SyliusUi/Grid/Field/position.html.twig"
                 code:
                     type: string
                     label: sylius.ui.code
                     sortable: ~
-                name:
+                label:
                     type: string
                     label: sylius.ui.name
                     sortable: translation.name

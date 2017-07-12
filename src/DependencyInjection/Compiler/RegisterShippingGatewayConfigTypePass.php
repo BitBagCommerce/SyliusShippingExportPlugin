@@ -45,6 +45,6 @@ final class RegisterShippingGatewayConfigTypePass implements CompilerPassInterfa
             );
         }
 
-        $container->setParameter('bitbag.shipping_gateway_factories', $gatewayFactories);
+        $container->setParameter('bitbag.shipping_gateways', $gatewayFactories);
     }
 }

@@ -16,8 +16,10 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Tests\BitBag\ShippingExportPlugin\Behat\Behaviour\ContainsError;
 use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\CreatePageInterface;
 use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\UpdatePageInterface;
+use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -25,12 +27,12 @@ use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\UpdatePag
 final class ShippingGatewayContext implements Context
 {
     /**
-     * @var CreatePageInterface
+     * @var CreatePageInterface|ContainsError
      */
     private $createPage;
 
     /**
-     * @var UpdatePageInterface
+     * @var UpdatePageInterface|ContainsError
      */
     private $updatePage;
 
@@ -72,12 +74,19 @@ final class ShippingGatewayContext implements Context
     }
 
     /**
-     * @When I visit the create shipping gateway configuration page
+     * @When I visit the create shipping gateway configuration page for :code
+     */
+    public function iVisitTheCreateShippingGatewayConfigurationPage($code)
+    {
+        $this->createPage->open(['code' => $code]);
+    }
+
+    /**
      * @When I visit the update shipping gateway configuration page
      */
-    public function iVisitTheShippingGatewayConfigurationPage()
+    public function iVisitTheUpdateShippingGatewayConfigurationPage()
     {
-        $this->resolveCurrentPage()->open();
+        $this->updatePage->open();
     }
 
     /**
@@ -97,7 +106,7 @@ final class ShippingGatewayContext implements Context
     }
 
     /**
-     * @When I try to add it
+     * @When I add it
      * @When I save it
      */
     public function iTryToAddIt()
@@ -106,23 +115,26 @@ final class ShippingGatewayContext implements Context
     }
 
     /**
-     * @Then I should be notified that the shipping gateway was created
+     * @Then I should be notified that the shipping gateway has been created
      */
     public function iShouldBeNotifiedThatTheShippingGatewayWasCreated()
     {
-        $this->notificationChecker->checkNotification("Shipping gateway was created.", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Shipping gateway has been successfully created.",
+            NotificationType::success()
+        );
     }
 
     /**
-     * @Then empty fields error should be displayed
+     * @Then :message error message should be displayed
      */
-    public function emptyFieldsErrorShouldBeDisplayed()
+    public function errorMessageForFieldShouldBeDisplayed($message)
     {
-        $this->resolveCurrentPage()->getValidationMessage("Cannot be empty.");
+        Assert::true($this->resolveCurrentPage()->hasError($message));
     }
 
     /**
-     * @return CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
+     * @return CreatePageInterface|UpdatePageInterface|ContainsError|SymfonyPageInterface
      */
     private function resolveCurrentPage()
     {

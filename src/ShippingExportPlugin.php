@@ -12,26 +12,15 @@ namespace BitBag\ShippingExportPlugin;
 
 use BitBag\ShippingExportPlugin\DependencyInjection\Compiler\RegisterShippingGatewayConfigTypePass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
-use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ShippingExportPlugin extends AbstractResourceBundle
+final class ShippingExportPlugin extends Bundle
 {
     use SyliusPluginTrait;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSupportedDrivers()
-    {
-        return [
-            SyliusResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-    }
 
     /**
      * {@inheritdoc}

@@ -11,12 +11,15 @@
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\ShippingExportPlugin\Behat\Behaviour\ContainsError;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
+    use ContainsError;
+
     /**
      * {@inheritdoc}
      */

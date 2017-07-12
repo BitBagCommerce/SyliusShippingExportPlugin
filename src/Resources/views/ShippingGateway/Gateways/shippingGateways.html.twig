@@ -1,5 +1,5 @@
-{% for name, gateway in gatewayFactories %}
-    <a href="{{ path('bitbag_admin_shipping_gateway_create', { 'factory': name }) }}" id="{{ name }}" class="item">
-        {{ gateway|trans }}
+{% for code, label in shippingGateways %}
+    <a href="{{ path('bitbag_admin_shipping_gateway_create', { 'code': code }) }}" id="{{ code }}" class="item">
+        {{ label }}
     </a>
 {% endfor %}

@@ -2,4 +2,4 @@ services:
     bitbag.shipping_gateway_plugin.form.type.frank_martin_shipping_gateway:
         class: Tests\BitBag\ShippingExportPlugin\Behat\Mock\FrankMartinShippingGatewayTypeMock
         tags:
-            - { name: bitbag.shipping_gateway_configuration_type }
+            - { name: bitbag.shipping_gateway_configuration_type, type: "frank_martin_shipping_gateway", label: "Transporter Parcels" }

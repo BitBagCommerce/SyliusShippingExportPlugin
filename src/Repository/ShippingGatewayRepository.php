@@ -20,11 +20,21 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder($locale)
+    public function createListQueryBuilder()
+    {
+        return $this->createQueryBuilder('o');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneByCode($code)
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
-            ->setParameter('locale', $locale)
+            ->where('o.code = :code')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getOneOrNullResult()
             ;
     }
 }

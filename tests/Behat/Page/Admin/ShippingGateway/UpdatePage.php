@@ -11,12 +11,15 @@
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
+use Tests\BitBag\ShippingExportPlugin\Behat\Behaviour\ContainsError;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
+    use ContainsError;
+
     /**
      * {@inheritdoc}
      */

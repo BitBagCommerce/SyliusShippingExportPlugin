@@ -8,22 +8,19 @@ Feature: Creating shipping gateway
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
         And the store has "Frank Martin Parcels" shipping method with "$10.00" fee
-        And I am able to create a shipping gateway with "Frank Martin Parcels Gateway" name and "transporter_gateway" code
-        And "name", "address", "iban" configuration fields
-        And "IBAN, Sender name, Sender address" fields can be configured for this gateway
 
     @ui
     Scenario: Creating Frank Martin Parcels shipping gateway
-        When I visit the create shipping gateway configuration page
+        When I visit the create shipping gateway configuration page for "frank_martin_shipping_gateway"
         And I select the "Frank Martin Parcels" shipping method
-        And I fill the "IBAN" field with "GB29 RBOS 6016 1331 9268 19
-        And I fill the "Sender name" field with "Nicolas King"
-        And I fill the "Sender address" field with "85, 41121 Modena MO, Italy"
-        And I try to add it
-        Then I should be notified that the shipping gateway was created
+        And I fill the "IBAN" field with "GB29 RBOS 6016 1331 9268 19"
+        And I fill the "Address" field with "Nick King, Main Square 27, Opole 45015, Poland"
+        And I add it
+        Then I should be notified that the shipping gateway has been created
 
     @ui
     Scenario: Trying to create shipping gateway with invalid data
-        When I visit the create shipping gateway configuration page
-        And I try to add it
-        Then empty fields error should be displayed
+        When I visit the create shipping gateway configuration page for "frank_martin_shipping_gateway"
+        And I add it
+        Then "IBAN number cannot be blank." error message should be displayed
+        And "Address cannot be blank." error message should be displayed

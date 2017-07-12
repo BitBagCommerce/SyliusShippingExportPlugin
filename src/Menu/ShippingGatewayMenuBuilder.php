@@ -15,18 +15,19 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class AdminMenuListener
+final class ShippingGatewayMenuBuilder
 {
     /**
      * @param MenuBuilderEvent $event
      */
-    public function configureShippingGatewayMenu(MenuBuilderEvent $event)
+    public function buildMenu(MenuBuilderEvent $event)
     {
         $event
             ->getMenu()
             ->getChild('configuration')
             ->addChild('shipping_gateway', ['route' => 'bitbag_admin_shipping_gateway_index'])
-            ->setLabel('bitbag.shipping_export_plugin.menu.admin.shipping_gateway')
+            ->setLabel('bitbag.ui.shipping_gateways')
+            ->setLabelAttribute('icon', 'cloud')
         ;
     }
 }

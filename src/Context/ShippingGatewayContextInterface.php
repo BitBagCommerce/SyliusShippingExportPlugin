@@ -8,27 +8,30 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace BitBag\ShippingExportPlugin\Entity;
+namespace BitBag\ShippingExportPlugin\Context;
 
-use Sylius\Component\Resource\Model\ResourceInterface;
+use BitBag\ShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface ShippingGatewayTranslationInterface extends ResourceInterface
+interface ShippingGatewayContextInterface
 {
-    /**
-     * @return int
-     */
-    public function getId();
-
     /**
      * @return string
      */
-    public function getName();
+    public function getFormType();
 
     /**
-     * @param string $name
+     * @return string
+     * @throws ShippingGatewayNotFoundException
      */
-    public function setName($name);
+    public function getCode();
+
+    /**
+     * @param string $code
+     *
+     * @return string
+     */
+    public function getLabelByCode($code);
 }

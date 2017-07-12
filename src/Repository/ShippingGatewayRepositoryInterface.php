@@ -10,6 +10,7 @@
 
 namespace BitBag\ShippingExportPlugin\Repository;
 
+use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
@@ -19,9 +20,14 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 interface ShippingGatewayRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @param string $locale
-     *
      * @return QueryBuilder
      */
-    public function createListQueryBuilder($locale);
+    public function createListQueryBuilder();
+
+    /**
+     * @param string $code
+     *
+     * @return ShippingGatewayInterface
+     */
+    public function findOneByCode($code);
 }

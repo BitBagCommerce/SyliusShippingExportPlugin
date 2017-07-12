@@ -11,7 +11,6 @@
 namespace BitBag\ShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShippingMethodInterface;
-use Sylius\Component\Resource\Model\TranslatableTrait;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -19,10 +18,6 @@ use Sylius\Component\Resource\Model\TranslatableTrait;
  */
 class ShippingGateway implements ShippingGatewayInterface
 {
-    use TranslatableTrait  {
-        __construct as private initializeTranslationsCollection;
-    }
-
     /**
      * @var int
      */
@@ -36,7 +31,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
      * @var ShippingMethodInterface
@@ -46,7 +41,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * @var array
      */
-    private $configuration;
+    private $config;
 
     /**
      * {@inheritdoc}
@@ -54,14 +49,6 @@ class ShippingGateway implements ShippingGatewayInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCode()
-    {
-        return $this->code;
     }
 
     /**
@@ -75,9 +62,25 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getShippingMethod()
+    public function getCode()
     {
-        return $this->shippingMethod;
+        return $this->code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLabel()
+    {
+        return $this->label;
     }
 
     /**
@@ -91,40 +94,24 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfiguration()
+    public function getShippingMethod()
     {
-        return $this->configuration;
+        return $this->shippingMethod;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setConfiguration(array $configuration)
+    public function setConfig(array $config)
     {
-        $this->configuration = $configuration;
+        $this->config = $config;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation()
+    public function getConfig()
     {
-        return new ShippingGatewayTranslation();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+        return $this->config;
     }
 }
