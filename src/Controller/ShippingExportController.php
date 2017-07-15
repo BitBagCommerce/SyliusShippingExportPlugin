@@ -103,18 +103,6 @@ final class ShippingExportController extends ResourceController
     }
 
     /**
-     * @param Request $request
-     *
-     * @throws InvalidCsrfTokenException
-     */
-    private function checkRequestValidity(Request $request)
-    {
-        if (false === $this->isCsrfTokenValid('export_shipments_token', $request->get('_token'))) {
-            throw new InvalidCsrfTokenException();
-        }
-    }
-
-    /**
      * @param ShippingExportInterface $shippingExport
      */
     private function dispatchForShippingExport(ShippingExportInterface $shippingExport)
@@ -122,9 +110,9 @@ final class ShippingExportController extends ResourceController
         $flashBag = $this->get('session')->getFlashBag();
         $shippingExportManager = $this->get('bitbag.manager.shipping_export');
         $eventDispatcher = $this->get('event_dispatcher');
-        $shippingLabelsPath = $this->getParameter('bitbag.shipping_labels_path');
         $filesystem = $this->get('filesystem');
         $translator = $this->get('translator');
+        $shippingLabelsPath = $this->getParameter('bitbag.shipping_labels_path');
         $event = new ExportShipmentEvent(
             $shippingExport,
             $flashBag,

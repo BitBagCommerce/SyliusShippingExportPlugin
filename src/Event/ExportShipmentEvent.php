@@ -107,7 +107,7 @@ final class ExportShipmentEvent extends Event
     {
         $message = $this->translator->trans($messageId);
 
-        if (false === $this->flashBag->has('success')) {
+        if (false === $this->flashBag->has('error')) {
             $this->flashBag->add('error', $message);
         }
     }
@@ -118,18 +118,14 @@ final class ExportShipmentEvent extends Event
      */
     public function saveShippingLabel($labelContent, $labelExtension)
     {
-        $orderNumber = str_replace('#', '',
-            $this
-                ->getShippingExport()
-                ->getShipment()
-                ->getOrder()
-                ->getNumber());
-        $shipmentId = $this->getShippingExport()->getShipment()->getId();
+        $shipment = $this->getShippingExport()->getShipment();
+        $orderNumber = str_replace('#', '', $shipment->getOrder()->getNumber());
+        $shipmentId = $shipment->getId();
         $labelPath = $this->shippingLabelsPath
             . '/' . $shipmentId
             . '_' . $orderNumber
-            . '_' . time()
-            . '.' . $labelExtension;
+            . '.' . $labelExtension
+        ;
 
         $this->filesystem->dumpFile($labelPath, $labelContent);
         $this->shippingExport->setLabelPath($labelPath);

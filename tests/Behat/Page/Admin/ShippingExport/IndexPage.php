@@ -41,7 +41,7 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
      */
     public function exportAllShipments()
     {
-        $this->getDocument()->clickLink("Export all new shipments");
+        $this->getDocument()->pressButton("Export all new shipments");
     }
 
     /**

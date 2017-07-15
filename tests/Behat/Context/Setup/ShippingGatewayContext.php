@@ -17,6 +17,7 @@ use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Tests\BitBag\ShippingExportPlugin\Behat\Mock\EventListener\FrankMartinShippingExportEventListener;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -85,23 +86,9 @@ final class ShippingGatewayContext implements Context
     }
 
     /**
-     * @Given there is a shipping method named :name with :code code
+     * @Given there is a registered :code shipping gateway for this shipping method named :name
      */
-    public function thereIsAShippingMethodNamedWithCode($name, $code)
-    {
-        /** @var ShippingMethodInterface $shippingMethod */
-        $shippingMethod = $this->shippingMethodFactory->createNew();
-        $shippingMethod->setName($name);
-        $shippingMethod->setCode($code);
-
-        $this->sharedStorage->set('shipping_method', $shippingMethod);
-        $this->shippingMethodRepository->add($shippingMethod);
-    }
-
-    /**
-     * @Given there is a registered shipping gateway for this shipping method
-     */
-    public function thereIsARegisteredShippingGatewayForThisShippingMethod()
+    public function thereIsARegisteredShippingGatewayForThisShippingMethod($code, $name)
     {
         /** @var ShippingGatewayInterface $shippingGateway */
         $shippingGateway = $this->shippingGatewayFactory->createNew();
@@ -109,20 +96,9 @@ final class ShippingGatewayContext implements Context
         $shippingMethod = $this->sharedStorage->get('shipping_method');
 
         $shippingGateway->setShippingMethod($shippingMethod);
-
-        $this->sharedStorage->set('shipping_gateway', $shippingGateway);
-    }
-
-    /**
-     * @Given this shipping gateway has :code code and :label label
-     */
-    public function thisShippingGatewayHasCodeAndLabel($code, $label)
-    {
-        /** @var ShippingGatewayInterface $shippingGateway */
-        $shippingGateway = $this->sharedStorage->get('shipping_gateway');
-
         $shippingGateway->setCode($code);
-        $shippingGateway->setLabel($label);
+        $shippingGateway->setLabel($name);
+        $shippingGateway->setConfig(['iban' => '123', 'address' => 'foo bar']);
 
         $this->sharedStorage->set('shipping_gateway', $shippingGateway);
         $this->shippingGatewayRepository->add($shippingGateway);
@@ -140,5 +116,14 @@ final class ShippingGatewayContext implements Context
         $shippingGateway->setConfig($this->config);
 
         $this->sharedStorage->set('shipping_gateway', $shippingGateway);
+        $this->entityManager->flush($shippingGateway);
+    }
+
+    /**
+     * @Given the external shipping API is down
+     */
+    public function theExternalShippingApiIsDown()
+    {
+        FrankMartinShippingExportEventListener::toggleSuccess(false);
     }
 }

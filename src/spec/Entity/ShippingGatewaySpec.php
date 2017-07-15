@@ -67,4 +67,18 @@ final class ShippingGatewaySpec extends ObjectBehavior
 
         $this->hasShippingExport($shippingExport)->shouldReturn(false);
     }
+
+    function it_returns_config_value()
+    {
+        $this->setConfig(['foo' => 'bar']);
+
+        $this->getConfigValue('foo')->shouldReturn('bar');
+    }
+
+    function it_throws_error_while_trying_to_access_not_existing_config_value()
+    {
+        $this->setConfig(['foo' => 'bar']);
+
+        $this->shouldThrow(\InvalidArgumentException::class)->during('getConfigValue', ['bar']);
+    }
 }

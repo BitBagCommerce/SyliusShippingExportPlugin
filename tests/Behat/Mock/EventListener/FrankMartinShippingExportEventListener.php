@@ -18,6 +18,11 @@ use BitBag\ShippingExportPlugin\Event\ExportShipmentEvent;
 final class FrankMartinShippingExportEventListener
 {
     /**
+     * @var bool
+     */
+    private static $success = true;
+
+    /**
      * @param ExportShipmentEvent $event
      */
     public function exportShipments(ExportShipmentEvent $event)
@@ -29,9 +34,24 @@ final class FrankMartinShippingExportEventListener
             return;
         }
 
+        if(false === self::$success) {
+            $event->addErrorFlash();
+
+            return;
+        }
+
         $event->addSuccessFlash();
         $event->exportShipment();
         $event->saveShippingLabel($this->mockLabelContent(), 'pdf');
+
+    }
+
+    /**
+     * @param bool $toggle
+     */
+    public static function toggleSuccess($toggle)
+    {
+        self::$success = $toggle;
     }
 
     private function mockLabelContent()

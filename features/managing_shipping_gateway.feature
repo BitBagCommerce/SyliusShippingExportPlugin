@@ -8,10 +8,9 @@ Feature: Managing shipping gateway
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
         And the store has "Frank Martin Parcels" shipping method with "$10.00" fee
-        And there is a registered shipping gateway for this shipping method
+        And there is a registered "frank_martin_shipping_gateway" shipping gateway for this shipping method named "Transporter Gateway"
         And it has "IBAN" field set to "GB29 RBOS 6016 1331 9268 19"
         And it has "Address" field set to "Nick King, Main Square 27, Opole 45015, Poland"
-        And this shipping gateway has "frank_martin_shipping_gateway" code and "Frank Martin Parcels" label
 
     @ui
     Scenario: Creating Frank Martin Parcels shipping gateway

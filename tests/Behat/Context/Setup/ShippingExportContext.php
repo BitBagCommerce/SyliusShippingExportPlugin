@@ -22,6 +22,8 @@ use Sylius\Component\Core\Model\ShippingMethod;
 use Sylius\Component\Core\Repository\OrderRepositoryInterface;
 use Sylius\Component\Core\Repository\ShipmentRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
 use Webmozart\Assert\Assert;
 
 /**
@@ -65,6 +67,11 @@ final class ShippingExportContext implements Context
     private $shippingExportRepository;
 
     /**
+     * @var EventDispatcherInterface
+     */
+    private $eventDispatcher;
+
+    /**
      * @param OrderRepositoryInterface $orderRepository
      * @param SharedStorageInterface $sharedStorage
      * @param FactoryInterface $shipmentFactory
@@ -72,6 +79,7 @@ final class ShippingExportContext implements Context
      * @param ShippingGatewayRepositoryInterface $shippingGatewayRepository
      * @param FactoryInterface $shippingExportFactory
      * @param ShippingExportRepositoryInterface $shippingExportRepository
+     * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(
         OrderRepositoryInterface $orderRepository,
@@ -80,7 +88,8 @@ final class ShippingExportContext implements Context
         ShipmentRepositoryInterface $shipmentRepository,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         FactoryInterface $shippingExportFactory,
-        ShippingExportRepositoryInterface $shippingExportRepository
+        ShippingExportRepositoryInterface $shippingExportRepository,
+        EventDispatcherInterface $eventDispatcher
     )
     {
         $this->orderRepository = $orderRepository;
@@ -90,6 +99,7 @@ final class ShippingExportContext implements Context
         $this->shippingGatewayRepository = $shippingGatewayRepository;
         $this->shippingExportFactory = $shippingExportFactory;
         $this->shippingExportRepository = $shippingExportRepository;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -131,5 +141,25 @@ final class ShippingExportContext implements Context
         $shippingExport->setShippingGateway($shippingGateway);
 
         $this->shippingExportRepository->add($shippingExport);
+    }
+
+    /**
+     * @Given those orders were completed
+     */
+    public function thoseOrdersWereCompleted()
+    {
+        $orders = $this->orderRepository->findAll();
+
+        foreach ($orders as $order) {
+            $this->eventDispatcher->dispatch('sylius.order.post_complete', new GenericEvent($order));
+        }
+    }
+
+    /**
+     * @Then :number new shipping exports should be created
+     */
+    public function newShippingExportsShouldBeCreated($number)
+    {
+        Assert::eq(count($this->shippingExportRepository->findAll()), $number);
     }
 }

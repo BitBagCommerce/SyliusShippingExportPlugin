@@ -1,19 +1,20 @@
 @managing_shipping_export
-Feature: Preparing suitable shipment data while placing an order
-    In order to prepare data that is ready to export
+Feature: Preparing shipping export after processing order with shipping gateway
+    In order to export shipping data to external API
     As an Administrator
-    I want to be able to see converted order in admin panel
+    I want to have prepared data for any placed order with shipping gateway
 
     Background:
         Given the store operates on a single channel in "United States"
-        And I am logged in as an administrator
+        And the store has a product "Ferrari Testarossa" priced at "$250000.00"
         And the store has "Frank Martin Parcels" shipping method with "$10.00" fee
-        And there is a registered shipping gateway for this shipping method
-        And this shipping gateway has "frank_martin_shipping_gateway" code and "Frank Martin Parcels" label
+        And there is a registered "frank_martin_shipping_gateway" shipping gateway for this shipping method named "Transporter Gateway"
+        And the store allows paying "Cash on Delivery"
+        And I am a logged in customer
 
     @ui
-    Scenario: Placing new order with shipping gateway
-        Given I had product "PHP T-Shirt" in the cart
-        And I specified the shipping address as "Ankh Morpork", "Frost Alley", "90210", "United States" for "Jon Snow"
-        And I have proceeded selecting "Frank Martin Parcels" shipping method
-        Then new shipping to export with "new" status should appear
+    Scenario: Receiving a discount on an order if it's nth order placed
+        Given I am logged in as an administrator
+        Given I have already placed 2 orders choosing "Ferrari Testarossa" product, "Frank Martin Parcels" shipping method to "United States" with "Cash on Delivery" payment
+        And those orders were completed
+        Then 2 new shipping exports should be created

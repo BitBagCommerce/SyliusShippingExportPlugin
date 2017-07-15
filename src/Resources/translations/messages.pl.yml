@@ -1,6 +1,19 @@
 bitbag:
-    shipping_export_plugin:
-        menu:
-            admin:
-                shipping_gateway: Bramy przesyłek
-                deliveries: Dostawy
+    ui:
+        shipping_gateways: Bramy dostawców
+        label: Nazwa
+        create_shipping_gateway: Stwórz bramę dostawcy
+        manage_shipping_gateways: Zarządzaj bramami dostawców
+        choose_shipping_method: Wybierz metodę wysyłki
+        export_all_new_shipments: Eksportuj wszystkie nowe przesyłki
+        no_shipping_label: Brak etykiety
+        export_shipments: Eksportuj przesyłki
+        download_shipping_label: Pobierz etykietę
+        shipping_exports: Eksportuj przesyłki do zewnętrznego API
+        manage_shipping_exports: Zarządzaj eksportem przesyłek
+        shipment_data_has_been_exported: Dane przesyłce(ach) zostały wyeksportowane.
+        shipping_export_error: Wystąpił błąd w trakcie eksportowania danych o przesyłce(ach).
+        shipping_export_label: Etykieta przesyłki
+        new: Nowy
+        exported: Eksportowano
+        no_new_shipments_to_export: Brak nowych przesyłek do wyeksportowania.

@@ -15,7 +15,11 @@ sylius_grid:
                 label:
                     type: string
                     label: bitbag.ui.label
-                    sortable: translation.name
+                    sortable: ~
+                shippingMethod:
+                    type: string
+                    label: sylius.ui.shipping_method
+                    sortable: ~
             filters:
                 search:
                     type: string

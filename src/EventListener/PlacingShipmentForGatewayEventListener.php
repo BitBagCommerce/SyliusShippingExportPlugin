@@ -65,15 +65,7 @@ final class PlacingShipmentForGatewayEventListener
         $order = $event->getSubject();
         Assert::isInstanceOf($order, OrderInterface::class);
 
-        $this->createShippingExportsForOrder($order);
-    }
-
-    /**
-     * @param OrderInterface $order
-     */
-    private function createShippingExportsForOrder(OrderInterface $order)
-    {
-        if (0 === $order->getShipments()->count()) {
+        if (0 === count($order->getShipments())) {
             return;
         }
 
@@ -82,26 +74,14 @@ final class PlacingShipmentForGatewayEventListener
             $shippingMethod = $shipment->getMethod();
             $shippingGateway = $this->shippingGatewayRepository->findOneByShippingMethod($shippingMethod);
 
-            if($shippingGateway instanceof ShippingGatewayInterface) {
-                $this->createNewShippingExportForShippingGatewayAndShipment($shippingGateway, $shipment);
+            if ($shippingGateway instanceof ShippingGatewayInterface) {
+                /** @var ShippingExportInterface $shippingExport */
+                $shippingExport = $this->shippingExportFactory->createNew();
+                $shippingExport->setShippingGateway($shippingGateway);
+                $shippingExport->setShipment($shipment);
+
+                $this->shippingExportRepository->add($shippingExport);
             }
         }
-    }
-
-    /**
-     * @param ShippingGatewayInterface $shippingGateway
-     * @param ShipmentInterface $shipment
-     */
-    private function createNewShippingExportForShippingGatewayAndShipment(
-        ShippingGatewayInterface $shippingGateway,
-        ShipmentInterface $shipment
-    )
-    {
-        /** @var ShippingExportInterface $shippingExport */
-        $shippingExport = $this->shippingExportFactory->createNew();
-        $shippingExport->setShippingGateway($shippingGateway);
-        $shippingExport->setShipment($shipment);
-
-        $this->shippingExportRepository->add($shippingExport);
     }
 }

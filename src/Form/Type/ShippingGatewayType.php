@@ -12,6 +12,7 @@ namespace BitBag\ShippingExportPlugin\Form\Type;
 
 use BitBag\ShippingExportPlugin\Context\ShippingGatewayContextInterface;
 use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
+use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Component\Core\Repository\ShippingMethodRepositoryInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -31,7 +32,7 @@ final class ShippingGatewayType extends AbstractResourceType
     private $shippingGatewayTypeContext;
 
     /**
-     * @var ShippingMethodRepositoryInterface
+     * @var ShippingMethodRepositoryInterface|EntityRepository
      */
     private $shippingMethodRepository;
 
@@ -79,7 +80,7 @@ final class ShippingGatewayType extends AbstractResourceType
                 'disabled' => true,
             ])
             ->add('label', TextType::class, [
-                'label' => 'sylius.ui.name',
+                'label' => 'bitbag.ui.label',
                 'data' => $label,
                 'required' => false,
                 'disabled' => true,
@@ -87,7 +88,7 @@ final class ShippingGatewayType extends AbstractResourceType
             ->add('shippingMethod', EntityType::class, [
                 'label' => 'sylius.ui.shipping_method',
                 'class' => $this->shippingMethodModelClass,
-                'data' => $this->shippingMethodRepository->findAll(),
+                'query_builder' => $this->shippingMethodRepository->createQueryBuilder('o'),
                 'placeholder' => 'bitbag.ui.choose_shipping_method',
             ])
             ->add('config', $shippingGatewayType, [

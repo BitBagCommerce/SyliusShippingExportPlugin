@@ -1,13 +1,35 @@
 services:
-    bitbag.behat.setup.shipping_gateway:
+    bitbag.behat.context.hook.shipping_export:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Hook\ShippingExportContext
+        arguments:
+            - '@__symfony__.filesystem'
+            - '%__symfony__.bitbag.shipping_labels_path%'
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.behat.context.setup.shipping_gateway:
         class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup\ShippingGatewayContext
         arguments:
             - '@__symfony__.sylius.factory.shipping_method'
             - '@__symfony__.bitbag.factory.shipping_gateway'
             - '@__symfony__.sylius.repository.shipping_method'
             - '@__symfony__.bitbag.repository.shipping_gateway'
-            - '@__symfony_shared__.doctrine.orm.entity_manager'
+            - '@__symfony__.doctrine.orm.entity_manager'
             - '@sylius.behat.shared_storage'
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.behat.context.setup.shipping_export:
+        class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup\ShippingExportContext
+        arguments:
+            - '@__symfony__.sylius.repository.order'
+            - '@sylius.behat.shared_storage'
+            - '@__symfony__.sylius.factory.shipment'
+            - '@__symfony__.sylius.repository.shipment'
+            - '@__symfony__.bitbag.repository.shipping_gateway'
+            - '@__symfony__.bitbag.factory.shipping_export'
+            - '@__symfony__.bitbag.repository.shipping_export'
+            - "@__symfony__.event_dispatcher"
         tags:
             - { name: fob.context_service }
 
@@ -19,19 +41,6 @@ services:
             - '@sylius.behat.current_page_resolver'
             - '@sylius.behat.shared_storage'
             - '@sylius.behat.notification_checker'
-        tags:
-            - { name: fob.context_service }
-
-    bitbag.behat.setup.shipping_export:
-        class: Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup\ShippingExportContext
-        arguments:
-            - '@__symfony__.sylius.repository.order'
-            - '@sylius.behat.shared_storage'
-            - '@__symfony__.sylius.factory.shipment'
-            - '@__symfony__.sylius.repository.shipment'
-            - '@__symfony__.bitbag.repository.shipping_gateway'
-            - '@__symfony__.bitbag.factory.shipping_export'
-            - '@__symfony__.bitbag.repository.shipping_export'
         tags:
             - { name: fob.context_service }
 

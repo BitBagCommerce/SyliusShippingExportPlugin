@@ -3,5 +3,5 @@
 {% if  data.state == 'new' %}
     {% include 'ShippingExportPlugin:ShippingExport/Partial:_exportShipment.html.twig' %}
 {% else %}
-    <span class="ui green label"><i class="check icon"></i> {{ value|trans }}</span>
+    <span class="shipping-export-state ui green label"><i class="check icon"></i> {{ value|trans }}</span>
 {% endif %}

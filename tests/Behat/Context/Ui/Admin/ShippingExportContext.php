@@ -53,13 +53,13 @@ final class ShippingExportContext implements Context
     }
 
     /**
-     * @Then I should see :number shipments with :status status
-     * @Then all :number shipments should have :status status
-     * @Then :number shipments should have :status status
+     * @Then I should see :number shipments with :state state
+     * @Then all :number shipments should have :state state
+     * @Then :number shipments should have :state state
      */
-    public function iShouldSeeNewShipmentsToExportWithStatus($number, $status)
+    public function iShouldSeeNewShipmentsToExportWithState($number, $state)
     {
-        Assert::eq((int)$number, count($this->indexPage->getShipmentsWithState($status)));
+        Assert::eq((int)$number, count($this->indexPage->getShipmentsWithState($state)));
     }
 
     /**
@@ -83,6 +83,31 @@ final class ShippingExportContext implements Context
      */
     public function iShouldBeNotifiedThatTheShipmentHasBeenExported()
     {
-        $this->notificationChecker->checkNotification("shipment has been exported", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Shipment data has been exported.",
+            NotificationType::success()
+        );
+    }
+
+    /**
+     * @Then I should be notified that there are no new shipments to export
+     */
+    public function iShouldBeNotifiedThatThereAreNoNewShipmentsToExport()
+    {
+        $this->notificationChecker->checkNotification(
+            "There are no new shipments to export.",
+            NotificationType::failure()
+        );
+    }
+
+    /**
+     * @Then I should be notified that an error occurred while trying to export shipping data
+     */
+    public function iShouldBeNotifiedThatAnErrorOccurredWhileTryingToExportShippingData()
+    {
+        $this->notificationChecker->checkNotification(
+            "An external error occurred while trying to export shipping data.",
+            NotificationType::failure()
+        );
     }
 }

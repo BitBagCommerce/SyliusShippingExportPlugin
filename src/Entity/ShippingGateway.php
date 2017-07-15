@@ -13,6 +13,7 @@ namespace BitBag\ShippingExportPlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
+use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -162,5 +163,15 @@ class ShippingGateway implements ShippingGatewayInterface
     public function hasShippingExport(ShippingExportInterface $shippingExport)
     {
         return $this->shippingExports->contains($shippingExport);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigValue($key)
+    {
+        Assert::keyExists($this->config, $key, "Shipping gateway config does not exist.");
+
+        return $this->config[$key];
     }
 }
