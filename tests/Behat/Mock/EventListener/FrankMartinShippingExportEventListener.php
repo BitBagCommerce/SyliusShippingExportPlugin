@@ -54,6 +54,9 @@ final class FrankMartinShippingExportEventListener
         self::$success = $toggle;
     }
 
+    /**
+     * @return bool|string
+     */
     private function mockLabelContent()
     {
         return file_get_contents(__DIR__ . '/../../Resources/fixtures/frank_marting_a8d3w12.pdf');

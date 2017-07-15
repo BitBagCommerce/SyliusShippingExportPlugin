@@ -51,7 +51,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -59,7 +59,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getShipment(): ShipmentInterface
+    public function getShipment()
     {
         return $this->shipment;
     }

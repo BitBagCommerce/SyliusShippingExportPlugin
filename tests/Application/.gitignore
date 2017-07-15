@@ -3,5 +3,5 @@
 /var/
 !/var/.gitkeep
 
-!/web/app_test.php
-/web/
+/web/assets
+/web/media
