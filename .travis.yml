@@ -19,7 +19,7 @@ install:
     #- (cd tests/Application && yarn install)
 
 before_script:
-    - (cd tests/Application && bin/console doctrine:schema:create --env=test)
+    - (cd tests/Application && mkdir var/db && bin/console doctrine:schema:create --env=test)
     - (cd tests/Application && bin/console assets:install --env=test)
     #- (cd tests/Application && yarn run gulp)
 
