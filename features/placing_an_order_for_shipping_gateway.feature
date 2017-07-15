@@ -14,7 +14,6 @@ Feature: Preparing shipping export after processing order with shipping gateway
 
     @ui
     Scenario: Receiving a discount on an order if it's nth order placed
-        Given I am logged in as an administrator
         Given I have already placed 2 orders choosing "Ferrari Testarossa" product, "Frank Martin Parcels" shipping method to "United States" with "Cash on Delivery" payment
         And those orders were completed
         Then 2 new shipping exports should be created
