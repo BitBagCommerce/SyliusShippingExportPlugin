@@ -1,0 +1,7 @@
+{% if data.labelPath %}
+    {% include '@ShippingExportPlugin/ShippingExport/Partial/_downloadShippingLabel.html.twig' %}
+{% else %}
+    <span class="ui label">
+        {{ 'bitbag.ui.no_shipping_label'|trans }}
+    </span>
+{% endif %}

@@ -1,10 +1,21 @@
 <?php
 
+/**
+ * This file was created by the developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on kontakt@bitbag.pl.
+ */
+
 namespace BitBag\ShippingExportPlugin\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ */
 final class RegisterShippingGatewayConfigTypePass implements CompilerPassInterface
 {
     /**
@@ -23,7 +34,7 @@ final class RegisterShippingGatewayConfigTypePass implements CompilerPassInterfa
 
         foreach ($gatewayConfigurationTypes as $id => $attributes) {
             if (!isset($attributes[0]['type']) || !isset($attributes[0]['label'])) {
-                throw new \InvalidArgumentException('Tagged gateway configuration type needs to have `type` and `label` attributes.');
+                throw new \InvalidArgumentException('Tagged shipping gateway configuration type needs to have `type` and `label` attributes.');
             }
 
             $gatewayFactories[$attributes[0]['type']] = $attributes[0]['label'];
@@ -34,6 +45,6 @@ final class RegisterShippingGatewayConfigTypePass implements CompilerPassInterfa
             );
         }
 
-        $container->setParameter('bitbag.shipping_gateway_factories', $gatewayFactories);
+        $container->setParameter('bitbag.shipping_gateways', $gatewayFactories);
     }
 }

@@ -1,0 +1,37 @@
+sylius_grid:
+    grids:
+        bitbag_admin_shipping_gateway:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag.model.shipping_gateway.class%"
+                    repository:
+                        method: createListQueryBuilder
+            fields:
+                code:
+                    type: string
+                    label: sylius.ui.code
+                    sortable: ~
+                label:
+                    type: string
+                    label: bitbag.ui.label
+                    sortable: ~
+                shippingMethod:
+                    type: string
+                    label: sylius.ui.shipping_method
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [code, shippingMethod.translation.name, status]
+            actions:
+                main:
+                    export:
+                        type: create_shipping_gateway
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

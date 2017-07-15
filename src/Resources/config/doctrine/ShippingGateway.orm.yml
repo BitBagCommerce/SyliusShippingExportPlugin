@@ -10,11 +10,11 @@ BitBag\ShippingExportPlugin\Entity\ShippingGateway:
             type: string
             column: code
 
-        configuration:
+        config:
             type: json_array
-            column: configuration
+            column: config
 
-        name:
+        label:
             type: string
             column: name
 
@@ -24,4 +24,8 @@ BitBag\ShippingExportPlugin\Entity\ShippingGateway:
             joinColumn:
                 name: shipping_method_id
                 referencedColumnName: id
-                onDelete: CASCADE
+    oneToMany:
+        shippingExports:
+            targetEntity: BitBag\ShippingExportPlugin\Entity\ShippingExport
+            mappedBy: shippingGateway
+            orphanRemoval: true

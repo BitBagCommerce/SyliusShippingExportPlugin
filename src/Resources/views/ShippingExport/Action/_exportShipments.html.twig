@@ -1,0 +1,7 @@
+<form action="{{ path('bitbag_admin_export_all_new_shipments') }}" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <button type="submit" class="ui labeled icon primary button export-all-new-shipments">
+        <i class="arrow up icon"></i>
+        {{ 'bitbag.ui.export_all_new_shipments'|trans }}
+    </button>
+</form>

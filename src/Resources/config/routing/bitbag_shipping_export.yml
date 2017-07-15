@@ -1,0 +1,36 @@
+bitbag_admin_shipping_export:
+    resource: |
+        alias: bitbag.shipping_export
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        only: ['index']
+        redirect: update
+        grid: bitbag_admin_shipping_export
+        permission: true
+        vars:
+            all:
+                header: bitbag.ui.shipping_exports
+                subheader: bitbag.ui.manage_shipping_exports
+            index:
+                icon: arrow up
+            route:
+                parameters:
+                    code: $code
+    type: sylius.resource
+
+bitbag_admin_export_all_new_shipments:
+    path: /shipping-exports/export/all
+    methods: [POST, PUT]
+    defaults:
+        _controller: bitbag.controller.shipping_export:exportAllNewShipmentsAction
+
+bitbag_admin_export_single_shipment:
+    path: /shipping-exports/export/{id}
+    methods: [POST, PUT]
+    defaults:
+        _controller: bitbag.controller.shipping_export:exportSingleShipmentAction
+
+bitbag_admin_get_shipping_label:
+    path: /shipping-exports/label/{id}
+    defaults:
+        _controller: bitbag.controller.shipping_export:getLabel

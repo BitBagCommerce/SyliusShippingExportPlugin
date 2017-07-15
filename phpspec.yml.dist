@@ -1,4 +1,2 @@
 suites:
-    main:
-        namespace: BitBag\ShippingExportPlugin
-        psr4_prefix: BitBag\ShippingExportPlugin
+    ShippingExportPlugin: { namespace: BitBag\ShippingExportPlugin, psr4_prefix: BitBag\ShippingExportPlugin, spec_path: src, src_path: src }

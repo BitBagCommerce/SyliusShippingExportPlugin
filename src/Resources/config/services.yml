@@ -1,11 +1,45 @@
+parameters:
+    bitbag.shipping_gateway.validation_groups: ['bitbag']
+    bitbag.shipping_labels_path: '%kernel.root_dir%/../shipping_labels'
+
 services:
-    bitbag.shipping_export_plugin.listener.admin.menu_builder:
-        class: BitBag\ShippingExportPlugin\Menu\AdminMenuListener
+    bitbag.shipping_export_plugin.menu.shipping_gateway:
+        class: BitBag\ShippingExportPlugin\Menu\ShippingGatewayMenuBuilder
         tags:
-            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: configureShippingGatewayMenu }
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: buildMenu }
+
+    bitbag.shipping_export_plugin.menu.shipping_export:
+        class: BitBag\ShippingExportPlugin\Menu\ShippingExportMenuBuilder
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: buildMenu }
+
+    bitbag.shipping_export_plugin.event_listener.placing_shipment_for_gateway:
+        class: BitBag\ShippingExportPlugin\EventListener\PlacingShipmentForGatewayEventListener
+        arguments:
+            - '@bitbag.repository.shipping_gateway'
+            - '@bitbag.repository.shipping_export'
+            - '@bitbag.factory.shipping_export'
+        tags:
+            - { name: kernel.event_listener, event: sylius.order.post_complete, method: prepareShippingExport }
 
     bitbag.shipping_export_plugin.shipping_gateway.form.type:
         class: BitBag\ShippingExportPlugin\Form\Type\ShippingGatewayType
+        arguments:
+            - '%bitbag.model.shipping_gateway.class%'
+            - '%bitbag.shipping_gateway.validation_groups%'
+            - '@bitbag.shipping_export_plugin.context.shipping_gateway_type'
+            - '@sylius.repository.shipping_method'
+            - '%sylius.model.shipping_method.class%'
         tags:
             - { name: form.type }
-        arguments: ['%bitbag.model.shipping_gateway.class%', ['sylius']]
+
+    bitbag.form_registry.shipping_gateway_config:
+        class: Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry
+
+    bitbag.shipping_export_plugin.context.shipping_gateway_type:
+        class: BitBag\ShippingExportPlugin\Context\ShippingGatewayContext
+        arguments:
+            - "@request_stack"
+            - "@bitbag.form_registry.shipping_gateway_config"
+            - "@bitbag.repository.shipping_gateway"
+            - "%bitbag.shipping_gateways%"

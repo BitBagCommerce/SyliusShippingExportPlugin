@@ -1,9 +1,0 @@
-sylius_grid:
-    grids:
-        bitbag_shipping_gateway:
-            driver:
-                name: doctrine/orm
-                options:
-                    class: BitBag\ShippingExportPlugin\Entity\ShippingGateway
-            fields: ~
-            actions: ~

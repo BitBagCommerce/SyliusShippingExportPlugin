@@ -1,0 +1,5 @@
+{% for code, label in shippingGateways %}
+    <a href="{{ path('bitbag_admin_shipping_gateway_create', { 'code': code }) }}" id="{{ code }}" class="item">
+        {{ label }}
+    </a>
+{% endfor %}

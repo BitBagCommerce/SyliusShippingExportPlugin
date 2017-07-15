@@ -1,43 +1,63 @@
 <?php
 
+/**
+ * This file was created by the developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on kontakt@bitbag.pl.
+ */
+
 namespace BitBag\ShippingExportPlugin\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
-use Sylius\Component\Resource\Model\TranslatableTrait;
+use Webmozart\Assert\Assert;
 
+/**
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ */
 class ShippingGateway implements ShippingGatewayInterface
 {
-    use TranslatableTrait  {
-        __construct as private initializeTranslationsCollection;
-    }
-
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $code;
+    protected $code;
 
     /**
      * @var string
      */
-    private $name;
+    protected $label;
 
     /**
      * @var ShippingMethodInterface
      */
-    private $shippingMethod;
+    protected $shippingMethod;
 
     /**
      * @var array
      */
-    private $configuration;
+    protected $config;
 
     /**
-     * @return int
+     * @var Collection|ShippingExportInterface[]
+     */
+    protected $shippingExports;
+
+    public function __construct()
+    {
+        $this->shippingExports = new ArrayCollection();
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -45,7 +65,15 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getCode()
     {
@@ -53,19 +81,31 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @param string $code
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
-    public function setCode($code)
+    public function setLabel($label)
     {
-        $this->code = $code;
-
-        return $this;
+        $this->label = $label;
     }
 
     /**
-     * @return ShippingMethodInterface
+     * {@inheritdoc}
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setShippingMethod(ShippingMethodInterface $shippingMethod)
+    {
+        $this->shippingMethod = $shippingMethod;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getShippingMethod()
     {
@@ -73,62 +113,65 @@ class ShippingGateway implements ShippingGatewayInterface
     }
 
     /**
-     * @param ShippingMethodInterface $shippingMethod
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
-    public function setShippingMethod(ShippingMethodInterface $shippingMethod)
+    public function setConfig(array $config)
     {
-        $this->shippingMethod = $shippingMethod;
-
-        return $this;
+        $this->config = $config;
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
-    public function getConfiguration()
+    public function getConfig()
     {
-        return $this->configuration;
+        return $this->config;
     }
 
     /**
-     * @param array $configuration
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
-    public function setConfiguration(array $configuration)
+    public function getShippingExports()
     {
-        $this->configuration = $configuration;
-
-        return $this;
+        return $this->shippingExports;
     }
 
     /**
-     * @return ShippingGatewayTranslation
+     * {@inheritdoc}
      */
-    protected function createTranslation()
+    public function addShippingExport(ShippingExportInterface $shippingExport)
     {
-        return new ShippingGatewayTranslation();
+        if (!$this->hasShippingExport($shippingExport)) {
+            $this->shippingExports->add($shippingExport);
+            $shippingExport->setShippingGateway($this);
+        }
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
+    public function removeShippingExport(ShippingExportInterface $shippingExport)
     {
-        return $this->name;
+        if ($this->hasShippingExport($shippingExport)) {
+            $this->shippingExports->removeElement($shippingExport);
+        }
     }
 
     /**
-     * @param string $name
-     *
-     * @return ShippingGateway
+     * {@inheritdoc}
      */
-    public function setName($name)
+    public function hasShippingExport(ShippingExportInterface $shippingExport)
     {
-        $this->name = $name;
+        return $this->shippingExports->contains($shippingExport);
+    }
 
-        return $this;
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigValue($key)
+    {
+        Assert::keyExists($this->config, $key, "Shipping gateway config does not exist.");
+
+        return $this->config[$key];
     }
 }
