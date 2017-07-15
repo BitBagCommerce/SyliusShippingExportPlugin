@@ -59,7 +59,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getShipment(): ShipmentInterface
+    public function getShipment()
     {
         return $this->shipment;
     }
