@@ -8,12 +8,14 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin;
+namespace BitBag\ShippingExportPlugin\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ShippingDataExportContext
+final class ExportShipmentsType extends AbstractType
 {
 
 }

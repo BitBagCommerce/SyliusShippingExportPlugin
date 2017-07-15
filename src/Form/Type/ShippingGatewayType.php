@@ -73,13 +73,13 @@ final class ShippingGatewayType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.ui.code',
+                'label' => 'sylius.ui.code',
                 'data' => $code,
                 'required' => false,
                 'disabled' => true,
             ])
             ->add('label', TextType::class, [
-                'label' => 'bitbag.ui.name',
+                'label' => 'sylius.ui.name',
                 'data' => $label,
                 'required' => false,
                 'disabled' => true,

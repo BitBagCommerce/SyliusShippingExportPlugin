@@ -10,9 +10,22 @@
 
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport;
 
+use Behat\Mink\Element\ElementInterface;
+use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPage;
+
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface IndexPageInterface
+interface IndexPageInterface extends BaseIndexPage
 {
+    /**
+     * @param $state
+     *
+     * @return ElementInterface[]|null
+     */
+    public function getShipmentsWithState($state);
+
+    public function exportAllShipments();
+
+    public function exportFirsShipment();
 }

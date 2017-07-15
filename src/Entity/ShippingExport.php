@@ -14,39 +14,44 @@ use Sylius\Component\Core\Model\ShipmentInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.psl>
  */
 class ShippingExport implements ShippingExportInterface
 {
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var ShipmentInterface
      */
-    private $shipment;
+    protected $shipment;
+
+    /**
+     * @var ShippingGatewayInterface
+     */
+    protected $shippingGateway;
 
     /**
      * @var \DateTime
      */
-    private $date;
+    protected $exportedAt;
 
     /**
      * @var string
      */
-    private $label;
+    protected $labelPath;
 
     /**
-     * @var ShippingExport
+     * @var string
      */
-    private $status;
+    protected $state = ShippingExportInterface::STATE_NEW;
 
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -54,7 +59,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getShipment()
+    public function getShipment(): ShipmentInterface
     {
         return $this->shipment;
     }
@@ -70,48 +75,64 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getDate()
+    public function getShippingGateway()
     {
-        return $this->date;
+        return $this->shippingGateway;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setDate(\DateTime $date)
+    public function setShippingGateway(ShippingGatewayInterface $shippingGateway)
     {
-        $this->date = $date;
+        $this->shippingGateway = $shippingGateway;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLabel()
+    public function getExportedAt()
     {
-        return $this->label;
+        return $this->exportedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setLabel($label)
+    public function setExportedAt(\DateTime $exportedAt)
     {
-        $this->label = $label;
+        $this->exportedAt = $exportedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getStatus()
+    public function getState()
     {
-        return $this->status;
+        return $this->state;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setStatus($status)
+    public function setState($state)
     {
-        $this->status = $status;
+        $this->state = $state;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLabelPath()
+    {
+        return $this->labelPath;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLabelPath($labelPath)
+    {
+        $this->labelPath = $labelPath;
     }
 }

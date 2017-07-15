@@ -8,11 +8,18 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport;
+namespace spec\BitBag\ShippingExportPlugin\Event;
+
+use BitBag\ShippingExportPlugin\Event\ExportShipmentEvent;
+use PhpSpec\ObjectBehavior;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface UpdatePageInterface
+final class ExportShipmentEventSpec extends ObjectBehavior
 {
+    function it_is_initializable()
+    {
+        $this->shouldHaveType(ExportShipmentEvent::class);
+    }
 }

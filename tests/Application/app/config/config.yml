@@ -12,7 +12,7 @@ imports:
 
     - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }
 
-    - { resource: "form.yml" }
+    - { resource: "services.yml" }
 
 framework:
     translator: { fallbacks: ["%locale%", "en"] }

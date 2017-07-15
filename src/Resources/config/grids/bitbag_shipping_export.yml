@@ -1,0 +1,55 @@
+sylius_grid:
+    grids:
+        bitbag_admin_shipping_export:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag.model.shipping_export.class%"
+                    repository:
+                        method: createListQueryBuilder
+            fields:
+                order:
+                    type: twig
+                    label: sylius.ui.order
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/orderNumber.html.twig"
+                date:
+                    type: datetime
+                    label: sylius.ui.created_at
+                    path: shipment.createdAt
+                shippingMethod:
+                    type: twig
+                    label: sylius.ui.shipping_method
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/shippingMethod.html.twig"
+                labelPath:
+                    type: twig
+                    label: bitbag.ui.shipping_export_label
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/shippingExportLabel.html.twig"
+                state:
+                    type: twig
+                    label: sylius.ui.state
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/state.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [code, translation.name]
+                state:
+                    type: string
+                    label: sylius.ui.enabled
+            actions:
+                main:
+                    create:
+                        type: export_shipments

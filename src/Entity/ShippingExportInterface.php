@@ -18,14 +18,8 @@ use Sylius\Component\Resource\Model\ResourceInterface;
  */
 interface ShippingExportInterface extends ResourceInterface
 {
-    const NEW_STATUS = 'new';
-    const EXPORTED_STATUS = 'exported';
-    const SHIPPED_STATUS = 'shipped';
-
-    /**
-     * @param ShipmentInterface $shipment
-     */
-    public function setShipment(ShipmentInterface $shipment);
+    const STATE_NEW = 'new';
+    const STATE_EXPORTED = 'exported';
 
     /**
      * @return ShipmentInterface
@@ -33,32 +27,47 @@ interface ShippingExportInterface extends ResourceInterface
     public function getShipment();
 
     /**
-     * @param \DateTime $date
+     * @param ShipmentInterface $shipment
      */
-    public function setDate(\DateTime $date);
+    public function setShipment(ShipmentInterface $shipment);
+
+    /**
+     * @return ShippingGatewayInterface
+     */
+    public function getShippingGateway();
+
+    /**
+     * @param ShippingGatewayInterface $shippingGateway
+     */
+    public function setShippingGateway(ShippingGatewayInterface $shippingGateway);
 
     /**
      * @return \DateTime
      */
-    public function getDate();
+    public function getExportedAt();
 
     /**
-     * @param string|null $label
+     * @param \DateTime $exportedAt
      */
-    public function setLabel($label);
+    public function setExportedAt(\DateTime $exportedAt);
 
     /**
      * @return string|null
      */
-    public function getLabel();
+    public function getLabelPath();
 
     /**
-     * @param string $status
+     * @param string|null $labelPath
      */
-    public function setStatus($status);
+    public function setLabelPath($labelPath);
 
     /**
      * @return string
      */
-    public function getStatus();
+    public function getState();
+
+    /**
+     * @param string $state
+     */
+    public function setState($state);
 }

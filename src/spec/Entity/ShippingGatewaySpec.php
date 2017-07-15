@@ -10,8 +10,10 @@
 
 namespace spec\BitBag\ShippingExportPlugin\Entity;
 
+use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
 use BitBag\ShippingExportPlugin\Entity\ShippingGateway;
 use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
+use Doctrine\Common\Collections\Collection;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -45,5 +47,24 @@ final class ShippingGatewaySpec extends ObjectBehavior
     {
         $this->setShippingMethod($shippingMethod);
         $this->getShippingMethod()->shouldReturn($shippingMethod);
+    }
+
+    function it_initializes_a_shipping_export_collection_by_default()
+    {
+        $this->getShippingExports()->shouldHaveType(Collection::class);
+    }
+
+    function it_adds_a_shipping_export(ShippingExportInterface $shippingExport)
+    {
+        $this->addShippingExport($shippingExport);
+        $this->hasShippingExport($shippingExport)->shouldReturn(true);
+    }
+
+    function it_removes_a_shipping_export(ShippingExportInterface $shippingExport)
+    {
+        $this->addShippingExport($shippingExport);
+        $this->removeShippingExport($shippingExport);
+
+        $this->hasShippingExport($shippingExport)->shouldReturn(false);
     }
 }

@@ -10,9 +10,45 @@
 
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport;
 
+use Behat\Mink\Element\ElementInterface;
+use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
+
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class IndexPage implements IndexPageInterface
+final class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getShipmentsWithState($state)
+    {
+        $items = $this->getDocument()->findAll('css', '.shipping-export-state');
+        $result = [];
+
+        /** @var ElementInterface $item */
+        foreach ($items as $item) {
+            if($item->getText() === $state) {
+                $result[] = $item;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function exportAllShipments()
+    {
+        $this->getDocument()->clickLink("Export all new shipments");
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function exportFirsShipment()
+    {
+        $this->getDocument()->find('css', '.shipping-export-state')->click();
+    }
 }

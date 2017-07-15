@@ -14,20 +14,17 @@ sylius_grid:
                     sortable: ~
                 label:
                     type: string
-                    label: sylius.ui.name
+                    label: bitbag.ui.label
                     sortable: translation.name
             filters:
                 search:
                     type: string
                     label: sylius.ui.search
                     options:
-                        fields: [code, translation.name]
-                enabled:
-                    type: boolean
-                    label: sylius.ui.enabled
+                        fields: [code, shippingMethod.translation.name, status]
             actions:
                 main:
-                    create:
+                    export:
                         type: create_shipping_gateway
                 item:
                     update:

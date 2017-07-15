@@ -152,5 +152,4 @@ final class ShippingGatewayContext implements Context
             $this->updatePage
         ]);
     }
-
 }

@@ -7,9 +7,30 @@ default:
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
                 - sylius.behat.context.setup.shipping
-                - bitbag.shipping_export_plugin.behat.setup.shipping_gateway
+                - bitbag.behat.setup.shipping_gateway
 
-                - bitbag.shipping_export_plugin.behat.context.ui.admin.shipping_gateway
-
+                - bitbag.behat.context.ui.admin.shipping_gateway
             filters:
                 tags: "@managing_shipping_gateway && @ui"
+
+        managing_shipping_export:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.transform.customer
+                - sylius.behat.context.transform.channel
+                - sylius.behat.context.transform.product
+                - sylius.behat.context.transform.lexical
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.product
+                - sylius.behat.context.setup.admin_security
+                - sylius.behat.context.setup.shipping
+                - sylius.behat.context.setup.order
+                - bitbag.behat.setup.shipping_gateway
+                - bitbag.behat.setup.shipping_export
+
+                - bitbag.behat.context.ui.admin.shipping_gateway
+                - bitbag.behat.context.ui.admin.shipping_export
+            filters:
+                tags: "@managing_shipping_export && @ui"

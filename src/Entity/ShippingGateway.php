@@ -10,6 +10,8 @@
 
 namespace BitBag\ShippingExportPlugin\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 
 /**
@@ -21,27 +23,37 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $code;
+    protected $code;
 
     /**
      * @var string
      */
-    private $label;
+    protected $label;
 
     /**
      * @var ShippingMethodInterface
      */
-    private $shippingMethod;
+    protected $shippingMethod;
 
     /**
      * @var array
      */
-    private $config;
+    protected $config;
+
+    /**
+     * @var Collection|ShippingExportInterface[]
+     */
+    protected $shippingExports;
+
+    public function __construct()
+    {
+        $this->shippingExports = new ArrayCollection();
+    }
 
     /**
      * {@inheritdoc}
@@ -113,5 +125,42 @@ class ShippingGateway implements ShippingGatewayInterface
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShippingExports()
+    {
+        return $this->shippingExports;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addShippingExport(ShippingExportInterface $shippingExport)
+    {
+        if (!$this->hasShippingExport($shippingExport)) {
+            $this->shippingExports->add($shippingExport);
+            $shippingExport->setShippingGateway($this);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeShippingExport(ShippingExportInterface $shippingExport)
+    {
+        if ($this->hasShippingExport($shippingExport)) {
+            $this->shippingExports->removeElement($shippingExport);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasShippingExport(ShippingExportInterface $shippingExport)
+    {
+        return $this->shippingExports->contains($shippingExport);
     }
 }

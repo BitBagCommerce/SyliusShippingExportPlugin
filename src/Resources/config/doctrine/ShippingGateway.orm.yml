@@ -24,3 +24,8 @@ BitBag\ShippingExportPlugin\Entity\ShippingGateway:
             joinColumn:
                 name: shipping_method_id
                 referencedColumnName: id
+    oneToMany:
+        shippingExports:
+            targetEntity: BitBag\ShippingExportPlugin\Entity\ShippingExport
+            mappedBy: shippingGateway
+            orphanRemoval: true

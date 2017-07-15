@@ -1,0 +1,6 @@
+<a href="{{ path('bitbag_admin_export_all_new_shipments', {'_token' : csrf_token('export_shipments_token')}) }}">
+    <button class="ui labeled icon primary button export-all-new-shipments">
+        <i class="arrow up icon"></i>
+    </button>
+    {{ 'bitbag.ui.export_all_new_shipments'|trans }}
+</a>

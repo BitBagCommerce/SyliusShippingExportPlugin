@@ -99,17 +99,6 @@ final class ShippingGatewayContext implements Context
     }
 
     /**
-     * @Given :fields fields can be configured for this gateway
-     */
-    public function fieldsCanBeConfiguredForThisGateway(...$fields)
-    {
-        $shippingGateway = $this->sharedStorage->get('shipping_gateway');
-        $shippingGateway->setConfiguration($fields);
-
-        $this->saveShippingGateway($shippingGateway);
-    }
-
-    /**
      * @Given there is a registered shipping gateway for this shipping method
      */
     public function thereIsARegisteredShippingGatewayForThisShippingMethod()

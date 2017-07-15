@@ -10,13 +10,13 @@
 
 namespace BitBag\ShippingExportPlugin\Repository;
 
+use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-class ShippingGatewayRepository extends EntityRepository implements ShippingGatewayRepositoryInterface
+class ShippingExportRepository extends EntityRepository implements ShippingExportRepositoryInterface
 {
     /**
      * {@inheritdoc}
@@ -29,26 +29,13 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode($code)
+    public function findAllWithNewState()
     {
         return $this->createQueryBuilder('o')
-            ->where('o.code = :code')
-            ->setParameter('code', $code)
+            ->where('o.state = :newState')
+            ->setParameter('newState', ShippingExportInterface::STATE_NEW)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod)
-    {
-        return $this->createQueryBuilder('o')
-            ->where('o.shippingMethod = :shippingMethod')
-            ->setParameter('shippingMethod', $shippingMethod)
-            ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
 }
