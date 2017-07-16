@@ -19,7 +19,6 @@ use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */

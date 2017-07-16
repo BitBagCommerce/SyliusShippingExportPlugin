@@ -1,9 +1,13 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "bitbag/shipping-export-plugin",
     "type": "sylius-plugin",
-    "description": "Acme example plugin for Sylius.",
+    "description": "Shipping data export environment for Sylius platform applications",
     "license": "MIT",
-    "require": {
+    "authors":[
+        {"name": "Mikołaj Król", "email": "mikolaj.krol@bitbag.pl"},
+        {"name": "Patryk Drapik", "email": "patryk.drapik@bitbag.pl"}
+    ],
+        "require": {
         "php": "^5.6|^7.0",
 
         "sylius/sylius": "^1.0.0@beta"
