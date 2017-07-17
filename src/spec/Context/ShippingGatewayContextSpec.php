@@ -24,23 +24,12 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 final class ShippingGatewayContextSpec extends ObjectBehavior
 {
-    private $shippingGatewayFormTypeRegistry;
-
-    private $shippingGatewayRepository;
-
-    private $requestStack;
-
     function let(
         RequestStack $requestStack,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository
     )
     {
-
-        $this->shippingGatewayFormTypeRegistry = $shippingGatewayFormTypeRegistry;
-        $this->shippingGatewayRepository = $shippingGatewayRepository;
-        $this->requestStack = $requestStack;
-
         $this->beConstructedWith(
             $requestStack,
             $shippingGatewayFormTypeRegistry,
@@ -59,49 +48,61 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
     function it_throws_exception_once_code_is_not_found(
         RequestStack $requestStack,
         Request $request,
-        FormTypeRegistryInterface $formTypeRegistry
+        FormTypeRegistryInterface $shippingGatewayFormTypeRegistry
     )
     {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(null);
         $request->get('code')->willReturn('foo');
 
-        $this->shippingGatewayFormTypeRegistry
+        $shippingGatewayFormTypeRegistry
             ->has('shipping_gateway_config', 'foo')
-            ->willReturn(false)
-        ;
+            ->willReturn(false);
 
         $this->shouldThrow(ShippingGatewayNotFoundException::class)->during('getCode');
     }
 
-    function it_throws_exception_once_shipping_gateway_does_not_exist_in_database(Request $request)
+    function it_throws_exception_once_shipping_gateway_does_not_exist_in_database(
+        RequestStack $requestStack,
+        Request $request,
+        ShippingGatewayRepositoryInterface $shippingGatewayRepository
+    )
     {
-        $this->requestStack->getCurrentRequest()->willReturn($request);
+        $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(1);
-        $this->shippingGatewayRepository->find(1)->willReturn(null);
+        $shippingGatewayRepository->find(1)->willReturn(null);
 
         $this->shouldThrow(ShippingGatewayNotFoundException::class)->during('getCode');
     }
 
-    function it_returns_code_for_new_gateway(Request $request)
+    function it_returns_code_for_new_gateway(
+        RequestStack $requestStack,
+        Request $request,
+        ShippingGatewayRepositoryInterface $shippingGatewayRepository,
+        FormTypeRegistryInterface $shippingGatewayFormTypeRegistry
+    )
     {
-        $this->requestStack->getCurrentRequest()->willReturn($request);
+        $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(null);
-        $this->shippingGatewayRepository->find(null)->shouldNotBeCalled();
+        $shippingGatewayRepository->find(null)->shouldNotBeCalled();
         $request->get('code')->willReturn('frank_martin_shipping_gateway');
-        $this->shippingGatewayFormTypeRegistry
+        $shippingGatewayFormTypeRegistry
             ->has('shipping_gateway_config', 'frank_martin_shipping_gateway')
-            ->willReturn(true)
-        ;
+            ->willReturn(true);
 
         $this->getCode();
     }
 
-    function it_returns_code_for_existing_gateway(Request $request, ShippingGatewayInterface $shippingGateway)
+    function it_returns_code_for_existing_gateway(
+        RequestStack $requestStack,
+        Request $request,
+        ShippingGatewayRepositoryInterface $shippingGatewayRepository,
+        ShippingGatewayInterface $shippingGateway
+    )
     {
-        $this->requestStack->getCurrentRequest()->willReturn($request);
+        $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(1);
-        $this->shippingGatewayRepository->find(1)->willReturn($shippingGateway);
+        $shippingGatewayRepository->find(1)->willReturn($shippingGateway);
 
         $this->getCode();
     }

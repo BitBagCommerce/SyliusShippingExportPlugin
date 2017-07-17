@@ -4,7 +4,7 @@ services:
         tags:
             - { name: bitbag.shipping_gateway_configuration_type, type: "frank_martin_shipping_gateway", label: "Transporter Gateway" }
 
-    bitbag.shipping_gateway_plugin.mock.event_listener.frank_marin_shipping_export:
+    bitbag.shipping_gateway_plugin.mock.event_listener.frank_martin_shipping_export:
         class: Tests\BitBag\ShippingExportPlugin\Behat\Mock\EventListener\FrankMartinShippingExportEventListener
         tags:
-            - { name: kernel.event_listener, event: 'bitbag.export_shipment', method: exportShipments }
+            - { name: kernel.event_listener, event: 'bitbag.export_shipment', method: exportShipment }

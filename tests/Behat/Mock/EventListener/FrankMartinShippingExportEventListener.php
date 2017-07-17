@@ -25,7 +25,7 @@ final class FrankMartinShippingExportEventListener
     /**
      * @param ExportShipmentEvent $event
      */
-    public function exportShipments(ExportShipmentEvent $event)
+    public function exportShipment(ExportShipmentEvent $event)
     {
         $shippingExport = $event->getShippingExport();
         $shippingGateway = $shippingExport->getShippingGateway();
@@ -43,7 +43,6 @@ final class FrankMartinShippingExportEventListener
         $event->addSuccessFlash();
         $event->exportShipment();
         $event->saveShippingLabel($this->mockLabelContent(), 'pdf');
-
     }
 
     /**
