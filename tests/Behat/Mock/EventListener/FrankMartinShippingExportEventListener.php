@@ -43,7 +43,6 @@ final class FrankMartinShippingExportEventListener
         $event->addSuccessFlash();
         $event->exportShipment();
         $event->saveShippingLabel($this->mockLabelContent(), 'pdf');
-
     }
 
     /**
