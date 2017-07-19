@@ -135,6 +135,7 @@ final class ExportShipmentEvent extends Event
     public function exportShipment()
     {
         $this->shippingExport->setState(ShippingExportInterface::STATE_EXPORTED);
+        $this->shippingExport->setExportedAt(new \DateTime());
 
         $this->shippingExportManager->flush($this->shippingExport);
     }

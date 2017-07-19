@@ -7,18 +7,30 @@ sylius_grid:
                     class: "%bitbag.model.shipping_export.class%"
                     repository:
                         method: createListQueryBuilder
+            sorting:
+                shipment: desc
             fields:
                 order:
                     type: twig
                     label: sylius.ui.order
                     path: .
-                    sortable: ~
+                    sortable: shipment.order
                     options:
                         template: "@ShippingExportPlugin/ShippingExport/Grid/Field/orderNumber.html.twig"
-                date:
+                shipment:
                     type: datetime
                     label: sylius.ui.created_at
                     path: shipment.createdAt
+                    sortable: shipment.createdAt
+                    options:
+                        format: 'd-m-Y H:i:s'
+                exportedAt:
+                    type: twig
+                    label: bitbag.ui.exported_at
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/exportedAt.html.twig"
                 shippingMethod:
                     type: twig
                     label: sylius.ui.shipping_method

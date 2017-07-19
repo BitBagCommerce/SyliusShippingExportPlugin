@@ -15,5 +15,7 @@ bitbag:
         shipping_export_error: Wystąpił błąd w trakcie eksportowania danych o przesyłce(ach).
         shipping_export_label: Etykieta przesyłki
         new: Nowy
+        exported_at: Eksportowano
         exported: Eksportowano
+        not_exported_yet: Nie eksportowano
         no_new_shipments_to_export: Brak nowych przesyłek do wyeksportowania.

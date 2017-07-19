@@ -15,5 +15,7 @@ bitbag:
         shipping_export_error: An external error occurred while trying to export shipping data.
         shipping_export_label: Shipping label
         new: New
+        exported_at: Exported at
         exported: Exported
+        not_exported_yet: Not exported yet
         no_new_shipments_to_export: There are no new shipments to export.

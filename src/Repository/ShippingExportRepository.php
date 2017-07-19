@@ -23,7 +23,9 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
      */
     public function createListQueryBuilder()
     {
-        return $this->createQueryBuilder('o');
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.shipment', 'shipment')
+            ;
     }
 
     /**
@@ -35,7 +37,6 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
             ->where('o.state = :newState')
             ->setParameter('newState', ShippingExportInterface::STATE_NEW)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 }

@@ -1,0 +1,7 @@
+{% if data.exportedAt %}
+    {{ data.exportedAt|date('d-m-Y H:i:s') }}
+{% else %}
+    <span class="ui label">
+        {{ 'bitbag.ui.not_exported_yet'|trans }}
+    </span>
+{% endif %}
