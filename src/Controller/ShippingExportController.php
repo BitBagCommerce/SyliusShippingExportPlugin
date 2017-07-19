@@ -41,7 +41,7 @@ final class ShippingExportController extends ResourceController
         }
 
         foreach ($shippingExports as $shippingExport) {
-            $this->dispatchForShippingExport($shippingExport);
+            $this->dispatchExportShipmentEvent($shippingExport);
         }
 
         return $this->redirectToReferer($request);
@@ -56,7 +56,7 @@ final class ShippingExportController extends ResourceController
     {
         $shippingExport = $this->get('bitbag.repository.shipping_export')->find($request->get('id'));
 
-        $this->dispatchForShippingExport($shippingExport);
+        $this->dispatchExportShipmentEvent($shippingExport);
 
         return $this->redirectToReferer($request);
     }
@@ -104,7 +104,7 @@ final class ShippingExportController extends ResourceController
     /**
      * @param ShippingExportInterface $shippingExport
      */
-    private function dispatchForShippingExport(ShippingExportInterface $shippingExport)
+    private function dispatchExportShipmentEvent(ShippingExportInterface $shippingExport)
     {
         $flashBag = $this->get('session')->getFlashBag();
         $shippingExportManager = $this->get('bitbag.manager.shipping_export');
