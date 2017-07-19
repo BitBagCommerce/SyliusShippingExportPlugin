@@ -21,7 +21,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ExportShipmentEvent extends Event
+class ExportShipmentEvent extends Event
 {
     const NAME = 'bitbag.export_shipment';
 
