@@ -14,6 +14,7 @@ use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
 use BitBag\ShippingExportPlugin\Event\ExportShipmentEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
 use Symfony\Component\EventDispatcher\Event;
@@ -110,7 +111,11 @@ final class ExportShipmentEventSpec extends ObjectBehavior
 
     function it_exports_shipment(ShippingExportInterface $shippingExport)
     {
+        /** @var \DateTime $date */
+        $date = Argument::type(\DateTime::class);
+
         $shippingExport->setState(ShippingExportInterface::STATE_EXPORTED)->shouldBeCalled();
+        $shippingExport->setExportedAt($date)->shouldBeCalled();
 
         $this->exportShipment();
     }
