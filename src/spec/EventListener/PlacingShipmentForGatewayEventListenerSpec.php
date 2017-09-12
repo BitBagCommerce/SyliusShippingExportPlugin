@@ -15,6 +15,7 @@ use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
 use BitBag\ShippingExportPlugin\EventListener\PlacingShipmentForGatewayEventListener;
 use BitBag\ShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
@@ -54,7 +55,7 @@ final class PlacingShipmentForGatewayEventListenerSpec extends ObjectBehavior
     )
     {
         $event->getSubject()->willReturn($order);
-        $order->getShipments()->willReturn([$shipment]);
+        $order->getShipments()->willReturn(new ArrayCollection([$shipment->getWrappedObject()]));
         $shipment->getMethod()->willReturn($shippingMethod);
         $shippingGatewayRepository->findOneByShippingMethod($shippingMethod)->willReturn($shippingGateway);
         $shippingExportFactory->createNew()->willReturn($shippingExport);
