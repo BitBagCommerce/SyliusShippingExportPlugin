@@ -3,15 +3,20 @@
     "type": "sylius-plugin",
     "description": "Shipping data export environment for Sylius platform applications",
     "license": "MIT",
-    "authors":[
-        {"name": "Mikołaj Król", "email": "mikolaj.krol@bitbag.pl"},
-        {"name": "Patryk Drapik", "email": "patryk.drapik@bitbag.pl"}
-    ],
-        "require": {
-        "php": "^5.6|^7.0",
-
-        "sylius/sylius": "^1.0.0@beta"
+    "authors": [
+        {
+            "name": "Mikołaj Król",
+            "email": "mikolaj.krol@bitbag.pl"
         },
+        {
+            "name": "Patryk Drapik",
+            "email": "patryk.drapik@bitbag.pl"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "sylius/sylius": "^1.0.0.rc-1"
+    },
     "require-dev": {
         "phpspec/phpspec": "^3.2",
         "phpunit/phpunit": "^5.6",
