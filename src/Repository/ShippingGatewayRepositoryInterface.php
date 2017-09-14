@@ -30,14 +30,14 @@ interface ShippingGatewayRepositoryInterface extends RepositoryInterface
     /**
      * @param string|null $code
      *
-     * @return ShippingGatewayInterface
+     * @return ShippingMethodInterface
      */
-    public function findOneByCode(?string $code): ?ShippingGatewayInterface;
+    public function findOneByCode(?string $code): ?ShippingMethodInterface;
 
     /**
      * @param ShippingMethodInterface $shippingMethod
      *
-     * @return ShippingMethodInterface
+     * @return ShippingGatewayInterface
      */
-    public function findOneByShippingMethod(?ShippingMethodInterface $shippingMethod): ?ShippingMethodInterface;
+    public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod): ?ShippingGatewayInterface;
 }

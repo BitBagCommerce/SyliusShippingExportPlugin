@@ -125,7 +125,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfig(): array
+    public function getConfig(): ?array
     {
         return $this->config;
     }
@@ -162,7 +162,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function hasShippingExport(?ShippingExportInterface $shippingExport): ?ShippingExportInterface
+    public function hasShippingExport(?ShippingExportInterface $shippingExport): bool
     {
         return $this->shippingExports->contains($shippingExport);
     }

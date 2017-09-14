@@ -116,6 +116,7 @@ class ExportShipmentEvent extends Event
 
     /**
      * @param string|null $labelContent
+     * @param string|null $labelExtension
      */
     public function saveShippingLabel(?string $labelContent, ?string $labelExtension): void
     {

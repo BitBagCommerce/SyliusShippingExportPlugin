@@ -73,9 +73,9 @@ interface ShippingGatewayInterface extends ResourceInterface
     /**
      * @param ShippingExportInterface $shippingExport
      *
-     * @return ShippingExportInterface
+     * @return bool
      */
-    public function hasShippingExport(?ShippingExportInterface $shippingExport): ?ShippingExportInterface;
+    public function hasShippingExport(?ShippingExportInterface $shippingExport): bool;
 
     /**
      * @param string|null $key
