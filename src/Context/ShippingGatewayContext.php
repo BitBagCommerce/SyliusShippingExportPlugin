@@ -101,7 +101,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabelByCode(string $code): ?string
+    public function getLabelByCode(?string $code): ?string
     {
         foreach ($this->shippingGateways as $shippingGatewayCode => $shippingGatewayLabel) {
             if ($shippingGatewayCode === $code) {
@@ -113,12 +113,12 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return ShippingGatewayInterface
      * @throws ShippingGatewayNotFoundException
      */
-    private function getExistingShippingGateway(int $id): ?ShippingGatewayInterface
+    private function getExistingShippingGateway(?int $id): ?ShippingGatewayInterface
     {
         /** @var ShippingGatewayInterface|null $shippingGateway */
         $shippingGateway = $this->shippingGatewayRepository->find($id);

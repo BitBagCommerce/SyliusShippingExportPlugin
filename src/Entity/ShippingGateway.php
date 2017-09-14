@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace BitBag\ShippingExportPlugin\Entity;
 
-use BitBag\ShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ShippingMethodInterface;

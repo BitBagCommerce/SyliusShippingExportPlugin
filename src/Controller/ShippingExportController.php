@@ -106,7 +106,7 @@ final class ShippingExportController extends ResourceController
     /**
      * @param ShippingExportInterface $shippingExport
      */
-    private function dispatchExportShipmentEvent(ShippingExportInterface $shippingExport): void
+    private function dispatchExportShipmentEvent(?ShippingExportInterface $shippingExport): void
     {
         $flashBag = $this->get('session')->getFlashBag();
         $shippingExportManager = $this->get('bitbag.manager.shipping_export');

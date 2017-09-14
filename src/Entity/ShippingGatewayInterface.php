@@ -78,9 +78,9 @@ interface ShippingGatewayInterface extends ResourceInterface
     public function hasShippingExport(?ShippingExportInterface $shippingExport): ?ShippingExportInterface;
 
     /**
-     * @param string $key
+     * @param string|null $key
      *
      * @return string|null
      */
-    public function getConfigValue(string $key): ?string;
+    public function getConfigValue(?string $key): ?string;
 }

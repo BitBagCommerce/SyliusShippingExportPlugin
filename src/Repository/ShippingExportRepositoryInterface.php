@@ -21,7 +21,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 interface ShippingExportRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @return QueryBuilder|null
+     * @return QueryBuilder
      */
     public function createListQueryBuilder(): ?QueryBuilder;
 

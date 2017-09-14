@@ -61,7 +61,7 @@ final class PlacingShipmentForGatewayEventListener
     /**
      * @param GenericEvent $event
      */
-    public function prepareShippingExport(GenericEvent $event): void
+    public function prepareShippingExport(?GenericEvent $event): void
     {
         /** @var OrderInterface $order */
         $order = $event->getSubject();

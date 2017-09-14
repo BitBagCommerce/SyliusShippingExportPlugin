@@ -61,7 +61,7 @@ interface ShippingExportInterface extends ResourceInterface
     /**
      * @param string|null $labelPath
      */
-    public function setLabelPath(string $labelPath): void;
+    public function setLabelPath(?string $labelPath): void;
 
     /**
      * @return string

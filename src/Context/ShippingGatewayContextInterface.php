@@ -31,9 +31,9 @@ interface ShippingGatewayContextInterface
     public function getCode(): ?string;
 
     /**
-     * @param string $code
+     * @param string|null $code
      *
      * @return string|null
      */
-    public function getLabelByCode(string $code): ?string;
+    public function getLabelByCode(?string $code): ?string;
 }

@@ -23,7 +23,7 @@ final class RegisterShippingGatewayConfigTypePass implements CompilerPassInterfa
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container): void
+    public function process(?ContainerBuilder $container): void
     {
         if (!$container->has('bitbag.form_registry.shipping_gateway_config')) {
             return;

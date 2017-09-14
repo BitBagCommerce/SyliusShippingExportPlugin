@@ -23,21 +23,21 @@ use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 interface ShippingGatewayRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @return QueryBuilder|null
+     * @return QueryBuilder
      */
     public function createListQueryBuilder(): ?QueryBuilder;
 
     /**
-     * @param string $code
+     * @param string|null $code
      *
-     * @return ShippingGatewayInterface|null
+     * @return ShippingGatewayInterface
      */
-    public function findOneByCode(string $code): ?ShippingGatewayInterface;
+    public function findOneByCode(?string $code): ?ShippingGatewayInterface;
 
     /**
      * @param ShippingMethodInterface $shippingMethod
      *
-     * @return ShippingMethodInterface|null
+     * @return ShippingMethodInterface
      */
-    public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod): ?ShippingMethodInterface;
+    public function findOneByShippingMethod(?ShippingMethodInterface $shippingMethod): ?ShippingMethodInterface;
 }
