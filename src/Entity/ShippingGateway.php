@@ -8,8 +8,11 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Entity;
 
+use BitBag\ShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
@@ -59,7 +62,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -67,7 +70,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function setCode($code)
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -75,7 +78,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -83,7 +86,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function setLabel($label)
+    public function setLabel(?string $label): void
     {
         $this->label = $label;
     }
@@ -91,7 +94,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -99,7 +102,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function setShippingMethod(ShippingMethodInterface $shippingMethod)
+    public function setShippingMethod(?ShippingMethodInterface $shippingMethod): void
     {
         $this->shippingMethod = $shippingMethod;
     }
@@ -107,7 +110,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getShippingMethod()
+    public function getShippingMethod(): ?ShippingMethodInterface
     {
         return $this->shippingMethod;
     }
@@ -115,7 +118,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function setConfig(array $config)
+    public function setConfig(?array $config): void
     {
         $this->config = $config;
     }
@@ -123,7 +126,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         return $this->config;
     }
@@ -131,7 +134,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getShippingExports()
+    public function getShippingExports(): ?ArrayCollection
     {
         return $this->shippingExports;
     }
@@ -139,7 +142,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function addShippingExport(ShippingExportInterface $shippingExport)
+    public function addShippingExport(?ShippingExportInterface $shippingExport): void
     {
         if (!$this->hasShippingExport($shippingExport)) {
             $this->shippingExports->add($shippingExport);
@@ -150,7 +153,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function removeShippingExport(ShippingExportInterface $shippingExport)
+    public function removeShippingExport(?ShippingExportInterface $shippingExport): void
     {
         if ($this->hasShippingExport($shippingExport)) {
             $this->shippingExports->removeElement($shippingExport);
@@ -160,7 +163,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function hasShippingExport(ShippingExportInterface $shippingExport)
+    public function hasShippingExport(?ShippingExportInterface $shippingExport): ?ShippingExportInterface
     {
         return $this->shippingExports->contains($shippingExport);
     }
@@ -168,7 +171,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigValue($key)
+    public function getConfigValue(?string $key): ?string
     {
         Assert::keyExists($this->config, $key, sprintf(
             "Shipping gateway config named %s does not exist.",

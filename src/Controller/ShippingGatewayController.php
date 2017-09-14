@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Controller;
 
 use FOS\RestBundle\View\View;
@@ -26,7 +28,7 @@ final class ShippingGatewayController extends ResourceController
      *
      * @return Response
      */
-    public function getShippingGatewaysAction(Request $request, $template)
+    public function getShippingGatewaysAction(Request $request, string $template): ?Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 

@@ -8,9 +8,12 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Repository;
 
 use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
+use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 /**
@@ -21,7 +24,7 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder()
+    public function createListQueryBuilder(): ?QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.shipment', 'shipment')
@@ -31,7 +34,7 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
     /**
      * {@inheritdoc}
      */
-    public function findAllWithNewState()
+    public function findAllWithNewState(): ?array
     {
         return $this->createQueryBuilder('o')
             ->where('o.state = :newState')

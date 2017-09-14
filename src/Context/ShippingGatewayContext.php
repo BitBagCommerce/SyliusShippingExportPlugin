@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Context;
 
 use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
@@ -65,7 +67,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getFormType()
+    public function getFormType(): ?string
     {
         $code = $this->getCode();
 
@@ -75,7 +77,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         $request = $this->requestStack->getCurrentRequest();
         $id = $request->get('id');
@@ -99,7 +101,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabelByCode($code)
+    public function getLabelByCode(string $code): ?string
     {
         foreach ($this->shippingGateways as $shippingGatewayCode => $shippingGatewayLabel) {
             if ($shippingGatewayCode === $code) {
@@ -116,7 +118,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
      * @return ShippingGatewayInterface
      * @throws ShippingGatewayNotFoundException
      */
-    private function getExistingShippingGateway($id)
+    private function getExistingShippingGateway(int $id): ?ShippingGatewayInterface
     {
         /** @var ShippingGatewayInterface|null $shippingGateway */
         $shippingGateway = $this->shippingGatewayRepository->find($id);

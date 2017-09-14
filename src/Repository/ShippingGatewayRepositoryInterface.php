@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Repository;
 
 use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
@@ -21,21 +23,21 @@ use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 interface ShippingGatewayRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @return QueryBuilder
+     * @return QueryBuilder|null
      */
-    public function createListQueryBuilder();
+    public function createListQueryBuilder(): ?QueryBuilder;
 
     /**
      * @param string $code
      *
      * @return ShippingGatewayInterface|null
      */
-    public function findOneByCode($code);
+    public function findOneByCode(string $code): ?ShippingGatewayInterface;
 
     /**
      * @param ShippingMethodInterface $shippingMethod
      *
      * @return ShippingMethodInterface|null
      */
-    public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod);
+    public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod): ?ShippingMethodInterface;
 }
