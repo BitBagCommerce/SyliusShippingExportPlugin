@@ -68,7 +68,7 @@ final class ShippingGatewayType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, ?array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $code = $this->shippingGatewayTypeContext->getCode();
         $label = $this->shippingGatewayTypeContext->getLabelByCode($code);
