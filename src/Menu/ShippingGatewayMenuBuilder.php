@@ -22,7 +22,7 @@ final class ShippingGatewayMenuBuilder
     /**
      * @param MenuBuilderEvent $event
      */
-    public function buildMenu(?MenuBuilderEvent $event): void
+    public function buildMenu(MenuBuilderEvent $event): void
     {
         $event
             ->getMenu()

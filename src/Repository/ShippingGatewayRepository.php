@@ -25,7 +25,7 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(): ?QueryBuilder
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
@@ -33,7 +33,7 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode(?string $code): ?ShippingMethodInterface
+    public function findOneByCode(string $code): ?ShippingMethodInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')

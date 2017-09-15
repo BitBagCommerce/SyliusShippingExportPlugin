@@ -115,10 +115,10 @@ class ExportShipmentEvent extends Event
     }
 
     /**
-     * @param string|null $labelContent
-     * @param string|null $labelExtension
+     * @param string $labelContent
+     * @param string $labelExtension
      */
-    public function saveShippingLabel(?string $labelContent, ?string $labelExtension): void
+    public function saveShippingLabel(string $labelContent, string $labelExtension): void
     {
         $shipment = $this->getShippingExport()->getShipment();
         $orderNumber = str_replace('#', '', $shipment->getOrder()->getNumber());

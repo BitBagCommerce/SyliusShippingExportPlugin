@@ -25,14 +25,14 @@ interface ShippingGatewayRepositoryInterface extends RepositoryInterface
     /**
      * @return QueryBuilder
      */
-    public function createListQueryBuilder(): ?QueryBuilder;
+    public function createListQueryBuilder(): QueryBuilder;
 
     /**
-     * @param string|null $code
+     * @param string $code
      *
      * @return ShippingMethodInterface
      */
-    public function findOneByCode(?string $code): ?ShippingMethodInterface;
+    public function findOneByCode(string $code): ?ShippingMethodInterface;
 
     /**
      * @param ShippingMethodInterface $shippingMethod

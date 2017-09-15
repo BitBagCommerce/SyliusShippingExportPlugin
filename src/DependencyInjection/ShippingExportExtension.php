@@ -23,7 +23,7 @@ final class ShippingExportExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(?array $configs, ContainerBuilder $container): void
+    public function load(array $configs, ContainerBuilder $container): void
     {
     }
 }

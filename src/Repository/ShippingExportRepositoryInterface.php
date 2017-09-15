@@ -23,10 +23,10 @@ interface ShippingExportRepositoryInterface extends RepositoryInterface
     /**
      * @return QueryBuilder
      */
-    public function createListQueryBuilder(): ?QueryBuilder;
+    public function createListQueryBuilder(): QueryBuilder;
 
     /**
-     * @return array|null
+     * @return array
      */
-    public function findAllWithNewState(): ?array;
+    public function findAllWithNewState(): array;
 }

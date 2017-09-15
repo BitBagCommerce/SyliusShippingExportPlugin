@@ -24,7 +24,7 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(): ?QueryBuilder
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.shipment', 'shipment')
@@ -34,7 +34,7 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
     /**
      * {@inheritdoc}
      */
-    public function findAllWithNewState(): ?array
+    public function findAllWithNewState(): array
     {
         return $this->createQueryBuilder('o')
             ->where('o.state = :newState')

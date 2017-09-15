@@ -32,7 +32,7 @@ final class ShippingExportController extends ResourceController
      *
      * @return RedirectResponse
      */
-    public function exportAllNewShipmentsAction(Request $request): ?RedirectResponse
+    public function exportAllNewShipmentsAction(Request $request): RedirectResponse
     {
         $shippingExports = $this->get('bitbag.repository.shipping_export')->findAllWithNewState();
 
@@ -54,7 +54,7 @@ final class ShippingExportController extends ResourceController
      *
      * @return RedirectResponse
      */
-    public function exportSingleShipmentAction(Request $request): ?RedirectResponse
+    public function exportSingleShipmentAction(Request $request): RedirectResponse
     {
         $shippingExport = $this->get('bitbag.repository.shipping_export')->find($request->get('id'));
 
@@ -68,7 +68,7 @@ final class ShippingExportController extends ResourceController
      *
      * @return RedirectResponse
      */
-    private function redirectToReferer(Request $request): ?RedirectResponse
+    private function redirectToReferer(Request $request): RedirectResponse
     {
         return new RedirectResponse($request->headers->get('referer'));
     }
@@ -78,7 +78,7 @@ final class ShippingExportController extends ResourceController
      *
      * @return Response
      */
-    public function getLabel(Request $request): ?Response
+    public function getLabel(Request $request): Response
     {
         $shippingExport = $this->get('bitbag.repository.shipping_export')->find($request->get('id'));
 
@@ -106,7 +106,7 @@ final class ShippingExportController extends ResourceController
     /**
      * @param ShippingExportInterface $shippingExport
      */
-    private function dispatchExportShipmentEvent(?ShippingExportInterface $shippingExport): void
+    private function dispatchExportShipmentEvent(ShippingExportInterface $shippingExport): void
     {
         $flashBag = $this->get('session')->getFlashBag();
         $shippingExportManager = $this->get('bitbag.manager.shipping_export');

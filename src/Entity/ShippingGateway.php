@@ -61,7 +61,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -141,7 +141,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function addShippingExport(?ShippingExportInterface $shippingExport): void
+    public function addShippingExport(ShippingExportInterface $shippingExport): void
     {
         if (!$this->hasShippingExport($shippingExport)) {
             $this->shippingExports->add($shippingExport);
@@ -152,7 +152,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function removeShippingExport(?ShippingExportInterface $shippingExport): void
+    public function removeShippingExport(ShippingExportInterface $shippingExport): void
     {
         if ($this->hasShippingExport($shippingExport)) {
             $this->shippingExports->removeElement($shippingExport);
@@ -162,7 +162,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function hasShippingExport(?ShippingExportInterface $shippingExport): bool
+    public function hasShippingExport(ShippingExportInterface $shippingExport): bool
     {
         return $this->shippingExports->contains($shippingExport);
     }
@@ -170,7 +170,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigValue(?string $key): ?string
+    public function getConfigValue(string $key): ?string
     {
         Assert::keyExists($this->config, $key, sprintf(
             "Shipping gateway config named %s does not exist.",

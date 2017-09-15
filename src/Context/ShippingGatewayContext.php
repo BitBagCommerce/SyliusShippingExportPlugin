@@ -115,7 +115,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     /**
      * @param int|null $id
      *
-     * @return ShippingGatewayInterface
+     * @return ShippingGatewayInterface|null
      * @throws ShippingGatewayNotFoundException
      */
     private function getExistingShippingGateway(?int $id): ?ShippingGatewayInterface
