@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShipmentInterface;
@@ -51,7 +53,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -59,7 +61,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getShipment()
+    public function getShipment(): ?ShipmentInterface
     {
         return $this->shipment;
     }
@@ -67,7 +69,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function setShipment(ShipmentInterface $shipment)
+    public function setShipment(?ShipmentInterface $shipment): void
     {
         $this->shipment = $shipment;
     }
@@ -75,7 +77,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getShippingGateway()
+    public function getShippingGateway(): ?ShippingGatewayInterface
     {
         return $this->shippingGateway;
     }
@@ -83,7 +85,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function setShippingGateway(ShippingGatewayInterface $shippingGateway)
+    public function setShippingGateway(?ShippingGatewayInterface $shippingGateway): void
     {
         $this->shippingGateway = $shippingGateway;
     }
@@ -91,7 +93,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getExportedAt()
+    public function getExportedAt(): ?\DateTime
     {
         return $this->exportedAt;
     }
@@ -99,7 +101,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function setExportedAt(\DateTime $exportedAt)
+    public function setExportedAt(?\DateTime $exportedAt): void
     {
         $this->exportedAt = $exportedAt;
     }
@@ -107,7 +109,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getState()
+    public function getState(): ?string
     {
         return $this->state;
     }
@@ -115,7 +117,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function setState($state)
+    public function setState(?string $state): void
     {
         $this->state = $state;
     }
@@ -123,7 +125,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabelPath()
+    public function getLabelPath(): ?string
     {
         return $this->labelPath;
     }
@@ -131,7 +133,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function setLabelPath($labelPath)
+    public function setLabelPath(?string $labelPath): void
     {
         $this->labelPath = $labelPath;
     }

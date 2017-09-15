@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Context;
 
 use BitBag\ShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
@@ -18,20 +20,20 @@ use BitBag\ShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
 interface ShippingGatewayContextInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFormType();
+    public function getFormType(): ?string;
 
     /**
-     * @return string
+     * @return string|null
      * @throws ShippingGatewayNotFoundException
      */
-    public function getCode();
+    public function getCode(): ?string;
 
     /**
-     * @param string $code
+     * @param string|null $code
      *
-     * @return string
+     * @return string|null
      */
-    public function getLabelByCode($code);
+    public function getLabelByCode(?string $code): ?string;
 }

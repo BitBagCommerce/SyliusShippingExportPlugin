@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Repository;
 
 use Doctrine\ORM\QueryBuilder;
@@ -21,10 +23,10 @@ interface ShippingExportRepositoryInterface extends RepositoryInterface
     /**
      * @return QueryBuilder
      */
-    public function createListQueryBuilder();
+    public function createListQueryBuilder(): QueryBuilder;
 
     /**
-     * @return array|null
+     * @return array
      */
-    public function findAllWithNewState();
+    public function findAllWithNewState(): array;
 }

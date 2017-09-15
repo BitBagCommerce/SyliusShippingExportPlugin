@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShippingMethodInterface;
@@ -19,64 +21,66 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 interface ShippingGatewayInterface extends ResourceInterface
 {
     /**
-     * @param string $code
+     * @param string|null $code
      */
-    public function setCode($code);
+    public function setCode(?string $code): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCode();
+    public function getCode(): ?string;
 
     /**
-     * @param string $label
+     * @param string|null $label
      */
-    public function setLabel($label);
+    public function setLabel(?string $label): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLabel();
+    public function getLabel(): ?string;
 
     /**
      * @param ShippingMethodInterface $shippingMethod
      */
-    public function setShippingMethod(ShippingMethodInterface $shippingMethod);
+    public function setShippingMethod(?ShippingMethodInterface $shippingMethod): void;
 
     /**
      * @return ShippingMethodInterface
      */
-    public function getShippingMethod();
+    public function getShippingMethod(): ?ShippingMethodInterface;
 
     /**
-     * @param array $config
+     * @param array|null $config
      */
-    public function setConfig(array $config);
+    public function setConfig(?array $config): void;
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getConfig();
-
-    /**
-     * @param ShippingExportInterface $shippingExport
-     */
-    public function addShippingExport(ShippingExportInterface $shippingExport);
+    public function getConfig(): ?array;
 
     /**
      * @param ShippingExportInterface $shippingExport
      */
-    public function removeShippingExport(ShippingExportInterface $shippingExport);
+    public function addShippingExport(ShippingExportInterface $shippingExport): void;
 
     /**
      * @param ShippingExportInterface $shippingExport
      */
-    public function hasShippingExport(ShippingExportInterface $shippingExport);
+    public function removeShippingExport(ShippingExportInterface $shippingExport): void;
+
+    /**
+     * @param ShippingExportInterface $shippingExport
+     *
+     * @return bool
+     */
+    public function hasShippingExport(ShippingExportInterface $shippingExport): bool;
 
     /**
      * @param string $key
      *
-     * @return string
+     * @return string|null
      */
-    public function getConfigValue($key);
+    public function getConfigValue(string $key): ?string;
 }

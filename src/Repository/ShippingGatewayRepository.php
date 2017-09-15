@@ -8,8 +8,12 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Repository;
 
+use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
+use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 
@@ -21,7 +25,7 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder()
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
@@ -29,7 +33,7 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode($code)
+    public function findOneByCode(string $code): ?ShippingMethodInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
@@ -42,7 +46,7 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     /**
      * {@inheritdoc}
      */
-    public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod)
+    public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod): ?ShippingGatewayInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.shippingMethod = :shippingMethod')
