@@ -1,11 +1,12 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+declare(strict_types=1);
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin;
@@ -16,9 +17,6 @@ use Sylius\Behat\Service\NotificationCheckerInterface;
 use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport\IndexPageInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ShippingExportContext implements Context
 {
     /**
@@ -38,8 +36,7 @@ final class ShippingExportContext implements Context
     public function __construct(
         IndexPageInterface $indexPage,
         NotificationCheckerInterface $notificationChecker
-    )
-    {
+    ) {
         $this->indexPage = $indexPage;
         $this->notificationChecker = $notificationChecker;
     }
@@ -59,7 +56,7 @@ final class ShippingExportContext implements Context
      */
     public function iShouldSeeNewShipmentsToExportWithState($number, $state)
     {
-        Assert::eq((int)$number, count($this->indexPage->getShipmentsWithState($state)));
+        Assert::eq((int) $number, count($this->indexPage->getShipmentsWithState($state)));
     }
 
     /**
@@ -84,7 +81,7 @@ final class ShippingExportContext implements Context
     public function iShouldBeNotifiedThatTheShipmentHasBeenExported()
     {
         $this->notificationChecker->checkNotification(
-            "Shipment data has been exported.",
+            'Shipment data has been exported.',
             NotificationType::success()
         );
     }
@@ -95,7 +92,7 @@ final class ShippingExportContext implements Context
     public function iShouldBeNotifiedThatThereAreNoNewShipmentsToExport()
     {
         $this->notificationChecker->checkNotification(
-            "There are no new shipments to export.",
+            'There are no new shipments to export.',
             NotificationType::failure()
         );
     }
@@ -106,7 +103,7 @@ final class ShippingExportContext implements Context
     public function iShouldBeNotifiedThatAnErrorOccurredWhileTryingToExportShippingData()
     {
         $this->notificationChecker->checkNotification(
-            "An external error occurred while trying to export shipping data.",
+            'An external error occurred while trying to export shipping data.',
             NotificationType::failure()
         );
     }

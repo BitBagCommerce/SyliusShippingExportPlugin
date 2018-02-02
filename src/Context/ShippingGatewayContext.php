@@ -1,13 +1,12 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
-
 declare(strict_types=1);
 
 namespace BitBag\ShippingExportPlugin\Context;
@@ -19,9 +18,6 @@ use BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ShippingGatewayContext implements ShippingGatewayContextInterface
 {
     /**
@@ -55,9 +51,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         array $shippingGateways
-
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->shippingGatewayFormTypeRegistry = $shippingGatewayFormTypeRegistry;
         $this->shippingGatewayRepository = $shippingGatewayRepository;
@@ -90,7 +84,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
 
         if (false === $this->shippingGatewayFormTypeRegistry->has('shipping_gateway_config', $code)) {
             throw new  ShippingGatewayNotFoundException(sprintf(
-                "Gateway with %s code could not be found",
+                'Gateway with %s code could not be found',
                 $code
             ));
         }
@@ -116,6 +110,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
      * @param int|null $id
      *
      * @return ShippingGatewayInterface|null
+     *
      * @throws ShippingGatewayNotFoundException
      */
     private function getExistingShippingGateway(?int $id): ?ShippingGatewayInterface
@@ -125,7 +120,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
 
         if (false === $shippingGateway instanceof ShippingGatewayInterface) {
             throw new  ShippingGatewayNotFoundException(sprintf(
-                "Gateway with %s id could not be found",
+                'Gateway with %s id could not be found',
                 $id
             ));
         }

@@ -1,11 +1,12 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+declare(strict_types=1);
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup;
@@ -26,9 +27,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ShippingExportContext implements Context
 {
     /**
@@ -90,8 +88,7 @@ final class ShippingExportContext implements Context
         FactoryInterface $shippingExportFactory,
         ShippingExportRepositoryInterface $shippingExportRepository,
         EventDispatcherInterface $eventDispatcher
-    )
-    {
+    ) {
         $this->orderRepository = $orderRepository;
         $this->sharedStorage = $sharedStorage;
         $this->shipmentFactory = $shipmentFactory;

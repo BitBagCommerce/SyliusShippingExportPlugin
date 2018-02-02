@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -32,7 +33,7 @@ final class FrankMartinShippingGatewayType extends AbstractType
                     new NotBlank([
                         'message' => 'IBAN number cannot be blank.',
                         'groups' => 'bitbag',
-                    ])
+                    ]),
                 ],
             ])
             ->add('address', TextType::class, [
@@ -41,7 +42,7 @@ final class FrankMartinShippingGatewayType extends AbstractType
                     new NotBlank([
                         'message' => 'Address cannot be blank.',
                         'groups' => 'bitbag',
-                    ])
+                    ]),
                 ],
             ])
         ;

@@ -1,22 +1,19 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+declare(strict_types=1);
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 namespace spec\BitBag\ShippingExportPlugin\Exception;
 
 use BitBag\ShippingExportPlugin\Exception\ShippingGatewayLabelNotFound;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ShippingGatewayLabelNotFoundSpec extends ObjectBehavior
 {
     function let()
@@ -36,6 +33,6 @@ final class ShippingGatewayLabelNotFoundSpec extends ObjectBehavior
 
     function it_has_a_message()
     {
-        $this->getMessage()->shouldReturn("Shipping gateway label for foo code was not found.");
+        $this->getMessage()->shouldReturn('Shipping gateway label for foo code was not found.');
     }
 }

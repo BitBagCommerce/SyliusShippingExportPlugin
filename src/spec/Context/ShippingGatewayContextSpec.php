@@ -1,11 +1,12 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+declare(strict_types=1);
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 namespace spec\BitBag\ShippingExportPlugin\Context;
@@ -19,23 +20,19 @@ use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ShippingGatewayContextSpec extends ObjectBehavior
 {
     function let(
         RequestStack $requestStack,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository
-    )
-    {
+    ) {
         $this->beConstructedWith(
             $requestStack,
             $shippingGatewayFormTypeRegistry,
             $shippingGatewayRepository,
             [
-                'frank_martin_shipping_gateway' => "Transporter Parcels",
+                'frank_martin_shipping_gateway' => 'Transporter Parcels',
             ]
         );
     }
@@ -49,8 +46,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         RequestStack $requestStack,
         Request $request,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry
-    )
-    {
+    ) {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(null);
         $request->get('code')->willReturn('foo');
@@ -66,8 +62,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         RequestStack $requestStack,
         Request $request,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository
-    )
-    {
+    ) {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(1);
         $shippingGatewayRepository->find(1)->willReturn(null);
@@ -80,8 +75,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         Request $request,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry
-    )
-    {
+    ) {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(null);
         $shippingGatewayRepository->find(null)->shouldNotBeCalled();
@@ -98,8 +92,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         Request $request,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         ShippingGatewayInterface $shippingGateway
-    )
-    {
+    ) {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(1);
         $shippingGatewayRepository->find(1)->willReturn($shippingGateway);

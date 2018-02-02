@@ -1,13 +1,12 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
-
 declare(strict_types=1);
 
 namespace BitBag\ShippingExportPlugin\Event;
@@ -20,9 +19,6 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 class ExportShipmentEvent extends Event
 {
     const NAME = 'bitbag.export_shipment';
@@ -72,8 +68,7 @@ class ExportShipmentEvent extends Event
         Filesystem $filesystem,
         TranslatorInterface $translator,
         string $shippingLabelsPath
-    )
-    {
+    ) {
         $this->shippingExport = $shippingExport;
         $this->flashBag = $flashBag;
         $this->shippingExportManager = $shippingExportManager;

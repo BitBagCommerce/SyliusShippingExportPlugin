@@ -1,11 +1,12 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+declare(strict_types=1);
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup;
@@ -19,9 +20,6 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Tests\BitBag\ShippingExportPlugin\Behat\Mock\EventListener\FrankMartinShippingExportEventListener;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ShippingGatewayContext implements Context
 {
     /**
@@ -66,6 +64,7 @@ final class ShippingGatewayContext implements Context
      * @param RepositoryInterface $shippingGatewayRepository
      * @param EntityManagerInterface $entityManager
      * @param SharedStorageInterface $sharedStorage
+     *
      * @internal param ObjectManager $objectManager
      */
     public function __construct(
@@ -75,8 +74,7 @@ final class ShippingGatewayContext implements Context
         RepositoryInterface $shippingGatewayRepository,
         EntityManagerInterface $entityManager,
         SharedStorageInterface $sharedStorage
-    )
-    {
+    ) {
         $this->shippingMethodFactory = $shippingMethodFactory;
         $this->shippingGatewayFactory = $shippingGatewayFactory;
         $this->shippingMethodRepository = $shippingMethodRepository;

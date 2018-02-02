@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -28,7 +29,7 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
 
         /** @var ElementInterface $item */
         foreach ($items as $item) {
-            if($item->getText() === $state) {
+            if ($item->getText() === $state) {
                 $result[] = $item;
             }
         }
@@ -41,7 +42,7 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
      */
     public function exportAllShipments()
     {
-        $this->getDocument()->pressButton("Export all new shipments");
+        $this->getDocument()->pressButton('Export all new shipments');
     }
 
     /**

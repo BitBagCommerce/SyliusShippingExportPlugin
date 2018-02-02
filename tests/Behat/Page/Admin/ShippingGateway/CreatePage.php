@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -25,7 +26,7 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
      */
     public function selectShippingMethod($name)
     {
-        $this->getDocument()->selectFieldOption("Shipping method", $name);
+        $this->getDocument()->selectFieldOption('Shipping method', $name);
     }
 
     /**

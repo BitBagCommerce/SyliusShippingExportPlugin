@@ -1,11 +1,12 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+declare(strict_types=1);
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 namespace spec\BitBag\ShippingExportPlugin\EventListener;
@@ -23,17 +24,13 @@ use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class PlacingShipmentForGatewayEventListenerSpec extends ObjectBehavior
 {
     function let(
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         ShippingExportRepositoryInterface $shippingExportRepository,
         FactoryInterface $shippingExportFactory
-    )
-    {
+    ) {
         $this->beConstructedWith($shippingGatewayRepository, $shippingExportRepository, $shippingExportFactory);
     }
 
@@ -52,8 +49,7 @@ final class PlacingShipmentForGatewayEventListenerSpec extends ObjectBehavior
         FactoryInterface $shippingExportFactory,
         ShippingExportInterface $shippingExport,
         ShippingExportRepositoryInterface $shippingExportRepository
-    )
-    {
+    ) {
         $event->getSubject()->willReturn($order);
         $order->getShipments()->willReturn(new ArrayCollection([$shipment->getWrappedObject()]));
         $shipment->getMethod()->willReturn($shippingMethod);
