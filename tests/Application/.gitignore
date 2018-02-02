@@ -1,21 +1,10 @@
 /node_modules/
 
-<<<<<<< HEAD
-/var/
-!/var/.gitkeep
-
-/web/assets
-/web/media
-=======
 /var/*
 !/var/.gitkeep
 
-<<<<<<< HEAD
-/web/
-=======
 /web/*
->>>>>>> 1.0
+
 !/web/app.php
 !/web/app_dev.php
 !/web/app_test.php
->>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2

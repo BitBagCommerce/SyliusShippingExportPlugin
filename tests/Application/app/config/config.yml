@@ -8,17 +8,12 @@ imports:
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusAdminApiBundle/Resources/config/app/config.yml" }
 
-<<<<<<< HEAD
     - { resource: "@ShippingExportPlugin/Resources/config/config.yml" }
 
     - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }
 
     - { resource: "services.yml" }
 
-=======
-    - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }
-
->>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
 framework:
     translator: { fallbacks: ["%locale%", "en"] }
     secret: "%secret"
@@ -45,11 +40,7 @@ swiftmailer:
 doctrine:
     dbal:
         driver: "pdo_sqlite"
-<<<<<<< HEAD
-        path: "%kernel.cache_dir%/db.sql"
-=======
         path: "%kernel.root_dir%/../var/db.sql"
->>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
         charset: UTF8
 
 fos_rest:

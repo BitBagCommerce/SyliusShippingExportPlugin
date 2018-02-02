@@ -1,10 +1,6 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-    "jquery": "^2.2.0",
-=======
     "jquery": "^3.2.0",
->>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
     "lightbox2": "^2.9.0",
     "semantic-ui-css": "^2.2.0"
   },
@@ -21,10 +17,7 @@
     "gulp-uglify": "^1.5.1",
     "gulp-uglifycss": "^1.0.5",
     "merge-stream": "^1.0.0",
-<<<<<<< HEAD
-=======
     "node-sass": "^4.5.3",
->>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
     "yargs": "^6.4.0"
   },
   "scripts": {
