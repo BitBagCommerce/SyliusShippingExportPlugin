@@ -6,9 +6,13 @@ config = [
     '--rootPath',
     argv.rootPath || '../../../../../../../tests/Application/web/assets/',
     '--nodeModulesPath',
+<<<<<<< HEAD
     argv.nodeModulesPath || '../../../../../../../tests/Application/node_modules/',
     '--vendorPath',
     argv.vendorPath || '../../../../../../../vendor/'
+=======
+    argv.nodeModulesPath || '../../../../../../../tests/Application/node_modules/'
+>>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
 ];
 
 gulp.task('admin', function() {

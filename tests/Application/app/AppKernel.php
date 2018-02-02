@@ -19,15 +19,33 @@ final class AppKernel extends Kernel
             new \FOS\OAuthServerBundle\FOSOAuthServerBundle(), // Required by SyliusApiBundle
             new \Sylius\Bundle\AdminApiBundle\SyliusAdminApiBundle(),
 
+<<<<<<< HEAD
             new \BitBag\ShippingExportPlugin\ShippingExportPlugin(),
+=======
+            new \Acme\SyliusExamplePlugin\AcmeSyliusExamplePlugin(),
+>>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
         ]);
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load($this->getRootDir() . '/config/config.yml');
+=======
+    public function getCacheDir(): string
+    {
+        return sprintf('%s/%s/cache', sys_get_temp_dir(), md5(__DIR__));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLogDir(): string
+    {
+        return sprintf('%s/%s/logs', sys_get_temp_dir(), md5(__DIR__));
+>>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
     }
 }

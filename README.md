@@ -8,7 +8,7 @@ Managing shipments in any eCommerce app is something that may be tricky. There a
 
 ## Usage
 
-Read [this blog post](https://bitbag.shop/blog/post/bitbag-shipping-export-plugin-simple-way-to-control-shipments-in-your-online-store) in order to start using this plugin.
+Read [this blog post](https://bitbag.shop/blog/bitbag-shipping-export-plugin-simple-way-to-control-shipments-in-your-online-store) in order to start using this plugin.
 
 ## Testing
 

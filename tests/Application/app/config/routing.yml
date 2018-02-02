@@ -1,6 +1,13 @@
 sylius:
     resource: "../../../../vendor/sylius/sylius/app/config/routing.yml"
 
+<<<<<<< HEAD
 bitbag_shipping_export_plugin:
     resource: "@ShippingExportPlugin/Resources/config/routing.yml"
     prefix: /admin
+=======
+# Put your own routes here
+
+acme_sylius_example_shop:
+    resource: "@AcmeSyliusExamplePlugin/Resources/config/app/shop_routing.yml"
+>>>>>>> a234fcdaa31aaea4c11ba6ce577f4f225747cdd2
