@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShipmentInterface;
@@ -24,50 +26,50 @@ interface ShippingExportInterface extends ResourceInterface
     /**
      * @return ShipmentInterface
      */
-    public function getShipment();
+    public function getShipment(): ?ShipmentInterface;
 
     /**
      * @param ShipmentInterface $shipment
      */
-    public function setShipment(ShipmentInterface $shipment);
+    public function setShipment(?ShipmentInterface $shipment): void;
 
     /**
      * @return ShippingGatewayInterface
      */
-    public function getShippingGateway();
+    public function getShippingGateway(): ?ShippingGatewayInterface;
 
     /**
      * @param ShippingGatewayInterface $shippingGateway
      */
-    public function setShippingGateway(ShippingGatewayInterface $shippingGateway);
+    public function setShippingGateway(?ShippingGatewayInterface $shippingGateway): void;
 
     /**
      * @return \DateTime
      */
-    public function getExportedAt();
+    public function getExportedAt(): ?\DateTime;
 
     /**
      * @param \DateTime $exportedAt
      */
-    public function setExportedAt(\DateTime $exportedAt);
+    public function setExportedAt(?\DateTime $exportedAt): void;
 
     /**
      * @return string|null
      */
-    public function getLabelPath();
+    public function getLabelPath(): ?string;
 
     /**
      * @param string|null $labelPath
      */
-    public function setLabelPath($labelPath);
+    public function setLabelPath(?string $labelPath): void;
 
     /**
      * @return string
      */
-    public function getState();
+    public function getState(): ?string;
 
     /**
      * @param string $state
      */
-    public function setState($state);
+    public function setState(?string $state): void;
 }

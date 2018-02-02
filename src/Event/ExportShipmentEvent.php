@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Event;
 
 use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
@@ -69,7 +71,7 @@ class ExportShipmentEvent extends Event
         EntityManagerInterface $shippingExportManager,
         Filesystem $filesystem,
         TranslatorInterface $translator,
-        $shippingLabelsPath
+        string $shippingLabelsPath
     )
     {
         $this->shippingExport = $shippingExport;
@@ -83,7 +85,7 @@ class ExportShipmentEvent extends Event
     /**
      * @return ShippingExportInterface
      */
-    public function getShippingExport()
+    public function getShippingExport(): ?ShippingExportInterface
     {
         return $this->shippingExport;
     }
@@ -91,7 +93,7 @@ class ExportShipmentEvent extends Event
     /**
      * @param string $messageId
      */
-    public function addSuccessFlash($messageId = 'bitbag.ui.shipment_data_has_been_exported')
+    public function addSuccessFlash(string $messageId = 'bitbag.ui.shipment_data_has_been_exported'): void
     {
         $message = $this->translator->trans($messageId);
 
@@ -103,7 +105,7 @@ class ExportShipmentEvent extends Event
     /**
      * @param string $messageId
      */
-    public function addErrorFlash($messageId = 'bitbag.ui.shipping_export_error')
+    public function addErrorFlash(string $messageId = 'bitbag.ui.shipping_export_error'): void
     {
         $message = $this->translator->trans($messageId);
 
@@ -116,7 +118,7 @@ class ExportShipmentEvent extends Event
      * @param string $labelContent
      * @param string $labelExtension
      */
-    public function saveShippingLabel($labelContent, $labelExtension)
+    public function saveShippingLabel(string $labelContent, string $labelExtension): void
     {
         $shipment = $this->getShippingExport()->getShipment();
         $orderNumber = str_replace('#', '', $shipment->getOrder()->getNumber());
@@ -132,7 +134,7 @@ class ExportShipmentEvent extends Event
         $this->shippingExportManager->flush($this->shippingExport);
     }
 
-    public function exportShipment()
+    public function exportShipment(): void
     {
         $this->shippingExport->setState(ShippingExportInterface::STATE_EXPORTED);
         $this->shippingExport->setExportedAt(new \DateTime());

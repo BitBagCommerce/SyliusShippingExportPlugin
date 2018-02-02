@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\EventListener;
 
 use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
@@ -59,7 +61,7 @@ final class PlacingShipmentForGatewayEventListener
     /**
      * @param GenericEvent $event
      */
-    public function prepareShippingExport(GenericEvent $event)
+    public function prepareShippingExport(?GenericEvent $event): void
     {
         /** @var OrderInterface $order */
         $order = $event->getSubject();

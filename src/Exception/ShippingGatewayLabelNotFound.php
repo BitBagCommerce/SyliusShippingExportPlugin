@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Exception;
 
 /**
@@ -15,7 +17,7 @@ namespace BitBag\ShippingExportPlugin\Exception;
  */
 final class ShippingGatewayLabelNotFound extends \Exception
 {
-    public function __construct($code)
+    public function __construct(string $code)
     {
         parent::__construct(sprintf("Shipping gateway label for %s code was not found.", $code));
     }

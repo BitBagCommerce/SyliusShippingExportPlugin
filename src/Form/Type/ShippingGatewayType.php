@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Form\Type;
 
 use BitBag\ShippingExportPlugin\Context\ShippingGatewayContextInterface;
@@ -53,7 +55,7 @@ final class ShippingGatewayType extends AbstractResourceType
         array $validationGroups = [],
         ShippingGatewayContextInterface $shippingGatewayTypeContext,
         ShippingMethodRepositoryInterface $shippingMethodRepository,
-        $shippingMethodModelClass
+        string $shippingMethodModelClass
     )
     {
         parent::__construct($dataClass, $validationGroups);
@@ -66,7 +68,7 @@ final class ShippingGatewayType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $code = $this->shippingGatewayTypeContext->getCode();
         $label = $this->shippingGatewayTypeContext->getLabelByCode($code);
@@ -108,7 +110,7 @@ final class ShippingGatewayType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'bitbag_shipping_gateway_config';
     }

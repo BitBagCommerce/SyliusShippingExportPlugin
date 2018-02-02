@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\ShippingExportPlugin\Menu;
 
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
@@ -20,7 +22,7 @@ final class ShippingExportMenuBuilder
     /**
      * @param MenuBuilderEvent $event
      */
-    public function buildMenu(MenuBuilderEvent $event)
+    public function buildMenu(MenuBuilderEvent $event): void
     {
         $event
             ->getMenu()
