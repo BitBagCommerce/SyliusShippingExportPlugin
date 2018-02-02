@@ -27,7 +27,7 @@ final class ShippingGatewayMenuBuilder
         $event
             ->getMenu()
             ->getChild('configuration')
-            ->addChild('shipping_gateway', ['route' => 'bitbag_admin_shipping_gateway_index'])
+            ->addChild('shipping_gateways', ['route' => 'bitbag_admin_shipping_gateway_index'])
             ->setLabel('bitbag.ui.shipping_gateways')
             ->setLabelAttribute('icon', 'cloud')
         ;
