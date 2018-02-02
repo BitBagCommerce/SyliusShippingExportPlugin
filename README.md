@@ -1,7 +1,27 @@
-![BitBag](https://bitbag.pl/static/bitbag-logo.png)
+<h1 align="center">
+    <a href="http://bitbag.shop" target="_blank">
+        <img src="https://bitbag.pl/static/bitbag-logo.png" />
+    </a>
+    <br />
+    <a href="https://packagist.org/packages/bitbag/shipping-export-plugin" title="License" target="_blank">
+        <img src="https://img.shields.io/packagist/l/bitbag/shipping-export-plugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/bitbag/shipping-export-plugin" title="Version" target="_blank">
+        <img src="https://img.shields.io/packagist/v/bitbag/shipping-export-plugin.svg" />
+    </a>
+    <a href="http://travis-ci.org/BitBagCommerce/SyliusShippingExportPlugin" title="Build status" target="_blank">
+        <img src="https://img.shields.io/travis/BitBagCommerce/SyliusShippingExportPlugin/master.svg" />
+    </a>
+    <a href="https://scrutinizer-ci.com/g/BitBagCommerce/SyliusShippingExportPlugin/" title="Scrutinizer" target="_blank">
+        <img src="https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusShippingExportPlugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/bitbag/shipping-export-plugin" title="Total Downloads" target="_blank">
+        <img src="https://poser.pugx.org/bitbag/shipping-export-plugin/downloads" />
+    </a>
+</h1>
 
 
-# BitBag ShippingExportPlugin  [![Build Status](https://travis-ci.org/BitBagCommerce/SyliusShippingExportPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/shipping-export-plugin) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bitbag-commerce/shipping-export-plugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bitbag-commerce/shipping-export-plugin/?branch=master)
+# BitBag SyliusShippingExportPlugin
 
 ## Overview
 Managing shipments in any eCommerce app is something that may be tricky. There are many shipping providers and every of them has probably its own API format which allows to provide shipment data and book a courier. To make this process more straight forward and generic, we decided to create an abstract layer for Sylius platform based applications which allows you to write just simple API call and configuration form for specific shipping provider. The workflow is quite simple - configure proper data that's needed to export a shipment, like access key or pickup hour, book a courier for an order with one click and get shipping label file if any was received from the API. The implementation limits to write a shipping provider gateway configuration form, one event listener and webservice access layer.
