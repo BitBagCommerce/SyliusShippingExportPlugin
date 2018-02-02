@@ -1,4 +1,4 @@
-BitBag\ShippingExportPlugin\Entity\ShippingGateway:
+BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway:
     type: entity
     table: bitbag_shipping_gateway
     id:
@@ -26,6 +26,6 @@ BitBag\ShippingExportPlugin\Entity\ShippingGateway:
                 referencedColumnName: id
     oneToMany:
         shippingExports:
-            targetEntity: BitBag\ShippingExportPlugin\Entity\ShippingExport
+            targetEntity: BitBag\SyliusShippingExportPlugin\Entity\ShippingExport
             mappedBy: shippingGateway
             orphanRemoval: true

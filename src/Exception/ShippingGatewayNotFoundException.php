@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Exception;
+namespace BitBag\SyliusShippingExportPlugin\Exception;
 
 final class ShippingGatewayNotFoundException extends \Exception
 {

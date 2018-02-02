@@ -9,12 +9,12 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace spec\BitBag\ShippingExportPlugin\Context;
+namespace spec\BitBag\SyliusShippingExportPlugin\Context;
 
-use BitBag\ShippingExportPlugin\Context\ShippingGatewayContext;
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
-use BitBag\ShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
-use BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Context\ShippingGatewayContext;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Symfony\Component\HttpFoundation\Request;

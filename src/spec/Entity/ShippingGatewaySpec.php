@@ -9,11 +9,11 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace spec\BitBag\ShippingExportPlugin\Entity;
+namespace spec\BitBag\SyliusShippingExportPlugin\Entity;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
-use BitBag\ShippingExportPlugin\Entity\ShippingGateway;
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
 use Doctrine\Common\Collections\Collection;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ShippingMethodInterface;

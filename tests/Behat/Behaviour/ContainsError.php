@@ -9,7 +9,7 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Behaviour;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Behaviour;
 
 use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Behaviour\DocumentAccessor;

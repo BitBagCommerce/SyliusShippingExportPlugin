@@ -9,12 +9,12 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
-use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport\IndexPageInterface;
+use Tests\BitBag\SyliusShippingExportPlugin\Behat\Page\Admin\ShippingExport\IndexPageInterface;
 use Webmozart\Assert\Assert;
 
 final class ShippingExportContext implements Context

@@ -9,16 +9,16 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Tests\BitBag\ShippingExportPlugin\Behat\Mock\EventListener\FrankMartinShippingExportEventListener;
+use Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener\FrankMartinShippingExportEventListener;
 
 final class ShippingGatewayContext implements Context
 {

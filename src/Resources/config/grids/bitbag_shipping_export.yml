@@ -16,7 +16,7 @@ sylius_grid:
                     path: .
                     sortable: shipment.order
                     options:
-                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/orderNumber.html.twig"
+                        template: "@BitBagShippingExportPlugin/ShippingExport/Grid/Field/orderNumber.html.twig"
                 shipment:
                     type: datetime
                     label: sylius.ui.created_at
@@ -30,28 +30,28 @@ sylius_grid:
                     path: .
                     sortable: ~
                     options:
-                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/exportedAt.html.twig"
+                        template: "@BitBagShippingExportPlugin/ShippingExport/Grid/Field/exportedAt.html.twig"
                 shippingMethod:
                     type: twig
                     label: sylius.ui.shipping_method
                     path: .
                     sortable: ~
                     options:
-                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/shippingMethod.html.twig"
+                        template: "@BitBagShippingExportPlugin/ShippingExport/Grid/Field/shippingMethod.html.twig"
                 labelPath:
                     type: twig
                     label: bitbag.ui.shipping_export_label
                     path: .
                     sortable: ~
                     options:
-                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/shippingExportLabel.html.twig"
+                        template: "@BitBagShippingExportPlugin/ShippingExport/Grid/Field/shippingExportLabel.html.twig"
                 state:
                     type: twig
                     label: sylius.ui.state
                     path: .
                     sortable: ~
                     options:
-                        template: "@ShippingExportPlugin/ShippingExport/Grid/Field/state.html.twig"
+                        template: "@BitBagShippingExportPlugin/ShippingExport/Grid/Field/state.html.twig"
             filters:
                 search:
                     type: string

@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Repository;
+namespace BitBag\SyliusShippingExportPlugin\Repository;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 

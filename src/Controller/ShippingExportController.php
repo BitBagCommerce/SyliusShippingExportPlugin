@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Controller;
+namespace BitBag\SyliusShippingExportPlugin\Controller;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
-use BitBag\ShippingExportPlugin\Event\ExportShipmentEvent;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
+use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

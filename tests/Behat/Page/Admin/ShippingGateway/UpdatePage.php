@@ -9,10 +9,10 @@ declare(strict_types=1);
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Page\Admin\ShippingGateway;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
-use Tests\BitBag\ShippingExportPlugin\Behat\Behaviour\ContainsError;
+use Tests\BitBag\SyliusShippingExportPlugin\Behat\Behaviour\ContainsError;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

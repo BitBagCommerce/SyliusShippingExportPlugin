@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Context;
+namespace BitBag\SyliusShippingExportPlugin\Context;
 
-use BitBag\ShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
+use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
 
 interface ShippingGatewayContextInterface
 {

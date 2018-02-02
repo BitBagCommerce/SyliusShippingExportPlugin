@@ -9,9 +9,9 @@ declare(strict_types=1);
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Mock\EventListener;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener;
 
-use BitBag\ShippingExportPlugin\Event\ExportShipmentEvent;
+use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

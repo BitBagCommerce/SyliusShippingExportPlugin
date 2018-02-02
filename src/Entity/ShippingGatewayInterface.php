@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Entity;
+namespace BitBag\SyliusShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;

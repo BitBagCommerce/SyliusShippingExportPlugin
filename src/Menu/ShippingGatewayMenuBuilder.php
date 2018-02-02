@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Menu;
+namespace BitBag\SyliusShippingExportPlugin\Menu;
 
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 

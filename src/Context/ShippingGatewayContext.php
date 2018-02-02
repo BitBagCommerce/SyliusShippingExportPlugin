@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Context;
+namespace BitBag\SyliusShippingExportPlugin\Context;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
-use BitBag\ShippingExportPlugin\Exception\ShippingGatewayLabelNotFound;
-use BitBag\ShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
-use BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayLabelNotFound;
+use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 

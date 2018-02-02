@@ -9,7 +9,7 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Hook;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Hook;
 
 use Behat\Behat\Context\Context;
 use Symfony\Component\Filesystem\Exception\IOException;

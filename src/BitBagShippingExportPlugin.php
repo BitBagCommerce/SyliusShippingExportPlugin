@@ -9,14 +9,14 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace BitBag\ShippingExportPlugin;
+namespace BitBag\SyliusShippingExportPlugin;
 
-use BitBag\ShippingExportPlugin\DependencyInjection\Compiler\RegisterShippingGatewayConfigTypePass;
+use BitBag\SyliusShippingExportPlugin\DependencyInjection\Compiler\RegisterShippingGatewayConfigTypePass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class ShippingExportPlugin extends Bundle
+final class BitBagShippingExportPlugin extends Bundle
 {
     use SyliusPluginTrait;
 

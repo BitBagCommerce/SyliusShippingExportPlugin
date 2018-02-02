@@ -9,7 +9,7 @@ declare(strict_types=1);
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingExport;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Page\Admin\ShippingExport;
 
 use Behat\Mink\Element\ElementInterface;
 use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;

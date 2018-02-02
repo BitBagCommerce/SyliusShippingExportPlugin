@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\DependencyInjection;
+namespace BitBag\SyliusShippingExportPlugin\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;

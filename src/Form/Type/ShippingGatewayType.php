@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Form\Type;
+namespace BitBag\SyliusShippingExportPlugin\Form\Type;
 
-use BitBag\ShippingExportPlugin\Context\ShippingGatewayContextInterface;
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\Context\ShippingGatewayContextInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
 use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Component\Core\Repository\ShippingMethodRepositoryInterface;

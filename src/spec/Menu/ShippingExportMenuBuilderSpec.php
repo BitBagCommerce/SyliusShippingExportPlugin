@@ -9,9 +9,9 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace spec\BitBag\ShippingExportPlugin\Menu;
+namespace spec\BitBag\SyliusShippingExportPlugin\Menu;
 
-use BitBag\ShippingExportPlugin\Menu\ShippingExportMenuBuilder;
+use BitBag\SyliusShippingExportPlugin\Menu\ShippingExportMenuBuilder;
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;

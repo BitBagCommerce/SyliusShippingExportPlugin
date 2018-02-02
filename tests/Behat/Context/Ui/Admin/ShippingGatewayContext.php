@@ -9,7 +9,7 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Ui\Admin;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\NotificationType;
@@ -17,9 +17,9 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\ShippingExportPlugin\Behat\Behaviour\ContainsError;
-use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\CreatePageInterface;
-use Tests\BitBag\ShippingExportPlugin\Behat\Page\Admin\ShippingGateway\UpdatePageInterface;
+use Tests\BitBag\SyliusShippingExportPlugin\Behat\Behaviour\ContainsError;
+use Tests\BitBag\SyliusShippingExportPlugin\Behat\Page\Admin\ShippingGateway\CreatePageInterface;
+use Tests\BitBag\SyliusShippingExportPlugin\Behat\Page\Admin\ShippingGateway\UpdatePageInterface;
 use Webmozart\Assert\Assert;
 
 final class ShippingGatewayContext implements Context

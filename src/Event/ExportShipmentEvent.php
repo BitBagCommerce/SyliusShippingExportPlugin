@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\Event;
+namespace BitBag\SyliusShippingExportPlugin\Event;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\Event;

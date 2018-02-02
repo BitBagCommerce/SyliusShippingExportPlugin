@@ -9,10 +9,10 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace spec\BitBag\ShippingExportPlugin\Event;
+namespace spec\BitBag\SyliusShippingExportPlugin\Event;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
-use BitBag\ShippingExportPlugin\Event\ExportShipmentEvent;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
+use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

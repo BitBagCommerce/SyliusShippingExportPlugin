@@ -2,7 +2,7 @@ sylius_resource:
     resources:
         bitbag.shipping_gateway:
             classes:
-                model: BitBag\ShippingExportPlugin\Entity\ShippingGateway
-                repository:  BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepository
-                form: BitBag\ShippingExportPlugin\Form\Type\ShippingGatewayType
-                controller: BitBag\ShippingExportPlugin\Controller\ShippingGatewayController
+                model: BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway
+                repository:  BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepository
+                form: BitBag\SyliusShippingExportPlugin\Form\Type\ShippingGatewayType
+                controller: BitBag\SyliusShippingExportPlugin\Controller\ShippingGatewayController

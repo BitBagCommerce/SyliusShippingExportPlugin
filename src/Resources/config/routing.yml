@@ -1,5 +1,5 @@
 bitbag_shipping_gateway:
-    resource: "@ShippingExportPlugin/Resources/config/routing/bitbag_shipping_gateway.yml"
+    resource: "@BitBagShippingExportPlugin/Resources/config/routing/bitbag_shipping_gateway.yml"
 
 bitbag_shipping_export:
-    resource: "@ShippingExportPlugin/Resources/config/routing/bitbag_shipping_export.yml"
+    resource: "@BitBagShippingExportPlugin/Resources/config/routing/bitbag_shipping_export.yml"

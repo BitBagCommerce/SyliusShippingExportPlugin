@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\ShippingExportPlugin\EventListener;
+namespace BitBag\SyliusShippingExportPlugin\EventListener;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
-use BitBag\ShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
-use BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;

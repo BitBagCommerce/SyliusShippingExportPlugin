@@ -9,9 +9,9 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace spec\BitBag\ShippingExportPlugin\Exception;
+namespace spec\BitBag\SyliusShippingExportPlugin\Exception;
 
-use BitBag\ShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
+use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
 use PhpSpec\ObjectBehavior;
 
 final class ShippingGatewayNotFoundExceptionSpec extends ObjectBehavior

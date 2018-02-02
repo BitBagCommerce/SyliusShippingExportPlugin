@@ -9,13 +9,13 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace spec\BitBag\ShippingExportPlugin\EventListener;
+namespace spec\BitBag\SyliusShippingExportPlugin\EventListener;
 
-use BitBag\ShippingExportPlugin\Entity\ShippingExportInterface;
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
-use BitBag\ShippingExportPlugin\EventListener\PlacingShipmentForGatewayEventListener;
-use BitBag\ShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
-use BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\EventListener\PlacingShipmentForGatewayEventListener;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\OrderInterface;

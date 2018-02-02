@@ -37,8 +37,8 @@
     },
     "autoload": {
         "psr-4": {
-            "BitBag\\ShippingExportPlugin\\": "src/",
-            "Tests\\BitBag\\ShippingExportPlugin\\": "tests/"
+            "BitBag\\SyliusShippingExportPlugin\\": "src/",
+            "Tests\\BitBag\\SyliusShippingExportPlugin\\": "tests/"
         }
     },
     "prefer-stable": true,

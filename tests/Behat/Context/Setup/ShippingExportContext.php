@@ -9,13 +9,13 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace Tests\BitBag\ShippingExportPlugin\Behat\Context\Setup;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\ShippingExportPlugin\Entity\ShippingExport;
-use BitBag\ShippingExportPlugin\Entity\ShippingGatewayInterface;
-use BitBag\ShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
-use BitBag\ShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExport;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
