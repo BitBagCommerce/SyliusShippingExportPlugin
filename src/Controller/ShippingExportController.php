@@ -7,6 +7,7 @@
  * You can find more information about us on https://bitbag.shop and write us
  * an email on mikolaj.krol@bitbag.pl.
  */
+
 declare(strict_types=1);
 
 namespace BitBag\ShippingExportPlugin\Controller;
