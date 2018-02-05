@@ -17,10 +17,6 @@ use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 class ShippingGateway implements ShippingGatewayInterface
 {
     /**
@@ -39,14 +35,14 @@ class ShippingGateway implements ShippingGatewayInterface
     protected $label;
 
     /**
-     * @var ShippingMethodInterface
-     */
-    protected $shippingMethod;
-
-    /**
      * @var array
      */
     protected $config;
+
+    /**
+     * @var Collection|ShippingMethodInterface[]
+     */
+    protected $shippingMethods;
 
     /**
      * @var Collection|ShippingExportInterface[]
@@ -56,6 +52,7 @@ class ShippingGateway implements ShippingGatewayInterface
     public function __construct()
     {
         $this->shippingExports = new ArrayCollection();
+        $this->shippingMethods = new ArrayCollection();
     }
 
     /**
@@ -101,22 +98,6 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function setShippingMethod(?ShippingMethodInterface $shippingMethod): void
-    {
-        $this->shippingMethod = $shippingMethod;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getShippingMethod(): ?ShippingMethodInterface
-    {
-        return $this->shippingMethod;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setConfig(?array $config): void
     {
         $this->config = $config;
@@ -133,7 +114,56 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getShippingExports(): ?ArrayCollection
+    public function getConfigValue(string $key): ?string
+    {
+        Assert::keyExists($this->config, $key, sprintf(
+            'Shipping gateway config named %s does not exist.',
+            $key
+        ));
+
+        return $this->config[$key];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShippingMethods(): ?Collection
+    {
+        return $this->shippingMethods;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addShippingMethod(ShippingMethodInterface $shippingMethod): void
+    {
+        if (!$this->hasShippingMethod($shippingMethod)) {
+            $this->shippingMethods->add($shippingMethod);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeShippingMethod(ShippingMethodInterface $shippingMethod): void
+    {
+        if ($this->hasShippingMethod($shippingMethod)) {
+            $this->shippingMethods->removeElement($shippingMethod);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasShippingMethod(ShippingMethodInterface $shippingMethod): bool
+    {
+        return $this->shippingMethods->contains($shippingMethod);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShippingExports(): ?Collection
     {
         return $this->shippingExports;
     }
@@ -165,18 +195,5 @@ class ShippingGateway implements ShippingGatewayInterface
     public function hasShippingExport(ShippingExportInterface $shippingExport): bool
     {
         return $this->shippingExports->contains($shippingExport);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigValue(string $key): ?string
-    {
-        Assert::keyExists($this->config, $key, sprintf(
-            'Shipping gateway config named %s does not exist.',
-            $key
-        ));
-
-        return $this->config[$key];
     }
 }

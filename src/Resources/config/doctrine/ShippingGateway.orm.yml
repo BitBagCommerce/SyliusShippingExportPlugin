@@ -1,5 +1,5 @@
 BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway:
-    type: entity
+    type: mappedSuperclass
     table: bitbag_shipping_gateway
     id:
         id:
@@ -17,13 +17,17 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway:
         label:
             type: string
             column: name
-
-    manyToOne:
-        shippingMethod:
+    manyToMany:
+        shippingMethods:
             targetEntity: Sylius\Component\Core\Model\ShippingMethod
-            joinColumn:
-                name: shipping_method_id
-                referencedColumnName: id
+            joinTable:
+                name: bitbag_shipping_gateway_method
+                joinColumns:
+                    shipping_gateway_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    shipping_method_id:
+                        referencedColumnName: id
     oneToMany:
         shippingExports:
             targetEntity: BitBag\SyliusShippingExportPlugin\Entity\ShippingExport

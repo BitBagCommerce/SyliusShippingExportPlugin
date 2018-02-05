@@ -1,5 +1,5 @@
 BitBag\SyliusShippingExportPlugin\Entity\ShippingExport:
-    type: entity
+    type: mappedSuperclass
     table: bitbag_shipping_export
     id:
         id:
@@ -23,10 +23,11 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingExport:
             joinColumn:
                 name: shipment_id
                 referencedColumnName: id
-            cascade: ['persist']
+            cascade: ['ALL']
     manyToOne:
         shippingGateway:
             targetEntity: BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway
             joinColumn:
                 name: shipping_gateway_id
                 referencedColumnName: id
+            cascade: ['ALL']

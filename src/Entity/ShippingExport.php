@@ -14,10 +14,6 @@ namespace BitBag\SyliusShippingExportPlugin\Entity;
 
 use Sylius\Component\Core\Model\ShipmentInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.psl>
- */
 class ShippingExport implements ShippingExportInterface
 {
     /**

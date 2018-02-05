@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
-/**
- * This file was created by the developers from BitBag.
+/*
+ * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
+
+declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener;
 
 use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class FrankMartinShippingExportEventListener
 {
     /**
@@ -26,7 +24,7 @@ final class FrankMartinShippingExportEventListener
     /**
      * @param ExportShipmentEvent $event
      */
-    public function exportShipment(ExportShipmentEvent $event)
+    public function exportShipment(ExportShipmentEvent $event): void
     {
         $shippingExport = $event->getShippingExport();
         $shippingGateway = $shippingExport->getShippingGateway();
@@ -49,7 +47,7 @@ final class FrankMartinShippingExportEventListener
     /**
      * @param bool $toggle
      */
-    public static function toggleSuccess($toggle)
+    public static function toggleSuccess($toggle): void
     {
         self::$success = $toggle;
     }
@@ -57,7 +55,7 @@ final class FrankMartinShippingExportEventListener
     /**
      * @return bool|string
      */
-    private function mockLabelContent()
+    private function mockLabelContent(): ?string
     {
         return file_get_contents(__DIR__ . '/../../Resources/fixtures/frank_marting_a8d3w12.pdf');
     }

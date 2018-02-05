@@ -82,9 +82,9 @@ final class ShippingExportController extends ResourceController
         $labelPath = $shippingExport->getLabelPath();
         Assert::notNull($labelPath);
 
-        $fs = $this->get('filesystem');
+        $fileSystem = $this->get('filesystem');
 
-        if (false === $fs->exists($labelPath)) {
+        if (false === $fileSystem->exists($labelPath)) {
             throw new NotFoundHttpException();
         }
 

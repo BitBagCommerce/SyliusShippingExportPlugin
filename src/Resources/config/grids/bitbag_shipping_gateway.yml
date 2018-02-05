@@ -16,9 +16,6 @@ sylius_grid:
                     type: string
                     label: bitbag.ui.label
                     sortable: label
-                shippingMethod:
-                    type: string
-                    label: sylius.ui.shipping_method
             filters:
                 search:
                     type: string

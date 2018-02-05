@@ -83,11 +83,12 @@ final class ShippingGatewayType extends AbstractResourceType
                 'required' => false,
                 'disabled' => true,
             ])
-            ->add('shippingMethod', EntityType::class, [
-                'label' => 'sylius.ui.shipping_method',
+            ->add('shippingMethods', EntityType::class, [
+                'label' => 'sylius.ui.shipping_methods',
                 'class' => $this->shippingMethodModelClass,
                 'query_builder' => $this->shippingMethodRepository->createQueryBuilder('o'),
                 'placeholder' => 'bitbag.ui.choose_shipping_method',
+                'multiple' => true,
             ])
             ->add('config', $shippingGatewayType, [
                 'label' => false,

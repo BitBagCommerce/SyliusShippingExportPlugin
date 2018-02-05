@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusShippingExportPlugin\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -38,16 +39,6 @@ interface ShippingGatewayInterface extends ResourceInterface
     public function getLabel(): ?string;
 
     /**
-     * @param ShippingMethodInterface $shippingMethod
-     */
-    public function setShippingMethod(?ShippingMethodInterface $shippingMethod): void;
-
-    /**
-     * @return ShippingMethodInterface
-     */
-    public function getShippingMethod(): ?ShippingMethodInterface;
-
-    /**
      * @param array|null $config
      */
     public function setConfig(?array $config): void;
@@ -56,6 +47,40 @@ interface ShippingGatewayInterface extends ResourceInterface
      * @return array|null
      */
     public function getConfig(): ?array;
+
+    /**
+     * @param string $key
+     *
+     * @return string|null
+     */
+    public function getConfigValue(string $key): ?string;
+
+    /**
+     * @return Collection|null
+     */
+    public function getShippingMethods(): ?Collection;
+
+    /**
+     * @param ShippingMethodInterface $shippingMethod
+     */
+    public function addShippingMethod(ShippingMethodInterface $shippingMethod): void;
+
+    /**
+     * @param ShippingMethodInterface $shippingMethod
+     */
+    public function removeShippingMethod(ShippingMethodInterface $shippingMethod): void;
+
+    /**
+     * @param ShippingMethodInterface $shippingMethod
+     *
+     * @return bool
+     */
+    public function hasShippingMethod(ShippingMethodInterface $shippingMethod): bool;
+
+    /**
+     * @return Collection|null
+     */
+    public function getShippingExports(): ?Collection;
 
     /**
      * @param ShippingExportInterface $shippingExport
@@ -73,11 +98,4 @@ interface ShippingGatewayInterface extends ResourceInterface
      * @return bool
      */
     public function hasShippingExport(ShippingExportInterface $shippingExport): bool;
-
-    /**
-     * @param string $key
-     *
-     * @return string|null
-     */
-    public function getConfigValue(string $key): ?string;
 }
