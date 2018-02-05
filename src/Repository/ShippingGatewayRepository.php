@@ -46,7 +46,7 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
     public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod): ?ShippingGatewayInterface
     {
         return $this->createQueryBuilder('o')
-            ->where('o.shippingMethod = :shippingMethod')
+            ->where(':shippingMethod MEMBER OF o.shippingMethods')
             ->setParameter('shippingMethod', $shippingMethod)
             ->getQuery()
             ->getOneOrNullResult()

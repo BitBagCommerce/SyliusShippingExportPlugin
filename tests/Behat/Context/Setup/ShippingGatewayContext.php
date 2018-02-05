@@ -94,7 +94,7 @@ final class ShippingGatewayContext implements Context
         /** @var ShippingMethodInterface $shippingMethod */
         $shippingMethod = $this->sharedStorage->get('shipping_method');
 
-        $shippingGateway->setShippingMethod($shippingMethod);
+        $shippingGateway->addShippingMethod($shippingMethod);
         $shippingGateway->setCode($code);
         $shippingGateway->setLabel($name);
         $shippingGateway->setConfig(['iban' => '123', 'address' => 'foo bar']);

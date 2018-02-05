@@ -128,20 +128,6 @@ final class ShippingExportContext implements Context
     }
 
     /**
-     * @param ShipmentInterface $shipment
-     * @param ShippingGatewayInterface $shippingGateway
-     */
-    private function addShippingExportForGateway(ShipmentInterface $shipment, ShippingGatewayInterface $shippingGateway)
-    {
-        /** @var ShippingExport $shippingExport */
-        $shippingExport = $this->shippingExportFactory->createNew();
-        $shippingExport->setShipment($shipment);
-        $shippingExport->setShippingGateway($shippingGateway);
-
-        $this->shippingExportRepository->add($shippingExport);
-    }
-
-    /**
      * @Given those orders were completed
      */
     public function thoseOrdersWereCompleted()
@@ -159,5 +145,19 @@ final class ShippingExportContext implements Context
     public function newShippingExportsShouldBeCreated($number)
     {
         Assert::eq(count($this->shippingExportRepository->findAll()), $number);
+    }
+
+    /**
+     * @param ShipmentInterface $shipment
+     * @param ShippingGatewayInterface $shippingGateway
+     */
+    private function addShippingExportForGateway(ShipmentInterface $shipment, ShippingGatewayInterface $shippingGateway)
+    {
+        /** @var ShippingExport $shippingExport */
+        $shippingExport = $this->shippingExportFactory->createNew();
+        $shippingExport->setShipment($shipment);
+        $shippingExport->setShippingGateway($shippingGateway);
+
+        $this->shippingExportRepository->add($shippingExport);
     }
 }
