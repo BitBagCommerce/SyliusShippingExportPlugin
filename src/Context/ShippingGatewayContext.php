@@ -99,7 +99,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     public function getLabelByCode(?string $code): ?string
     {
         foreach ($this->shippingGateways as $shippingGatewayCode => $shippingGatewayLabel) {
-            if ($shippingGatewayCode === $code) {
+            if ($code === $shippingGatewayCode) {
                 return $shippingGatewayLabel;
             }
         }

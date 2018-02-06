@@ -1,7 +1,6 @@
 bitbag:
     ui:
         shipping_gateways: Bramy dostawców
-        label: Nazwa
         create_shipping_gateway: Stwórz bramę dostawcy
         manage_shipping_gateways: Zarządzaj bramami dostawców
         choose_shipping_method: Wybierz metodę wysyłki

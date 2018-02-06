@@ -1,7 +1,6 @@
 bitbag:
     ui:
         shipping_gateways: Shipping gateways
-        label: Name
         create_shipping_gateway: Create shipping gateway
         manage_shipping_gateways: Manage shipping gateways
         choose_shipping_method: Choose shipping method

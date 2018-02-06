@@ -12,10 +12,10 @@ sylius_grid:
                     type: string
                     label: sylius.ui.code
                     sortable: code
-                label:
+                name:
                     type: string
-                    label: bitbag.ui.label
-                    sortable: label
+                    label: sylius.ui.name
+                    sortable: name
             filters:
                 search:
                     type: string
