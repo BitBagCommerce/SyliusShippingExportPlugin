@@ -77,11 +77,10 @@ final class ShippingGatewayType extends AbstractResourceType
                 'required' => false,
                 'disabled' => true,
             ])
-            ->add('label', TextType::class, [
+            ->add('name', TextType::class, [
                 'label' => 'bitbag.ui.label',
                 'data' => $label,
                 'required' => false,
-                'disabled' => true,
             ])
             ->add('shippingMethods', EntityType::class, [
                 'label' => 'sylius.ui.shipping_methods',

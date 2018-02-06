@@ -14,7 +14,7 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway:
             type: json_array
             column: config
 
-        label:
+        name:
             type: string
             column: name
     manyToMany:
