@@ -108,13 +108,13 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     }
 
     /**
-     * @param int|null $id
+     * @param int $id
      *
-     * @return ShippingGatewayInterface|null
+     * @return ShippingGatewayInterface
      *
      * @throws ShippingGatewayNotFoundException
      */
-    private function getExistingShippingGateway(?int $id): ?ShippingGatewayInterface
+    private function getExistingShippingGateway(int $id): ShippingGatewayInterface
     {
         /** @var ShippingGatewayInterface|null $shippingGateway */
         $shippingGateway = $this->shippingGatewayRepository->find($id);
