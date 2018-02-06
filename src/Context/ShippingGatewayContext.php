@@ -121,7 +121,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
 
         if (false === $shippingGateway instanceof ShippingGatewayInterface) {
             throw new  ShippingGatewayNotFoundException(sprintf(
-                'Gateway with %s id could not be found',
+                'Gateway with %d id could not be found in the database.',
                 $id
             ));
         }
