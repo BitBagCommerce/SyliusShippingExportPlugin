@@ -1,7 +1,7 @@
 {% set value = 'bitbag.ui.' ~ data.state %}
 
 {% if  data.state == 'new' %}
-    {% include '@BitBagShippingExportPlugin/ShippingExport/Partial/_exportShipment.html.twig' %}
+    {% include '@BitBagSyliusShippingExportPlugin/ShippingExport/Partial/_exportShipment.html.twig' %}
 {% else %}
     <span class="shipping-export-state ui green label"><i class="check icon"></i> {{ value|trans }}</span>
 {% endif %}
