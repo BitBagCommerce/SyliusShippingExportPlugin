@@ -32,7 +32,7 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * @var string
      */
-    protected $label;
+    protected $name;
 
     /**
      * @var array
@@ -82,17 +82,17 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function setLabel(?string $label): void
+    public function setName(?string $name): void
     {
-        $this->label = $label;
+        $this->name = $name;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLabel(): ?string
+    public function getName(): ?string
     {
-        return $this->label;
+        return $this->name;
     }
 
     /**

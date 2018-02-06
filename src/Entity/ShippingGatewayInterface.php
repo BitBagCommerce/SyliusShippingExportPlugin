@@ -29,14 +29,14 @@ interface ShippingGatewayInterface extends ResourceInterface
     public function getCode(): ?string;
 
     /**
-     * @param string|null $label
+     * @param string|null $name
      */
-    public function setLabel(?string $label): void;
+    public function setName(?string $name): void;
 
     /**
      * @return string|null
      */
-    public function getLabel(): ?string;
+    public function getName(): ?string;
 
     /**
      * @param array|null $config
