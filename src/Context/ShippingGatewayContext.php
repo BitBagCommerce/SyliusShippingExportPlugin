@@ -75,7 +75,7 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     public function getCode(): ?string
     {
         $request = $this->requestStack->getCurrentRequest();
-        $id = $request->get('id');
+        $id = (int) $request->get('id');
 
         if (null !== $id) {
             return $this->getExistingShippingGateway($id)->getCode();
