@@ -98,7 +98,7 @@ final class ShippingGatewayType extends AbstractResourceType
                 $shippingGateway = $event->getData();
 
                 $shippingGateway->setCode($code);
-                $shippingGateway->setLabel($label);
+                $shippingGateway->setName($label);
             })
         ;
     }

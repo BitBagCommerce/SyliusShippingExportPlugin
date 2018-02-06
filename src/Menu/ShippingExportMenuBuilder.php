@@ -25,7 +25,7 @@ final class ShippingExportMenuBuilder
             ->getMenu()
             ->getChild('sales')
             ->addChild('shipping_exports', ['route' => 'bitbag_admin_shipping_export_index'])
-            ->setLabel('bitbag.ui.export_shipments')
+            ->setName('bitbag.ui.export_shipments')
             ->setLabelAttribute('icon', 'arrow up')
         ;
     }

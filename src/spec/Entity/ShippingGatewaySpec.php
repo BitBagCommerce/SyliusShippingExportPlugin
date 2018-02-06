@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 /*
  * This file has been created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -8,6 +7,8 @@ declare(strict_types=1);
  * You can find more information about us on https://bitbag.shop and write us
  * an email on mikolaj.krol@bitbag.pl.
  */
+
+declare(strict_types=1);
 
 namespace spec\BitBag\SyliusShippingExportPlugin\Entity;
 
@@ -36,15 +37,16 @@ final class ShippingGatewaySpec extends ObjectBehavior
         $this->shouldImplement(ShippingGatewayInterface::class);
     }
 
-    function it_returns_null_for_empty_shipping_method()
+    function it_returns_array_collection_when_initialized()
     {
-        $this->getShippingMethod()->shouldReturn(null);
+        $this->getShippingMethods()->shouldHaveType(Collection::class);
     }
 
-    function it_sets_shipping_method(ShippingMethodInterface $shippingMethod)
+    function it_adds_shipping_method(ShippingMethodInterface $shippingMethod)
     {
-        $this->setShippingMethod($shippingMethod);
-        $this->getShippingMethod()->shouldReturn($shippingMethod);
+        $this->addShippingMethod($shippingMethod);
+
+        $this->getShippingMethods()->first()->shouldReturn($shippingMethod);
     }
 
     function it_initializes_a_shipping_export_collection_by_default()
