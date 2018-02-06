@@ -2,5 +2,5 @@ sylius:
     resource: "../../../../vendor/sylius/sylius/app/config/routing.yml"
 
 bitbag_shipping_export_plugin:
-    resource: "@BitBagShippingExportPlugin/Resources/config/routing.yml"
+    resource: "@BitBagSyliusShippingExportPlugin/Resources/config/routing.yml"
     prefix: /admin

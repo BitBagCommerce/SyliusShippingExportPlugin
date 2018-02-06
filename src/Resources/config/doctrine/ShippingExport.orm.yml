@@ -27,6 +27,7 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingExport:
     manyToOne:
         shippingGateway:
             targetEntity: BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway
+            inversedBy: shippingExports
             joinColumn:
                 name: shipping_gateway_id
                 referencedColumnName: id

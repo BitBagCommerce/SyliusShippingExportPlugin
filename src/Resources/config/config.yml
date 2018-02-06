@@ -1,12 +1,12 @@
 imports:
-    - { resource: "@BitBagShippingExportPlugin/Resources/config/resource/bitbag_shipping_gateway.yml" }
-    - { resource: "@BitBagShippingExportPlugin/Resources/config/resource/bitbag_shipping_export.yml" }
-    - { resource: "@BitBagShippingExportPlugin/Resources/config/grids/bitbag_shipping_gateway.yml" }
-    - { resource: "@BitBagShippingExportPlugin/Resources/config/grids/bitbag_shipping_export.yml" }
-    - { resource: "@BitBagShippingExportPlugin/Resources/config/services.yml" }
+    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/resource/bitbag_shipping_gateway.yml" }
+    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/resource/bitbag_shipping_export.yml" }
+    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/grids/bitbag_shipping_gateway.yml" }
+    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/grids/bitbag_shipping_export.yml" }
+    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/services.yml" }
 
 sylius_grid:
     templates:
         action:
-            create_shipping_gateway: "@BitBagShippingExportPlugin/ShippingGateway/Action/_create.html.twig"
-            export_shipments: "@BitBagShippingExportPlugin/ShippingExport/Action/_exportShipments.html.twig"
+            create_shipping_gateway: "@BitBagSyliusShippingExportPlugin/ShippingGateway/Action/_create.html.twig"
+            export_shipments: "@BitBagSyliusShippingExportPlugin/ShippingExport/Action/_exportShipments.html.twig"

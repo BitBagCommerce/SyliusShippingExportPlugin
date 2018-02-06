@@ -17,7 +17,7 @@ use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class BitBagShippingExportPlugin extends Bundle
+final class BitBagSyliusShippingExportPlugin extends Bundle
 {
     use SyliusPluginTrait;
 
