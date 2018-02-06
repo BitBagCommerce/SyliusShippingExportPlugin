@@ -75,10 +75,10 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     public function getCode(): ?string
     {
         $request = $this->requestStack->getCurrentRequest();
-        $id = (int) $request->get('id');
+        $id = $request->get('id');
 
         if (null !== $id) {
-            return $this->getExistingShippingGateway($id)->getCode();
+            return $this->getExistingShippingGateway((int) $id)->getCode();
         }
 
         $code = $request->get('code');
@@ -108,20 +108,20 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     }
 
     /**
-     * @param int|null $id
+     * @param int $id
      *
-     * @return ShippingGatewayInterface|null
+     * @return ShippingGatewayInterface
      *
      * @throws ShippingGatewayNotFoundException
      */
-    private function getExistingShippingGateway(?int $id): ?ShippingGatewayInterface
+    private function getExistingShippingGateway(int $id): ShippingGatewayInterface
     {
         /** @var ShippingGatewayInterface|null $shippingGateway */
         $shippingGateway = $this->shippingGatewayRepository->find($id);
 
         if (false === $shippingGateway instanceof ShippingGatewayInterface) {
             throw new  ShippingGatewayNotFoundException(sprintf(
-                'Gateway with %s id could not be found',
+                'Gateway with %d id could not be found in the database.',
                 $id
             ));
         }
