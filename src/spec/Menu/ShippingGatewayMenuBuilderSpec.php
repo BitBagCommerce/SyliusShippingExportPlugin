@@ -36,7 +36,7 @@ final class ShippingGatewayMenuBuilderSpec extends ObjectBehavior
             ->addChild('shipping_gateways', ['route' => 'bitbag_admin_shipping_gateway_index'])
             ->willReturn($shippingGatewayMenuItem)
         ;
-        $shippingGatewayMenuItem->setName('bitbag.ui.shipping_gateways')->willReturn($shippingGatewayMenuItem);
+        $shippingGatewayMenuItem->setLabel('bitbag.ui.shipping_gateways')->willReturn($shippingGatewayMenuItem);
         $shippingGatewayMenuItem->setLabelAttribute('icon', 'cloud')->shouldBeCalled();
 
         $this->buildMenu($event);
