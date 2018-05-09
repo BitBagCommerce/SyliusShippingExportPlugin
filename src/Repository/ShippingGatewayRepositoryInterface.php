@@ -27,9 +27,9 @@ interface ShippingGatewayRepositoryInterface extends RepositoryInterface
     /**
      * @param string $code
      *
-     * @return ShippingMethodInterface
+     * @return ShippingGatewayInterface
      */
-    public function findOneByCode(string $code): ?ShippingGatewayRepository;
+    public function findOneByCode(string $code): ?ShippingGatewayInterface;
 
     /**
      * @param ShippingMethodInterface $shippingMethod
