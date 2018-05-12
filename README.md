@@ -63,7 +63,3 @@ $ open http://127.0.0.1:8000/
 ## Contribution
 
 Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/
-
-## Support
-
-Do you want us to customize this plugin for your specific needs? Write us an email on mikolaj.krol@bitbag.pl 💻
