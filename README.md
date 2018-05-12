@@ -23,6 +23,11 @@
 ## Overview
 Managing shipments in any eCommerce app is something that may be tricky. There are many shipping providers and every of them has probably its own API format which allows to provide shipment data and book a courier. To make this process more straight forward and generic, we decided to create an abstract layer for Sylius platform based applications which allows you to write just simple API call and configuration form for specific shipping provider. The workflow is quite simple - configure proper data that's needed to export a shipment, like access key or pickup hour, book a courier for an order with one click and get shipping label file if any was received from the API. The implementation limits to write a shipping provider gateway configuration form, one event listener and webservice access layer.
 
+## Support
+
+We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
+Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop/)! :rocket:
+
 ## Usage
 
 Read [this blog post](https://bitbag.shop/blog/bitbag-shipping-export-plugin-simple-way-to-control-shipments-in-your-online-store) in order to start using this plugin.
