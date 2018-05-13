@@ -28,6 +28,11 @@ Managing shipments in any eCommerce app is something that may be tricky. There a
 We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
 Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop/)! :rocket:
 
+## Demo
+
+We created a demo app with some useful use-cases of the plugin! Visit [demo.bitbag.shop](https://demo.bitbag.shop) to take a look at it. 
+The admin can be accessed under [demo.bitbag.shop/admin](https://demo.bitbag.shop/admin) link and `sylius: sylius` credentials.
+
 ## Usage
 
 Read [this blog post](https://bitbag.shop/blog/bitbag-shipping-export-plugin-simple-way-to-control-shipments-in-your-online-store) in order to start using this plugin.
