@@ -17,6 +17,10 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingExport:
         state:
             type: string
             column: state
+        shipmentGatewayId:
+            type: string
+            coolumn: shipment_gateway_id
+            nullable: true
     oneToOne:
         shipment:
             targetEntity: Sylius\Component\Core\Model\Shipment

@@ -27,6 +27,11 @@ class ShippingExport implements ShippingExportInterface
     protected $shipment;
 
     /**
+     * @var string
+     */
+    protected $shipmentGatewayId;
+
+    /**
      * @var ShippingGatewayInterface
      */
     protected $shippingGateway;
@@ -68,6 +73,22 @@ class ShippingExport implements ShippingExportInterface
     public function setShipment(?ShipmentInterface $shipment): void
     {
         $this->shipment = $shipment;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShipmentGatewayId(): ?string
+    {
+        return $this->shipmentGatewayId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setShipmentGatewayId(?string $shipmentGatewayId): void
+    {
+        $this->shipmentGatewayId = $shipmentGatewayId;
     }
 
     /**
