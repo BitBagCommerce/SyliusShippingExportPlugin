@@ -17,9 +17,9 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingExport:
         state:
             type: string
             column: state
-        shipmentGatewayId:
+        externalId:
             type: string
-            coolumn: shipment_gateway_id
+            column: external_id
             nullable: true
     oneToOne:
         shipment:

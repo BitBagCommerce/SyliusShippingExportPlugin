@@ -33,12 +33,12 @@ interface ShippingExportInterface extends ResourceInterface
     /**
      * @return string|null
      */
-    public function getShipmentGatewayId(): ?string;
+    public function getExternalId(): ?string;
 
     /**
-     * @param string|null $shipmentGatewayId
+     * @param string|null $externalId
      */
-    public function setShipmentGatewayId(?string $shipmentGatewayId): void;
+    public function setExternalId(?string $externalId): void;
 
     /**
      * @return ShippingGatewayInterface

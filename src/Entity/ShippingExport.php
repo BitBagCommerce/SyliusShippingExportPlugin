@@ -29,7 +29,7 @@ class ShippingExport implements ShippingExportInterface
     /**
      * @var string
      */
-    protected $shipmentGatewayId;
+    protected $externalId;
 
     /**
      * @var ShippingGatewayInterface
@@ -78,17 +78,17 @@ class ShippingExport implements ShippingExportInterface
     /**
      * {@inheritdoc}
      */
-    public function getShipmentGatewayId(): ?string
+    public function getExternalId(): ?string
     {
-        return $this->shipmentGatewayId;
+        return $this->externalId;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setShipmentGatewayId(?string $shipmentGatewayId): void
+    public function setExternalId(?string $externalId): void
     {
-        $this->shipmentGatewayId = $shipmentGatewayId;
+        $this->externalId = $externalId;
     }
 
     /**
