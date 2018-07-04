@@ -121,7 +121,7 @@ class ShippingGateway implements ShippingGatewayInterface
             $key
         ));
 
-        return $this->config[$key];
+        return (string) $this->config[$key];
     }
 
     /**
