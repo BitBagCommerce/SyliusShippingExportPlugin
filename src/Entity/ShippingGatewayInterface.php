@@ -53,7 +53,7 @@ interface ShippingGatewayInterface extends ResourceInterface
      *
      * @return string|null
      */
-    public function getConfigValue(string $key): ?string;
+    public function getConfigValue(string $key);
 
     /**
      * @return Collection|null

@@ -114,14 +114,14 @@ class ShippingGateway implements ShippingGatewayInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigValue(string $key): ?string
+    public function getConfigValue(string $key)
     {
         Assert::keyExists($this->config, $key, sprintf(
             'Shipping gateway config named %s does not exist.',
             $key
         ));
 
-        return (string) $this->config[$key];
+        return $this->config[$key];
     }
 
     /**
