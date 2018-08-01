@@ -23,7 +23,7 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingExport:
             nullable: true
     oneToOne:
         shipment:
-            targetEntity: Sylius\Component\Core\Model\Shipment
+            targetEntity: Sylius\Component\Shipping\Model\ShipmentInterface
             joinColumn:
                 name: shipment_id
                 referencedColumnName: id
