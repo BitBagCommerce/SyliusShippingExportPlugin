@@ -1,0 +1,21 @@
+bitbag:
+    ui:
+        label: Nom
+        shipping_gateways: Passerelles d'expédition
+        create_shipping_gateway: Créer une nouvelle passerelle
+        manage_shipping_gateways: Gérer les passerelles d'expédition
+        choose_shipping_method: Sélectionner une méthode d'expédition
+        export_all_new_shipments: Exporter
+        no_shipping_label: Aucune étiquette
+        export_shipments: Expéditions
+        download_shipping_label: Télécharger l'étiquette
+        shipping_exports: Expéditions
+        manage_shipping_exports: Gérer les expéditions
+        shipment_data_has_been_exported: L'expédition a été exportée
+        shipping_export_error: Une erreur externe s'est produite lors de la tentative d'exportation des données d'expédition.
+        shipping_export_label: Etiquette
+        new: Nouveau
+        exported_at: Date d'export
+        exported: Exporté
+        not_exported_yet: Non exporté
+        no_new_shipments_to_export: Il n'y a pas d'expédition à exporter.
