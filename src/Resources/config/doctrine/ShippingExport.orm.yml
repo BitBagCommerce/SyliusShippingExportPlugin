@@ -30,7 +30,7 @@ BitBag\SyliusShippingExportPlugin\Entity\ShippingExport:
             cascade: ['ALL']
     manyToOne:
         shippingGateway:
-            targetEntity: BitBag\SyliusShippingExportPlugin\Entity\ShippingGateway
+            targetEntity: BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface
             inversedBy: shippingExports
             joinColumn:
                 name: shipping_gateway_id
