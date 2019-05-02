@@ -1,9 +1,7 @@
 imports:
-    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/resource/bitbag_shipping_gateway.yml" }
-    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/resource/bitbag_shipping_export.yml" }
-    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/grids/bitbag_shipping_gateway.yml" }
-    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/grids/bitbag_shipping_export.yml" }
-    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/services.yml" }
+    - { resource: "resource/**/*.yml" }
+    - { resource: "grids/**/*.yml" }
+    - { resource: "services.yml" }
 
 sylius_grid:
     templates:

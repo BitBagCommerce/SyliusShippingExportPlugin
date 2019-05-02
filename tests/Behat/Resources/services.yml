@@ -1,0 +1,13 @@
+imports:
+    - { resource: "services/**/*.yml" }
+
+services:
+    bitbag.shipping_gateway_plugin.mock.form.type.frank_martin_shipping_gateway:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\Form\Type\FrankMartinShippingGatewayType
+        tags:
+            - { name: bitbag.shipping_gateway_configuration_type, type: "frank_martin_shipping_gateway", label: "Transporter Gateway" }
+
+    bitbag.shipping_gateway_plugin.mock.event_listener.frank_martin_shipping_export:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener\FrankMartinShippingExportEventListener
+        tags:
+            - { name: kernel.event_listener, event: 'bitbag.export_shipment', method: exportShipment }

@@ -1,0 +1,46 @@
+services:
+    _defaults:
+        public: true
+
+    bitbag.behat.context.hook.shipping_export:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Hook\ShippingExportContext
+        arguments:
+            - '@filesystem'
+            - '%bitbag.shipping_labels_path%'
+
+    bitbag.behat.context.setup.shipping_gateway:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Setup\ShippingGatewayContext
+        arguments:
+            - '@sylius.factory.shipping_method'
+            - '@bitbag.factory.shipping_gateway'
+            - '@sylius.repository.shipping_method'
+            - '@bitbag.repository.shipping_gateway'
+            - '@doctrine.orm.entity_manager'
+            - '@sylius.behat.shared_storage'
+
+    bitbag.behat.context.setup.shipping_export:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Setup\ShippingExportContext
+        arguments:
+            - '@sylius.repository.order'
+            - '@sylius.behat.shared_storage'
+            - '@sylius.factory.shipment'
+            - '@sylius.repository.shipment'
+            - '@bitbag.repository.shipping_gateway'
+            - '@bitbag.factory.shipping_export'
+            - '@bitbag.repository.shipping_export'
+            - "@event_dispatcher"
+
+    bitbag.behat.context.ui.admin.shipping_gateway:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Ui\Admin\ShippingGatewayContext
+        arguments:
+            - '@bitbag.behat.page.admin.shipping_gateway.create'
+            - '@bitbag.behat.page.admin.shipping_gateway.update'
+            - '@sylius.behat.current_page_resolver'
+            - '@sylius.behat.shared_storage'
+            - '@sylius.behat.notification_checker'
+
+    bitbag.behat.context.ui.admin.shipping_export:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Ui\Admin\ShippingExportContext
+        arguments:
+            - '@bitbag.behat.page.admin.shipping_export.index'
+            - '@sylius.behat.notification_checker'
