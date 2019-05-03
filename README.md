@@ -26,8 +26,7 @@
 ## BitBag SyliusShippingExportPlugin
 
 Managing shipments in any eCommerce app is something that may be tricky. There are many shipping providers and
-each has its own API format which allows providing shipment data and request a courier. To make this process more straight forward
-and generic, we decided to create an abstract layer for Sylius platform based applications. This plugins allows you to write simple API calls and configuration form for
+each has its own API format you might want to use to export shipping data and request the pickup. To make this process more simple and generic, we decided to create an abstract layer for Sylius platform based applications for this purpose. This plugin allows you to write simple API calls and configuration form for
 specific shipping provider. The workflow is quite simple - configure a proper data that's needed to export a shipment, like access key or pickup hour,
 book a courier for an order with one click and get shipping label file if any was received from the API.
 The implementation limits to writing a shipping provider gateway configuration form, one event listener and webservice access layer.
