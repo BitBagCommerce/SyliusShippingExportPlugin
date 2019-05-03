@@ -31,11 +31,11 @@ final class PlacingShipmentForGatewayEventListenerSpec extends ObjectBehavior
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         ShippingExportRepositoryInterface $shippingExportRepository,
         FactoryInterface $shippingExportFactory
-    ) {
+    ): void {
         $this->beConstructedWith($shippingGatewayRepository, $shippingExportRepository, $shippingExportFactory);
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(PlacingShipmentForGatewayEventListener::class);
     }
@@ -50,7 +50,7 @@ final class PlacingShipmentForGatewayEventListenerSpec extends ObjectBehavior
         FactoryInterface $shippingExportFactory,
         ShippingExportInterface $shippingExport,
         ShippingExportRepositoryInterface $shippingExportRepository
-    ) {
+    ): void {
         $event->getSubject()->willReturn($order);
         $order->getShipments()->willReturn(new ArrayCollection([$shipment->getWrappedObject()]));
         $shipment->getMethod()->willReturn($shippingMethod);

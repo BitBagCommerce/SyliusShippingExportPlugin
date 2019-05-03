@@ -24,44 +24,24 @@ class ExportShipmentEvent extends Event
 {
     const NAME = 'bitbag.export_shipment';
 
-    /**
-     * @var ShippingExportInterface
-     */
+    /** @var ShippingExportInterface */
     private $shippingExport;
 
-    /**
-     * @var FlashBagInterface
-     */
+    /** @var FlashBagInterface */
     private $flashBag;
 
-    /**
-     * @var EntityManagerInterface|EntityManager
-     */
+    /** @var EntityManagerInterface|EntityManager */
     private $shippingExportManager;
 
-    /**
-     * @var Filesystem
-     */
+    /** @var Filesystem */
     private $filesystem;
 
-    /**
-     * @var TranslatorInterface
-     */
+    /** @var TranslatorInterface */
     private $translator;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $shippingLabelsPath;
 
-    /**
-     * @param ShippingExportInterface $shippingExport
-     * @param FlashBagInterface $flashBag
-     * @param EntityManagerInterface|EntityManager $shippingExportManager
-     * @param Filesystem $filesystem
-     * @param TranslatorInterface $translator
-     * @param string $shippingLabelsPath
-     */
     public function __construct(
         ShippingExportInterface $shippingExport,
         FlashBagInterface $flashBag,
@@ -78,17 +58,11 @@ class ExportShipmentEvent extends Event
         $this->translator = $translator;
     }
 
-    /**
-     * @return ShippingExportInterface
-     */
     public function getShippingExport(): ?ShippingExportInterface
     {
         return $this->shippingExport;
     }
 
-    /**
-     * @param string $messageId
-     */
     public function addSuccessFlash(string $messageId = 'bitbag.ui.shipment_data_has_been_exported'): void
     {
         $message = $this->translator->trans($messageId);
@@ -98,9 +72,6 @@ class ExportShipmentEvent extends Event
         }
     }
 
-    /**
-     * @param string $messageId
-     */
     public function addErrorFlash(string $messageId = 'bitbag.ui.shipping_export_error'): void
     {
         $message = $this->translator->trans($messageId);
@@ -110,10 +81,6 @@ class ExportShipmentEvent extends Event
         }
     }
 
-    /**
-     * @param string $labelContent
-     * @param string $labelExtension
-     */
     public function saveShippingLabel(string $labelContent, string $labelExtension): void
     {
         $shipment = $this->getShippingExport()->getShipment();

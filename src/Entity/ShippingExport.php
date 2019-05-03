@@ -16,140 +16,87 @@ use Sylius\Component\Core\Model\ShipmentInterface;
 
 class ShippingExport implements ShippingExportInterface
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var ShipmentInterface
-     */
+    /** @var ShipmentInterface */
     protected $shipment;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $externalId;
 
-    /**
-     * @var ShippingGatewayInterface
-     */
+    /** @var ShippingGatewayInterface */
     protected $shippingGateway;
 
-    /**
-     * @var \DateTime
-     */
+    /** @var \DateTime */
     protected $exportedAt;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $labelPath;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $state = ShippingExportInterface::STATE_NEW;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getShipment(): ?ShipmentInterface
     {
         return $this->shipment;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setShipment(?ShipmentInterface $shipment): void
     {
         $this->shipment = $shipment;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExternalId(): ?string
     {
         return $this->externalId;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setExternalId(?string $externalId): void
     {
         $this->externalId = $externalId;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getShippingGateway(): ?ShippingGatewayInterface
     {
         return $this->shippingGateway;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setShippingGateway(?ShippingGatewayInterface $shippingGateway): void
     {
         $this->shippingGateway = $shippingGateway;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExportedAt(): ?\DateTime
     {
         return $this->exportedAt;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setExportedAt(?\DateTime $exportedAt): void
     {
         $this->exportedAt = $exportedAt;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getState(): ?string
     {
         return $this->state;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setState(?string $state): void
     {
         $this->state = $state;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLabelPath(): ?string
     {
         return $this->labelPath;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLabelPath(?string $labelPath): void
     {
         $this->labelPath = $labelPath;

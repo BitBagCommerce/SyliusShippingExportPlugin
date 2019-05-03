@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: BitBag\SyliusShippingExportPlugin
-        psr4_prefix: BitBag\SyliusShippingExportPlugin
-        src_path: .

@@ -21,32 +21,18 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ShippingGatewayContext implements ShippingGatewayContextInterface
 {
-    /**
-     * @var RequestStack
-     */
+    /** @var RequestStack */
     private $requestStack;
 
-    /**
-     * @var FormTypeRegistryInterface
-     */
+    /** @var FormTypeRegistryInterface */
     private $shippingGatewayFormTypeRegistry;
 
-    /**
-     * @var ShippingGatewayRepositoryInterface
-     */
+    /** @var ShippingGatewayRepositoryInterface */
     private $shippingGatewayRepository;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $shippingGateways;
 
-    /**
-     * @param RequestStack $requestStack
-     * @param FormTypeRegistryInterface $shippingGatewayFormTypeRegistry
-     * @param ShippingGatewayRepositoryInterface $shippingGatewayRepository
-     * @param array $shippingGateways
-     */
     public function __construct(
         RequestStack $requestStack,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry,
@@ -59,9 +45,6 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
         $this->shippingGateways = $shippingGateways;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFormType(): ?string
     {
         $code = $this->getCode();
@@ -69,9 +52,6 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
         return $this->shippingGatewayFormTypeRegistry->get('shipping_gateway_config', $code);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCode(): ?string
     {
         $request = $this->requestStack->getCurrentRequest();
@@ -93,9 +73,6 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
         return $code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLabelByCode(?string $code): ?string
     {
         foreach ($this->shippingGateways as $shippingGatewayCode => $shippingGatewayLabel) {
@@ -107,13 +84,6 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
         throw new ShippingGatewayLabelNotFound($code);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return ShippingGatewayInterface
-     *
-     * @throws ShippingGatewayNotFoundException
-     */
     private function getExistingShippingGateway(int $id): ShippingGatewayInterface
     {
         /** @var ShippingGatewayInterface|null $shippingGateway */

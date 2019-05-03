@@ -17,13 +17,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface ShippingExportRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @return QueryBuilder
-     */
     public function createListQueryBuilder(): QueryBuilder;
 
-    /**
-     * @return array
-     */
     public function findAllWithNewState(): array;
 }

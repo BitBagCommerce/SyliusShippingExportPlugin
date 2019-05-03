@@ -21,9 +21,6 @@ final class BitBagSyliusShippingExportPlugin extends Bundle
 {
     use SyliusPluginTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);

@@ -16,9 +16,6 @@ use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayNotFoundException
 
 interface ShippingGatewayContextInterface
 {
-    /**
-     * @return string|null
-     */
     public function getFormType(): ?string;
 
     /**
@@ -28,10 +25,5 @@ interface ShippingGatewayContextInterface
      */
     public function getCode(): ?string;
 
-    /**
-     * @param string|null $code
-     *
-     * @return string|null
-     */
     public function getLabelByCode(?string $code): ?string;
 }

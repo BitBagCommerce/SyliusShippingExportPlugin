@@ -17,9 +17,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class RegisterShippingGatewayConfigTypePass implements CompilerPassInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container): void
     {
         if (!$container->has('bitbag.form_registry.shipping_gateway_config')) {

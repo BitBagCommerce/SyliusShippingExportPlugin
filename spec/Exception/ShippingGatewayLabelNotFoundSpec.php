@@ -17,22 +17,22 @@ use PhpSpec\ObjectBehavior;
 
 final class ShippingGatewayLabelNotFoundSpec extends ObjectBehavior
 {
-    function let()
+    function let(): void
     {
         $this->beConstructedWith('foo');
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ShippingGatewayLabelNotFound::class);
     }
 
-    function it_extends_exception()
+    function it_extends_exception(): void
     {
         $this->shouldHaveType(\Exception::class);
     }
 
-    function it_has_a_message()
+    function it_has_a_message(): void
     {
         $this->getMessage()->shouldReturn('Shipping gateway label for foo code was not found.');
     }

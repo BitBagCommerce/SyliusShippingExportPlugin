@@ -19,9 +19,6 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 final class FrankMartinShippingGatewayType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

@@ -19,7 +19,7 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ShippingExportMenuBuilderSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ShippingExportMenuBuilder::class);
     }
@@ -29,7 +29,7 @@ final class ShippingExportMenuBuilderSpec extends ObjectBehavior
         ItemInterface $rootMenuItem,
         ItemInterface $configurationItem,
         ItemInterface $shippingGatewayMenuItem
-    ) {
+    ): void {
         $event->getMenu()->willReturn($rootMenuItem);
         $rootMenuItem->getChild('sales')->willReturn($configurationItem);
         $configurationItem

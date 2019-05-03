@@ -20,20 +20,12 @@ use Webmozart\Assert\Assert;
 
 final class ShippingExportContext implements Context
 {
-    /**
-     * @var IndexPageInterface
-     */
+    /** @var IndexPageInterface */
     private $indexPage;
 
-    /**
-     * @var NotificationCheckerInterface
-     */
+    /** @var NotificationCheckerInterface */
     private $notificationChecker;
 
-    /**
-     * @param IndexPageInterface $indexPage
-     * @param NotificationCheckerInterface $notificationChecker
-     */
     public function __construct(
         IndexPageInterface $indexPage,
         NotificationCheckerInterface $notificationChecker
@@ -45,7 +37,7 @@ final class ShippingExportContext implements Context
     /**
      * @When I go to the shipping export page
      */
-    public function iGoToTheShippingExportPage()
+    public function iGoToTheShippingExportPage(): void
     {
         $this->indexPage->open();
     }
@@ -55,7 +47,7 @@ final class ShippingExportContext implements Context
      * @Then all :number shipments should have :state state
      * @Then :number shipments should have :state state
      */
-    public function iShouldSeeNewShipmentsToExportWithState($number, $state)
+    public function iShouldSeeNewShipmentsToExportWithState(string $number, string $state): void
     {
         Assert::eq((int) $number, count($this->indexPage->getShipmentsWithState($state)));
     }
@@ -63,7 +55,7 @@ final class ShippingExportContext implements Context
     /**
      * @When I export all new shipments
      */
-    public function iExportAllNewShipments()
+    public function iExportAllNewShipments(): void
     {
         $this->indexPage->exportAllShipments();
     }
@@ -71,7 +63,7 @@ final class ShippingExportContext implements Context
     /**
      * @When I export first shipment
      */
-    public function iExportFirsShipments()
+    public function iExportFirsShipments(): void
     {
         $this->indexPage->exportFirsShipment();
     }
@@ -79,7 +71,7 @@ final class ShippingExportContext implements Context
     /**
      * @Then I should be notified that the shipment has been exported
      */
-    public function iShouldBeNotifiedThatTheShipmentHasBeenExported()
+    public function iShouldBeNotifiedThatTheShipmentHasBeenExported(): void
     {
         $this->notificationChecker->checkNotification(
             'Shipment data has been exported.',
@@ -90,7 +82,7 @@ final class ShippingExportContext implements Context
     /**
      * @Then I should be notified that there are no new shipments to export
      */
-    public function iShouldBeNotifiedThatThereAreNoNewShipmentsToExport()
+    public function iShouldBeNotifiedThatThereAreNoNewShipmentsToExport(): void
     {
         $this->notificationChecker->checkNotification(
             'There are no new shipments to export.',
@@ -101,7 +93,7 @@ final class ShippingExportContext implements Context
     /**
      * @Then I should be notified that an error occurred while trying to export shipping data
      */
-    public function iShouldBeNotifiedThatAnErrorOccurredWhileTryingToExportShippingData()
+    public function iShouldBeNotifiedThatAnErrorOccurredWhileTryingToExportShippingData(): void
     {
         $this->notificationChecker->checkNotification(
             'An external error occurred while trying to export shipping data.',

@@ -20,63 +20,27 @@ interface ShippingExportInterface extends ResourceInterface
     const STATE_NEW = 'new';
     const STATE_EXPORTED = 'exported';
 
-    /**
-     * @return ShipmentInterface
-     */
     public function getShipment(): ?ShipmentInterface;
 
-    /**
-     * @param ShipmentInterface $shipment
-     */
     public function setShipment(?ShipmentInterface $shipment): void;
 
-    /**
-     * @return string|null
-     */
     public function getExternalId(): ?string;
 
-    /**
-     * @param string|null $externalId
-     */
     public function setExternalId(?string $externalId): void;
 
-    /**
-     * @return ShippingGatewayInterface
-     */
     public function getShippingGateway(): ?ShippingGatewayInterface;
 
-    /**
-     * @param ShippingGatewayInterface $shippingGateway
-     */
     public function setShippingGateway(?ShippingGatewayInterface $shippingGateway): void;
 
-    /**
-     * @return \DateTime
-     */
     public function getExportedAt(): ?\DateTime;
 
-    /**
-     * @param \DateTime $exportedAt
-     */
     public function setExportedAt(?\DateTime $exportedAt): void;
 
-    /**
-     * @return string|null
-     */
     public function getLabelPath(): ?string;
 
-    /**
-     * @param string|null $labelPath
-     */
     public function setLabelPath(?string $labelPath): void;
 
-    /**
-     * @return string
-     */
     public function getState(): ?string;
 
-    /**
-     * @param string $state
-     */
     public function setState(?string $state): void;
 }

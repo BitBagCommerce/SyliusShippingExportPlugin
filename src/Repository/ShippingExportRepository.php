@@ -18,25 +18,20 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class ShippingExportRepository extends EntityRepository implements ShippingExportRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.shipment', 'shipment')
-            ;
+        ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findAllWithNewState(): array
     {
         return $this->createQueryBuilder('o')
             ->where('o.state = :newState')
             ->setParameter('newState', ShippingExportInterface::STATE_NEW)
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
     }
 }

@@ -19,22 +19,9 @@ use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 
 interface ShippingGatewayRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @return QueryBuilder
-     */
     public function createListQueryBuilder(): QueryBuilder;
 
-    /**
-     * @param string $code
-     *
-     * @return ShippingGatewayInterface
-     */
     public function findOneByCode(string $code): ?ShippingGatewayInterface;
 
-    /**
-     * @param ShippingMethodInterface $shippingMethod
-     *
-     * @return ShippingGatewayInterface
-     */
     public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod): ?ShippingGatewayInterface;
 }

@@ -25,28 +25,15 @@ use Symfony\Component\Form\FormEvents;
 
 final class ShippingGatewayType extends AbstractResourceType
 {
-    /**
-     * @var ShippingGatewayContextInterface
-     */
+    /** @var ShippingGatewayContextInterface */
     private $shippingGatewayTypeContext;
 
-    /**
-     * @var ShippingMethodRepositoryInterface|EntityRepository
-     */
+    /** @var ShippingMethodRepositoryInterface|EntityRepository */
     private $shippingMethodRepository;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $shippingMethodModelClass;
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param ShippingGatewayContextInterface $shippingGatewayTypeContext
-     * @param ShippingMethodRepositoryInterface $shippingMethodRepository
-     * @param string $shippingMethodModelClass
-     */
     public function __construct(
         $dataClass,
         array $validationGroups = [],
@@ -61,9 +48,6 @@ final class ShippingGatewayType extends AbstractResourceType
         $this->shippingMethodModelClass = $shippingMethodModelClass;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $code = $this->shippingGatewayTypeContext->getCode();
@@ -103,9 +87,6 @@ final class ShippingGatewayType extends AbstractResourceType
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_shipping_gateway_config';

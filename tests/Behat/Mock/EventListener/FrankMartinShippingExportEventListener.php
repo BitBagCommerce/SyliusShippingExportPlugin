@@ -13,17 +13,13 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener;
 
 use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
+use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
 {
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private static $success = true;
 
-    /**
-     * @param ExportShipmentEvent $event
-     */
     public function exportShipment(ExportShipmentEvent $event): void
     {
         $shippingExport = $event->getShippingExport();
@@ -44,19 +40,17 @@ final class FrankMartinShippingExportEventListener
         $event->saveShippingLabel($this->mockLabelContent(), 'pdf');
     }
 
-    /**
-     * @param bool $toggle
-     */
     public static function toggleSuccess($toggle): void
     {
         self::$success = $toggle;
     }
 
-    /**
-     * @return bool|string
-     */
-    private function mockLabelContent(): ?string
+    public function mockLabelContent(): string
     {
-        return file_get_contents(__DIR__ . '/../../Resources/fixtures/frank_marting_a8d3w12.pdf');
+        $content = file_get_contents(__DIR__ . '/../../Resources/fixtures/frank_marting_a8d3w12.pdf');
+
+        Assert::string($content);
+
+        return $content;
     }
 }

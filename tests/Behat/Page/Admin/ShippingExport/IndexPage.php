@@ -17,10 +17,7 @@ use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
 
 final class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getShipmentsWithState($state)
+    public function getShipmentsWithState(string $state): array
     {
         $items = $this->getDocument()->findAll('css', '.shipping-export-state');
         $result = [];
@@ -35,18 +32,12 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
         return $result;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function exportAllShipments()
+    public function exportAllShipments(): void
     {
         $this->getDocument()->pressButton('Export all new shipments');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function exportFirsShipment()
+    public function exportFirsShipment(): void
     {
         $this->getDocument()->find('css', '.shipping-export-state')->click();
     }

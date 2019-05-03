@@ -19,26 +19,17 @@ final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     use ContainsError;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function selectShippingMethod($name)
+    public function selectShippingMethod(string $name): void
     {
         $this->getDocument()->selectFieldOption('Shipping method', $name);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function fillField($field, $value)
+    public function fillField(string $field, $value): void
     {
         $this->getDocument()->fillField($field, $value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function submit()
+    public function submit(): void
     {
         $this->saveChanges();
     }

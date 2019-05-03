@@ -19,12 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class ShippingGatewayController extends ResourceController
 {
-    /**
-     * @param Request $request
-     * @param string $template
-     *
-     * @return Response
-     */
     public function getShippingGatewaysAction(Request $request, ?string $template): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);

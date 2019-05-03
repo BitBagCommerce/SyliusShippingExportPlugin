@@ -19,17 +19,11 @@ use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 
 class ShippingGatewayRepository extends EntityRepository implements ShippingGatewayRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneByCode(string $code): ?ShippingGatewayInterface
     {
         return $this->createQueryBuilder('o')
@@ -40,9 +34,6 @@ class ShippingGatewayRepository extends EntityRepository implements ShippingGate
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneByShippingMethod(ShippingMethodInterface $shippingMethod): ?ShippingGatewayInterface
     {
         return $this->createQueryBuilder('o')

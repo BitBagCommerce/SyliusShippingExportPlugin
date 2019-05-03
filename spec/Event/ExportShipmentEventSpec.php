@@ -32,7 +32,7 @@ final class ExportShipmentEventSpec extends ObjectBehavior
         EntityManagerInterface $shippingExportManager,
         Filesystem $filesystem,
         TranslatorInterface $translator
-    ) {
+    ): void {
         $this->beConstructedWith(
             $shippingExport,
             $flashBag,
@@ -43,17 +43,17 @@ final class ExportShipmentEventSpec extends ObjectBehavior
         );
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ExportShipmentEvent::class);
     }
 
-    function it_extends_event()
+    function it_extends_event(): void
     {
         $this->shouldHaveType(Event::class);
     }
 
-    function it_returns_shipping_export(ShippingExportInterface $shippingExport)
+    function it_returns_shipping_export(ShippingExportInterface $shippingExport): void
     {
         $this->getShippingExport()->shouldReturn($shippingExport);
     }
@@ -61,7 +61,7 @@ final class ExportShipmentEventSpec extends ObjectBehavior
     function it_adds_success_flash(
         TranslatorInterface $translator,
         FlashBagInterface $flashBag
-    ) {
+    ): void {
         $translator
             ->trans('bitbag.ui.shipment_data_has_been_exported')
             ->willReturn('Shipment data has been exported.');
@@ -77,7 +77,7 @@ final class ExportShipmentEventSpec extends ObjectBehavior
     function it_adds_error_flash(
         TranslatorInterface $translator,
         FlashBagInterface $flashBag
-    ) {
+    ): void {
         $translator
             ->trans('bitbag.ui.shipping_export_error')
             ->willReturn('An external error occurred while trying to export shipping data.');
@@ -94,7 +94,7 @@ final class ExportShipmentEventSpec extends ObjectBehavior
         ShippingExportInterface $shippingExport,
         ShipmentInterface $shipment,
         OrderInterface $order
-    ) {
+    ): void {
         $shippingExport->getShipment()->willReturn($shipment);
         $shipment->getOrder()->willReturn($order);
         $order->getNumber()->willReturn('#0000001');
@@ -104,7 +104,7 @@ final class ExportShipmentEventSpec extends ObjectBehavior
         $this->saveShippingLabel('Length 46 cm x Width 38 cm x Height 89 cm', 'pdf');
     }
 
-    function it_exports_shipment(ShippingExportInterface $shippingExport)
+    function it_exports_shipment(ShippingExportInterface $shippingExport): void
     {
         /** @var \DateTime $date */
         $date = Argument::type(\DateTime::class);

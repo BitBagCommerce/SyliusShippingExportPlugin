@@ -13,19 +13,14 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Hook;
 
 use Behat\Behat\Context\Context;
-use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 
 final class ShippingExportContext implements Context
 {
-    /**
-     * @var Filesystem
-     */
+    /** @var Filesystem */
     private $filesystem;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $shippingLabelsPath;
 
     public function __construct(Filesystem $filesystem, $shippingLabelsPath)
@@ -37,7 +32,7 @@ final class ShippingExportContext implements Context
     /**
      * @BeforeScenario
      */
-    public function cleanLabelsDirectoryBeforeScenario()
+    public function cleanLabelsDirectoryBeforeScenario(): void
     {
         $this->cleanLabelsDirectory();
     }
@@ -45,15 +40,12 @@ final class ShippingExportContext implements Context
     /**
      * @AfterScenario
      */
-    public function cleanLabelsDirectoryAfterScenario()
+    public function cleanLabelsDirectoryAfterScenario(): void
     {
         $this->cleanLabelsDirectory();
     }
 
-    /**
-     * @throws IOException When removal fails
-     */
-    private function cleanLabelsDirectory()
+    public function cleanLabelsDirectory(): void
     {
         $this->filesystem->remove($this->shippingLabelsPath);
     }

@@ -17,22 +17,22 @@ use PhpSpec\ObjectBehavior;
 
 final class ShippingGatewayNotFoundExceptionSpec extends ObjectBehavior
 {
-    function let()
+    function let(): void
     {
         $this->beConstructedWith('Shipping gateway was not found.');
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ShippingGatewayNotFoundException::class);
     }
 
-    function it_extends_exception()
+    function it_extends_exception(): void
     {
         $this->shouldHaveType(\Exception::class);
     }
 
-    function it_has_a_message()
+    function it_has_a_message(): void
     {
         $this->getMessage()->shouldReturn('Shipping gateway was not found.');
     }

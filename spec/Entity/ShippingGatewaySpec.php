@@ -22,45 +22,45 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class ShippingGatewaySpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ShippingGateway::class);
     }
 
-    function it_is_resource()
+    function it_is_resource(): void
     {
         $this->shouldImplement(ResourceInterface::class);
     }
 
-    function it_implements_shipping_gateway_interface()
+    function it_implements_shipping_gateway_interface(): void
     {
         $this->shouldImplement(ShippingGatewayInterface::class);
     }
 
-    function it_returns_array_collection_when_initialized()
+    function it_returns_array_collection_when_initialized(): void
     {
         $this->getShippingMethods()->shouldHaveType(Collection::class);
     }
 
-    function it_adds_shipping_method(ShippingMethodInterface $shippingMethod)
+    function it_adds_shipping_method(ShippingMethodInterface $shippingMethod): void
     {
         $this->addShippingMethod($shippingMethod);
 
         $this->getShippingMethods()->first()->shouldReturn($shippingMethod);
     }
 
-    function it_initializes_a_shipping_export_collection_by_default()
+    function it_initializes_a_shipping_export_collection_by_default(): void
     {
         $this->getShippingExports()->shouldHaveType(Collection::class);
     }
 
-    function it_adds_a_shipping_export(ShippingExportInterface $shippingExport)
+    function it_adds_a_shipping_export(ShippingExportInterface $shippingExport): void
     {
         $this->addShippingExport($shippingExport);
         $this->hasShippingExport($shippingExport)->shouldReturn(true);
     }
 
-    function it_removes_a_shipping_export(ShippingExportInterface $shippingExport)
+    function it_removes_a_shipping_export(ShippingExportInterface $shippingExport): void
     {
         $this->addShippingExport($shippingExport);
         $this->removeShippingExport($shippingExport);
@@ -68,14 +68,14 @@ final class ShippingGatewaySpec extends ObjectBehavior
         $this->hasShippingExport($shippingExport)->shouldReturn(false);
     }
 
-    function it_returns_config_value()
+    function it_returns_config_value(): void
     {
         $this->setConfig(['foo' => 'bar']);
 
         $this->getConfigValue('foo')->shouldReturn('bar');
     }
 
-    function it_throws_error_while_trying_to_access_not_existing_config_value()
+    function it_throws_error_while_trying_to_access_not_existing_config_value(): void
     {
         $this->setConfig(['foo' => 'bar']);
 

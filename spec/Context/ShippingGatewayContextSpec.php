@@ -27,7 +27,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         RequestStack $requestStack,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository
-    ) {
+    ): void {
         $this->beConstructedWith(
             $requestStack,
             $shippingGatewayFormTypeRegistry,
@@ -38,7 +38,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         );
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ShippingGatewayContext::class);
     }
@@ -47,7 +47,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         RequestStack $requestStack,
         Request $request,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry
-    ) {
+    ): void {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(null);
         $request->get('code')->willReturn('foo');
@@ -63,7 +63,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         RequestStack $requestStack,
         Request $request,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository
-    ) {
+    ): void {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(1);
         $shippingGatewayRepository->find(1)->willReturn(null);
@@ -76,7 +76,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         Request $request,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         FormTypeRegistryInterface $shippingGatewayFormTypeRegistry
-    ) {
+    ): void {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(null);
         $shippingGatewayRepository->find(null)->shouldNotBeCalled();
@@ -93,7 +93,7 @@ final class ShippingGatewayContextSpec extends ObjectBehavior
         Request $request,
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         ShippingGatewayInterface $shippingGateway
-    ) {
+    ): void {
         $requestStack->getCurrentRequest()->willReturn($request);
         $request->get('id')->willReturn(1);
         $shippingGatewayRepository->find(1)->willReturn($shippingGateway);

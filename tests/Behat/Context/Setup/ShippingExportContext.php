@@ -30,56 +30,30 @@ use Webmozart\Assert\Assert;
 
 final class ShippingExportContext implements Context
 {
-    /**
-     * @var OrderRepositoryInterface
-     */
+    /** @var OrderRepositoryInterface */
     private $orderRepository;
 
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $shipmentFactory;
 
-    /**
-     * @var ShipmentRepositoryInterface
-     */
+    /** @var ShipmentRepositoryInterface */
     private $shipmentRepository;
 
-    /**
-     * @var ShippingGatewayRepositoryInterface
-     */
+    /** @var ShippingGatewayRepositoryInterface */
     private $shippingGatewayRepository;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $shippingExportFactory;
 
-    /**
-     * @var ShippingExportRepositoryInterface
-     */
+    /** @var ShippingExportRepositoryInterface */
     private $shippingExportRepository;
 
-    /**
-     * @var EventDispatcherInterface
-     */
+    /** @var EventDispatcherInterface */
     private $eventDispatcher;
 
-    /**
-     * @param OrderRepositoryInterface $orderRepository
-     * @param SharedStorageInterface $sharedStorage
-     * @param FactoryInterface $shipmentFactory
-     * @param ShipmentRepositoryInterface $shipmentRepository
-     * @param ShippingGatewayRepositoryInterface $shippingGatewayRepository
-     * @param FactoryInterface $shippingExportFactory
-     * @param ShippingExportRepositoryInterface $shippingExportRepository
-     * @param EventDispatcherInterface $eventDispatcher
-     */
     public function __construct(
         OrderRepositoryInterface $orderRepository,
         SharedStorageInterface $sharedStorage,
@@ -103,7 +77,7 @@ final class ShippingExportContext implements Context
     /**
      * @Given those orders were placed with :name shipping method
      */
-    public function thoseOrdersWerePlacedWithShippingMethod($name)
+    public function thoseOrdersWerePlacedWithShippingMethod(string $name): void
     {
         $orders = $this->orderRepository->findAll();
         /** @var ShippingMethod $shippingMethod */
@@ -130,7 +104,7 @@ final class ShippingExportContext implements Context
     /**
      * @Given those orders were completed
      */
-    public function thoseOrdersWereCompleted()
+    public function thoseOrdersWereCompleted(): void
     {
         $orders = $this->orderRepository->findAll();
 
@@ -142,16 +116,12 @@ final class ShippingExportContext implements Context
     /**
      * @Then :number new shipping exports should be created
      */
-    public function newShippingExportsShouldBeCreated($number)
+    public function newShippingExportsShouldBeCreated(string $number): void
     {
         Assert::eq(count($this->shippingExportRepository->findAll()), $number);
     }
 
-    /**
-     * @param ShipmentInterface $shipment
-     * @param ShippingGatewayInterface $shippingGateway
-     */
-    private function addShippingExportForGateway(ShipmentInterface $shipment, ShippingGatewayInterface $shippingGateway)
+    public function addShippingExportForGateway(ShipmentInterface $shipment, ShippingGatewayInterface $shippingGateway): void
     {
         /** @var ShippingExport $shippingExport */
         $shippingExport = $this->shippingExportFactory->createNew();

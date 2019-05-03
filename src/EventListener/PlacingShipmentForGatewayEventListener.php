@@ -24,26 +24,15 @@ use Webmozart\Assert\Assert;
 
 final class PlacingShipmentForGatewayEventListener
 {
-    /**
-     * @var ShippingGatewayRepositoryInterface
-     */
+    /** @var ShippingGatewayRepositoryInterface */
     private $shippingGatewayRepository;
 
-    /**
-     * @var ShippingExportRepositoryInterface
-     */
+    /** @var ShippingExportRepositoryInterface */
     private $shippingExportRepository;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $shippingExportFactory;
 
-    /**
-     * @param ShippingGatewayRepositoryInterface $shippingGatewayRepository
-     * @param ShippingExportRepositoryInterface $shippingExportRepository
-     * @param FactoryInterface $shippingExportFactory
-     */
     public function __construct(
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
         ShippingExportRepositoryInterface $shippingExportRepository,
@@ -54,9 +43,6 @@ final class PlacingShipmentForGatewayEventListener
         $this->shippingExportFactory = $shippingExportFactory;
     }
 
-    /**
-     * @param GenericEvent $event
-     */
     public function prepareShippingExport(?GenericEvent $event): void
     {
         /** @var OrderInterface $order */

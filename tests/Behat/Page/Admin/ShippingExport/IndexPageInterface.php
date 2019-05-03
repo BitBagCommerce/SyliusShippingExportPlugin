@@ -18,13 +18,13 @@ use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPage;
 interface IndexPageInterface extends BaseIndexPage
 {
     /**
-     * @param $state
+     * @param string $state
      *
-     * @return ElementInterface[]|null
+     * @return ElementInterface[]
      */
-    public function getShipmentsWithState($state);
+    public function getShipmentsWithState(string $state): array;
 
-    public function exportAllShipments();
+    public function exportAllShipments(): void;
 
-    public function exportFirsShipment();
+    public function exportFirsShipment(): void;
 }

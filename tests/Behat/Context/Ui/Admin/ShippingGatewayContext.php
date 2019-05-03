@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
+use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use Sylius\Behat\NotificationType;
-use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -25,38 +25,21 @@ use Webmozart\Assert\Assert;
 
 final class ShippingGatewayContext implements Context
 {
-    /**
-     * @var CreatePageInterface|ContainsError
-     */
+    /** @var CreatePageInterface|ContainsError */
     private $createPage;
 
-    /**
-     * @var UpdatePageInterface|ContainsError
-     */
+    /** @var UpdatePageInterface|ContainsError */
     private $updatePage;
 
-    /**
-     * @var CurrentPageResolverInterface
-     */
+    /** @var CurrentPageResolverInterface */
     private $currentPageResolver;
 
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var NotificationCheckerInterface
-     */
+    /** @var NotificationCheckerInterface */
     private $notificationChecker;
 
-    /**
-     * @param CreatePageInterface $createPage
-     * @param UpdatePageInterface $updatePage
-     * @param CurrentPageResolverInterface $currentPageResolver
-     * @param SharedStorageInterface $sharedStorage
-     * @param NotificationCheckerInterface $notificationChecker
-     */
     public function __construct(
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
@@ -74,7 +57,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @When I visit the create shipping gateway configuration page for :code
      */
-    public function iVisitTheCreateShippingGatewayConfigurationPage($code)
+    public function iVisitTheCreateShippingGatewayConfigurationPage(string $code): void
     {
         $this->createPage->open(['code' => $code]);
     }
@@ -82,7 +65,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @When I visit the update shipping gateway configuration page
      */
-    public function iVisitTheUpdateShippingGatewayConfigurationPage()
+    public function iVisitTheUpdateShippingGatewayConfigurationPage(): void
     {
         $this->updatePage->open();
     }
@@ -90,7 +73,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @When I select the :name shipping method
      */
-    public function iSelectTheShippingMethod($name)
+    public function iSelectTheShippingMethod(string $name): void
     {
         $this->resolveCurrentPage()->selectShippingMethod($name);
     }
@@ -98,7 +81,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @When I fill the :field field with :value
      */
-    public function iFillTheFieldWith($field, $value)
+    public function iFillTheFieldWith(string $field, $value): void
     {
         $this->resolveCurrentPage()->fillField($field, $value);
     }
@@ -106,7 +89,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @When I clear the :field field
      */
-    public function iClearTheField($field)
+    public function iClearTheField(string $field): void
     {
         $this->resolveCurrentPage()->fillField($field, '');
     }
@@ -115,7 +98,7 @@ final class ShippingGatewayContext implements Context
      * @When I add it
      * @When I save it
      */
-    public function iTryToAddIt()
+    public function iTryToAddIt(): void
     {
         $this->resolveCurrentPage()->submit();
     }
@@ -124,7 +107,7 @@ final class ShippingGatewayContext implements Context
      * @Then I should be notified that the shipping gateway has been created
      * @Then I should be notified that the shipping gateway has been updated
      */
-    public function iShouldBeNotifiedThatTheShippingGatewayWasCreated()
+    public function iShouldBeNotifiedThatTheShippingGatewayWasCreated(): void
     {
         $this->notificationChecker->checkNotification(
             'Shipping gateway has been successfully',
@@ -135,7 +118,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @Then :message error message should be displayed
      */
-    public function errorMessageForFieldShouldBeDisplayed($message)
+    public function errorMessageForFieldShouldBeDisplayed(string $message): void
     {
         Assert::true($this->resolveCurrentPage()->hasError($message));
     }
@@ -143,7 +126,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @return CreatePageInterface|UpdatePageInterface|ContainsError|SymfonyPageInterface
      */
-    private function resolveCurrentPage()
+    public function resolveCurrentPage(): SymfonyPageInterface
     {
         return $this->currentPageResolver->getCurrentPageWithForm([
             $this->createPage,

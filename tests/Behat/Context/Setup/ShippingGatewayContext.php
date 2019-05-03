@@ -23,51 +23,27 @@ use Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener\FrankMartin
 
 final class ShippingGatewayContext implements Context
 {
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $shippingMethodFactory;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $shippingGatewayFactory;
 
-    /**
-     * @var RepositoryInterface
-     */
+    /** @var RepositoryInterface */
     private $shippingMethodRepository;
 
-    /**
-     * @var RepositoryInterface
-     */
+    /** @var RepositoryInterface */
     private $shippingGatewayRepository;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     private $entityManager;
 
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $config = [];
 
-    /**
-     * @param FactoryInterface $shippingMethodFactory
-     * @param FactoryInterface $shippingGatewayFactory
-     * @param RepositoryInterface $shippingMethodRepository
-     * @param RepositoryInterface $shippingGatewayRepository
-     * @param EntityManagerInterface $entityManager
-     * @param SharedStorageInterface $sharedStorage
-     *
-     * @internal param ObjectManager $objectManager
-     */
     public function __construct(
         FactoryInterface $shippingMethodFactory,
         FactoryInterface $shippingGatewayFactory,
@@ -87,7 +63,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @Given there is a registered :code shipping gateway for this shipping method named :name
      */
-    public function thereIsARegisteredShippingGatewayForThisShippingMethod($code, $name)
+    public function thereIsARegisteredShippingGatewayForThisShippingMethod(string $code, $name): void
     {
         /** @var ShippingGatewayInterface $shippingGateway */
         $shippingGateway = $this->shippingGatewayFactory->createNew();
@@ -106,7 +82,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @Given it has :field field set to :value
      */
-    public function itHasFieldSetTo($field, $value)
+    public function itHasFieldSetTo(string $field, string $value): void
     {
         /** @var ShippingGatewayInterface $shippingGateway */
         $shippingGateway = $this->sharedStorage->get('shipping_gateway');
@@ -121,7 +97,7 @@ final class ShippingGatewayContext implements Context
     /**
      * @Given the external shipping API is down
      */
-    public function theExternalShippingApiIsDown()
+    public function theExternalShippingApiIsDown(): void
     {
         FrankMartinShippingExportEventListener::toggleSuccess(false);
     }

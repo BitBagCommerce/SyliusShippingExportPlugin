@@ -19,34 +19,22 @@ use Webmozart\Assert\Assert;
 
 class ShippingGateway implements ShippingGatewayInterface
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $code;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $name;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $config;
 
-    /**
-     * @var Collection|ShippingMethodInterface[]
-     */
+    /** @var Collection|ShippingMethodInterface[] */
     protected $shippingMethods;
 
-    /**
-     * @var Collection|ShippingExportInterface[]
-     */
+    /** @var Collection|ShippingExportInterface[] */
     protected $shippingExports;
 
     public function __construct()
@@ -55,65 +43,41 @@ class ShippingGateway implements ShippingGatewayInterface
         $this->shippingMethods = new ArrayCollection();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCode(?string $code): void
     {
         $this->code = $code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setConfig(?array $config): void
     {
         $this->config = $config;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getConfig(): ?array
     {
         return $this->config;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getConfigValue(string $key)
     {
         Assert::keyExists($this->config, $key, sprintf(
@@ -124,17 +88,11 @@ class ShippingGateway implements ShippingGatewayInterface
         return $this->config[$key];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getShippingMethods(): ?Collection
     {
         return $this->shippingMethods;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addShippingMethod(ShippingMethodInterface $shippingMethod): void
     {
         if (!$this->hasShippingMethod($shippingMethod)) {
@@ -142,9 +100,6 @@ class ShippingGateway implements ShippingGatewayInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeShippingMethod(ShippingMethodInterface $shippingMethod): void
     {
         if ($this->hasShippingMethod($shippingMethod)) {
@@ -152,25 +107,16 @@ class ShippingGateway implements ShippingGatewayInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasShippingMethod(ShippingMethodInterface $shippingMethod): bool
     {
         return $this->shippingMethods->contains($shippingMethod);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getShippingExports(): ?Collection
     {
         return $this->shippingExports;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addShippingExport(ShippingExportInterface $shippingExport): void
     {
         if (!$this->hasShippingExport($shippingExport)) {
@@ -179,9 +125,6 @@ class ShippingGateway implements ShippingGatewayInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeShippingExport(ShippingExportInterface $shippingExport): void
     {
         if ($this->hasShippingExport($shippingExport)) {
@@ -189,9 +132,6 @@ class ShippingGateway implements ShippingGatewayInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasShippingExport(ShippingExportInterface $shippingExport): bool
     {
         return $this->shippingExports->contains($shippingExport);

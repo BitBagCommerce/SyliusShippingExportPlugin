@@ -16,9 +16,6 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ShippingExportMenuBuilder
 {
-    /**
-     * @param MenuBuilderEvent $event
-     */
     public function buildMenu(MenuBuilderEvent $event): void
     {
         $event
