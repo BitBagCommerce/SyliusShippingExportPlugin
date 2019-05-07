@@ -78,8 +78,9 @@ Import routing **on top** of your `config/routes.yaml` file:
 ```yaml
 # config/routes.yaml
 
-bitbag_sylius_shipping_export_plugin:
+bitbag_shipping_export_plugin:
     resource: "@BitBagSyliusShippingExportPlugin/Resources/config/routing.yml"
+    prefix: /admin
 ```
 
 ## Usage
