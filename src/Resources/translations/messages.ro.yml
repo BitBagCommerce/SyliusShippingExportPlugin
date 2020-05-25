@@ -1,0 +1,20 @@
+bitbag:
+    ui:
+        shipping_gateways: Pasarele de livrare
+        create_shipping_gateway: Crează o pasarelă de livrare
+        manage_shipping_gateways: Administrează pasarele de livrare
+        choose_shipping_method: Alege metoda de livrare
+        export_all_new_shipments: Exportă toate livrările noi
+        no_shipping_label: Nicio etichetă
+        export_shipments: Exportă date despre livrări
+        download_shipping_label: Descarcă eticheta de livrare
+        shipping_exports: Exportă livrări la API extern
+        manage_shipping_exports: Administrează export de livrări
+        shipment_data_has_been_exported: Datele livrărilor au fost exportate.
+        shipping_export_error: O eroare externă a apărut la încercarea exportului de date ale livrărilor.
+        shipping_export_label: Etichetă livrare
+        new: Nou
+        exported_at: Exportat la
+        exported: Exportat
+        not_exported_yet: Nu a fost exportat încă
+        no_new_shipments_to_export: Nu există livrări noi de exportat.
