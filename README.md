@@ -83,6 +83,13 @@ bitbag_shipping_export_plugin:
     prefix: /admin
 ```
 
+Execute database migration:
+```
+cd /project/root
+cp vendor/bitbag/shipping-export-plugin/src/Migrations/Version20200528223136.php src/Migrations
+bin/console doctrine:mig:mig
+```
+
 ## Usage
 
 ### Adding shipping export configuration form
