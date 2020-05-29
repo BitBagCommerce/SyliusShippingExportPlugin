@@ -1,5 +1,6 @@
 bitbag:
     ui:
+        label: Nume
         shipping_gateways: Pasarele de livrare
         create_shipping_gateway: Crează o pasarelă de livrare
         manage_shipping_gateways: Administrează pasarele de livrare

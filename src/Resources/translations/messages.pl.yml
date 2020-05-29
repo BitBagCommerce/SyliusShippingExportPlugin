@@ -1,5 +1,6 @@
 bitbag:
     ui:
+        label: Etykieta
         shipping_gateways: Bramy dostawców
         create_shipping_gateway: Stwórz bramę dostawcy
         manage_shipping_gateways: Zarządzaj bramami dostawców
