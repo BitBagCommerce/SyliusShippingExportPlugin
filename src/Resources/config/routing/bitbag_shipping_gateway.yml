@@ -25,7 +25,7 @@ bitbag_admin_shipping_gateway_create:
         _controller: bitbag.controller.shipping_gateway:createAction
         _sylius:
             section: admin
-            template: SyliusAdminBundle:Crud:create.html.twig
+            template: BitBagSyliusShippingExportPlugin:ShippingGateway/Gateways:create.html.twig
             redirect: bitbag_admin_shipping_gateway_index
             permission: true
             vars:
