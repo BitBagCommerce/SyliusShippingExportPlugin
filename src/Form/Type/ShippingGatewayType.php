@@ -22,6 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Validator\Constraints\Count;
 
 final class ShippingGatewayType extends AbstractResourceType
 {
@@ -72,6 +73,11 @@ final class ShippingGatewayType extends AbstractResourceType
                 'query_builder' => $this->shippingMethodRepository->createQueryBuilder('o'),
                 'placeholder' => 'bitbag.ui.choose_shipping_method',
                 'multiple' => true,
+                'constraints' => [
+                    new Count([
+                        'min' => 1
+                    ])
+                ]
             ])
             ->add('config', $shippingGatewayType, [
                 'label' => false,
