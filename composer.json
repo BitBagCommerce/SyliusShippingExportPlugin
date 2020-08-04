@@ -4,9 +4,8 @@
     "description": "Shipping data export environment for Sylius platform applications",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
-
-        "sylius/sylius": "^1.4"
+        "php": "^7.3",
+        "sylius/sylius": "~1.7"
     },
     "require-dev": {
         "behat/behat": "^3.4",
@@ -19,7 +18,7 @@
         "friends-of-behat/symfony-extension": "^2.0",
         "friends-of-behat/variadic-extension": "^1.1",
         "lakion/mink-debug-extension": "^1.2.3",
-        "phpspec/phpspec": "^5.0",
+        "phpspec/phpspec": "^6.2",
         "phpstan/phpstan-doctrine": "^0.10",
         "phpstan/phpstan-shim": "^0.10",
         "phpstan/phpstan-symfony": "^0.10",
