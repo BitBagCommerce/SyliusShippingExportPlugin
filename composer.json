@@ -4,9 +4,9 @@
     "description": "Shipping data export environment for Sylius platform applications",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
 
-        "sylius/sylius": "^1.4"
+        "sylius/sylius": "^1.8"
     },
     "require-dev": {
         "behat/behat": "^3.4",
