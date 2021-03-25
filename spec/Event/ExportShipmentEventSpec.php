@@ -97,9 +97,9 @@ final class ExportShipmentEventSpec extends ObjectBehavior
     ): void {
         $shippingExport->getShipment()->willReturn($shipment);
         $shipment->getOrder()->willReturn($order);
-        $order->getNumber()->willReturn('#0000001');
+        $order->getNumber()->willReturn('ORDER/#0000001/WITH/SLASHES');
         $shipment->getId()->willReturn(1);
-        $shippingExport->setLabelPath('/shipping_labels/1_0000001.pdf')->shouldBeCalled();
+        $shippingExport->setLabelPath('/shipping_labels/1_ORDER0000001WITHSLASHES.pdf')->shouldBeCalled();
 
         $this->saveShippingLabel('Length 46 cm x Width 38 cm x Height 89 cm', 'pdf');
     }

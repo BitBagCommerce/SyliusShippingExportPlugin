@@ -83,14 +83,9 @@ class ExportShipmentEvent extends Event
 
     public function saveShippingLabel(string $labelContent, string $labelExtension): void
     {
-        $shipment = $this->getShippingExport()->getShipment();
-        $orderNumber = str_replace('#', '', $shipment->getOrder()->getNumber());
-        $shipmentId = $shipment->getId();
         $labelPath = $this->shippingLabelsPath
-            . '/' . $shipmentId
-            . '_' . $orderNumber
-            . '.' . $labelExtension
-        ;
+            . '/' . $this->getFilename()
+            . '.' . $labelExtension;
 
         $this->filesystem->dumpFile($labelPath, $labelContent);
         $this->shippingExport->setLabelPath($labelPath);
@@ -103,5 +98,16 @@ class ExportShipmentEvent extends Event
         $this->shippingExport->setExportedAt(new \DateTime());
 
         $this->shippingExportManager->flush($this->shippingExport);
+    }
+
+    private function getFilename(): string {
+        $shipment = $this->getShippingExport()->getShipment();
+        $orderNumber = $shipment->getOrder()->getNumber();
+        $shipmentId = $shipment->getId();
+
+        return implode('_', array(
+            $shipmentId,
+            preg_replace('~[^A-Za-z0-9]~', '', $orderNumber),
+        ));
     }
 }
