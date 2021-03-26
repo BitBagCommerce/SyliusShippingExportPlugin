@@ -105,9 +105,9 @@ class ExportShipmentEvent extends Event
         $orderNumber = $shipment->getOrder()->getNumber();
         $shipmentId = $shipment->getId();
 
-        return implode('_', array(
+        return implode('_', [
             $shipmentId,
             preg_replace('~[^A-Za-z0-9]~', '', $orderNumber),
-        ));
+        ]);
     }
 }
