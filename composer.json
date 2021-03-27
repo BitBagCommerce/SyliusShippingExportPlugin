@@ -31,7 +31,9 @@
         "symfony/dotenv": "^4.2",
         "symfony/intl": "^3.4|^4.1",
         "symfony/web-profiler-bundle": "^3.4|^4.1",
-        "symfony/web-server-bundle": "^3.4|^4.1"
+        "symfony/web-server-bundle": "^3.4|^4.1",
+        "vimeo/psalm": "4.4.1"
+
     },
     "conflict": {
         "symfony/symfony": "4.1.8",
