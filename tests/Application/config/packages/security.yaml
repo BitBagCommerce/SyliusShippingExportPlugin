@@ -1,5 +1,6 @@
 parameters:
     sylius.security.admin_regex: "^/%sylius_admin.path_name%"
+    sylius.security.api_regex: "^/api"
     sylius.security.shop_regex: "^/(?!%sylius_admin.path_name%|new-api|api/.*|api$|media/.*)[^/]++"
     sylius.security.new_api_route: "/new-api"
     sylius.security.new_api_regex: "^%sylius.security.new_api_route%"
@@ -10,12 +11,18 @@ parameters:
 
 security:
     providers:
+        sylius_admin_user_provider:
+            id: sylius.admin_user_provider.email_or_name_based
         sylius_api_admin_user_provider:
             id: sylius.admin_user_provider.email_or_name_based
+        sylius_shop_user_provider:
+            id: sylius.shop_user_provider.email_or_name_based
         sylius_api_shop_user_provider:
             id: sylius.shop_user_provider.email_or_name_based
+
     encoders:
         Sylius\Component\User\Model\UserInterface: sha512
+
     firewalls:
         admin:
             switch_user: true
