@@ -15,14 +15,14 @@ namespace BitBag\SyliusShippingExportPlugin\Event;
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\EventDispatcher\Event;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ExportShipmentEvent extends Event
 {
-    const NAME = 'bitbag.export_shipment';
+    public const NAME = 'bitbag.export_shipment';
 
     /** @var ShippingExportInterface */
     private $shippingExport;

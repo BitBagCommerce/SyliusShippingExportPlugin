@@ -1,6 +1,6 @@
 parameters:
     bitbag.shipping_gateway.validation_groups: ['bitbag']
-    bitbag.shipping_labels_path: "%kernel.root_dir%/../shipping_labels"
+    bitbag.shipping_labels_path: '%kernel.project_dir%/shipping_labels'
 
 services:
     bitbag.shipping_export_plugin.menu.shipping_gateway:
