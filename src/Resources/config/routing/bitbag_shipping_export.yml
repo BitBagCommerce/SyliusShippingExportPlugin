@@ -2,7 +2,7 @@ bitbag_admin_shipping_export:
     resource: |
         alias: bitbag.shipping_export
         section: admin
-        templates: SyliusAdminBundle:Crud
+        templates: '@SyliusAdmin/Crud'
         only: ['index']
         redirect: update
         grid: bitbag_admin_shipping_export
