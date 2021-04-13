@@ -175,7 +175,7 @@ services:
 ```yaml
 parameters:
     bitbag.shipping_gateway.validation_groups: ['bitbag']
-    bitbag.shipping_labels_path: '%kernel.root_dir%/../shipping_labels'
+    bitbag.shipping_labels_path: '%kernel.project_dir%/shipping_labels'
 ```
 
 ### Available services you can [decorate](https://symfony.com/doc/current/service_container/service_decoration.html) and forms you can [extend](http://symfony.com/doc/current/form/create_form_type_extension.html)
