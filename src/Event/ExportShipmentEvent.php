@@ -22,7 +22,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ExportShipmentEvent extends Event
 {
-    public const NAME = 'bitbag.export_shipment';
+    public const NAME = 'bitbag.shipping_export.export_shipment';
+    public const SHORT_NAME = 'export_shipment';
 
     /** @var ShippingExportInterface */
     private $shippingExport;
