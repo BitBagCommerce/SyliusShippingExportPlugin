@@ -24,10 +24,19 @@ sylius_grid:
                         fields: [code, shippingMethod.translation.name, status]
             actions:
                 main:
-                    export:
-                        type: create_shipping_gateway
+                    create:
+                        type: links
+                        label: sylius.ui.create
+                        options:
+                            class: primary
+                            icon: plus
+                            header:
+                                icon: cube
+                                label: sylius.ui.type
+                            links:
                 item:
                     update:
                         type: update
                     delete:
                         type: delete
+

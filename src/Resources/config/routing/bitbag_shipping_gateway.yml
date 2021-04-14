@@ -35,9 +35,3 @@ bitbag_admin_shipping_gateway_create:
                     parameters:
                         code: $code
 
-bitbag_admin_get_shipping_gateways:
-    path: /shipping-gateways/list
-    methods: [GET]
-    defaults:
-        _controller: bitbag.controller.shipping_gateway:getShippingGatewaysAction
-        template: '@BitBagSyliusShippingExportPlugin/ShippingGateway/Gateways/shippingGateways.html.twig'
