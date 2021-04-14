@@ -136,28 +136,107 @@ services:
 ```php
 namespace App\EventListener;
 
-use BitBag\ShippingExportPlugin\Event\ExportShipmentEvent;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
+use Doctrine\Persistence\ObjectManager;
+use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
 {
-    public function exportShipment(ExportShipmentEvent $event): void
+    /** @var FlashBagInterface */
+    private $flashBag;
+
+    /** @var Filesystem */
+    private $filesystem;
+
+    /** @var ObjectManager */
+    private $shippingExportManager;
+
+    /** @var string */
+    private $shippingLabelsPath;
+
+    public function __construct(
+        FlashBagInterface $flashBag,
+        Filesystem $filesystem,
+        ObjectManager $shippingExportManager,
+        string $shippingLabelsPath
+    ) {
+        $this->flashBag = $flashBag;
+        $this->filesystem = $filesystem;
+        $this->shippingExportManager = $shippingExportManager;
+        $this->shippingLabelsPath = $shippingLabelsPath;
+    }
+
+    public function exportShipment(ResourceControllerEvent $event): void
     {
-        $shippingExport = $event->getShippingExport();
+        /** @var ShippingExportInterface $shippingExport */
+        $shippingExport = $event->getSubject();
+        Assert::isInstanceOf($shippingExport, ShippingExportInterface::class);
+
         $shippingGateway = $shippingExport->getShippingGateway();
+        Assert::notNull($shippingGateway);
 
         if ('frank_martin_shipping_gateway' !== $shippingGateway->getCode()) {
             return;
         }
 
         if (false) {
-            $event->addErrorFlash(); // Add an error notification
+            $this->flashBag->add('error', 'bitbag.ui.shipping_export_error'); // Add an error notification
 
             return;
         }
 
-        $event->addSuccessFlash(); // Add success notification
-        $event->saveShippingLabel("Some label content received from external API", 'pdf'); // Save label
-        $event->exportShipment(); // Mark shipment as "Exported"
+        $this->flashBag->add('success', 'bitbag.ui.shipment_data_has_been_exported'); // Add success notification
+        $this->saveShippingLabel($shippingExport, "Some label content received from external API", 'pdf'); // Save label
+        $this->markShipmentAsExported($shippingExport); // Mark shipment as "Exported"
+    }
+
+    public function saveShippingLabel(
+        ShippingExportInterface $shippingExport,
+        string $labelContent,
+        string $labelExtension
+    ): void {
+        $labelPath = $this->shippingLabelsPath
+            . '/' . $this->getFilename($shippingExport)
+            . '.' . $labelExtension;
+
+        $this->filesystem->dumpFile($labelPath, $labelContent);
+        $shippingExport->setLabelPath($labelPath);
+
+        $this->shippingExportManager->persist($shippingExport);
+        $this->shippingExportManager->flush();
+    }
+
+    private function getFilename(ShippingExportInterface $shippingExport): string
+    {
+        $shipment = $shippingExport->getShipment();
+        Assert::notNull($shipment);
+
+        $order = $shipment->getOrder();
+        Assert::notNull($order);
+
+        $orderNumber = $order->getNumber();
+
+        $shipmentId = $shipment->getId();
+
+        return implode(
+            '_',
+            [
+                $shipmentId,
+                preg_replace('~[^A-Za-z0-9]~', '', $orderNumber),
+            ]
+        );
+    }
+
+    private function markShipmentAsExported(ShippingExportInterface $shippingExport): void
+    {
+        $shippingExport->setState(ShippingExportInterface::STATE_EXPORTED);
+        $shippingExport->setExportedAt(new \DateTime());
+
+        $this->shippingExportManager->persist($shippingExport);
+        $this->shippingExportManager->flush();
     }
 }
 ```
@@ -167,8 +246,13 @@ final class FrankMartinShippingExportEventListener
 services:
     app.event_listener.frank_martin_shipping_export:
         class: App\EventListener\FrankMartinShippingExportEventListener
+        arguments:
+            - '@session.flash_bag'
+            - '@filesystem'
+            - '@bitbag.manager.shipping_export'
+            - '%bitbag.shipping_labels_path%'
         tags:
-            - { name: kernel.event_listener, event: 'bitbag.export_shipment', method: exportShipment }
+            - { name: kernel.event_listener, event: 'bitbag.shipping_export.export_shipment', method: exportShipment }
 ```
 
 #### Plugin parameters
