@@ -1,0 +1,5 @@
+bitbag:
+    ui:
+        no_new_shipments_to_export: Brak nowych przesyłek do wyeksportowania.
+        shipment_data_has_been_exported: Dane przesyłce(ach) zostały wyeksportowane.
+        shipping_export_error: Wystąpił błąd w trakcie eksportowania danych o przesyłce(ach).

@@ -1,20 +1,17 @@
 bitbag:
     ui:
-        shipping_gateways: Versand-Gateways
-        create_shipping_gateway: Erstelle Versand-Gateway
-        manage_shipping_gateways: Verwalte Versand-Gateways
         choose_shipping_method: Wähle Versand-Gateway
-        export_all_new_shipments: Exportiere alle neuen Lieferungen
-        no_shipping_label: Noch kein Label erstellt
-        export_shipments: Versandlabels
+        create_shipping_gateway: Erstelle Versand-Gateway
         download_shipping_label: Download Versandlabel
-        shipping_exports: Exportiere Versanddaten zu externer API
-        manage_shipping_exports: Verwalte den Versandexport
-        shipment_data_has_been_exported: Versanddaten wurden exportiert.
-        shipping_export_error: Während des Exports der Versanddaten ist ein Fehler aufgetreten.
-        shipping_export_label: Versandlabel
-        new: Label abrufen
-        exported_at: Exportiert am
+        export_all_new_shipments: Exportiere alle neuen Lieferungen
+        export_shipments: Versandlabels
         exported: Exportiert
+        exported_at: Exportiert am
+        manage_shipping_exports: Verwalte den Versandexport
+        manage_shipping_gateways: Verwalte Versand-Gateways
+        new: Label abrufen
+        no_shipping_label: Noch kein Label erstellt
         not_exported_yet: Bislang nicht exportiert
-        no_new_shipments_to_export: Es gibt keine neuen Lieferungen zum Versand.
+        shipping_export_label: Versandlabel
+        shipping_exports: Exportiere Versanddaten zu externer API
+        shipping_gateways: Versand-Gateways

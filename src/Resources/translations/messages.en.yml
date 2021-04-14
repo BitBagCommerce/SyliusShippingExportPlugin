@@ -1,20 +1,17 @@
 bitbag:
     ui:
-        shipping_gateways: Shipping gateways
-        create_shipping_gateway: Create shipping gateway
-        manage_shipping_gateways: Manage shipping gateways
         choose_shipping_method: Choose shipping method
-        export_all_new_shipments: Export all new shipments
-        no_shipping_label: No label
-        export_shipments: Export shipping data
+        create_shipping_gateway: Create shipping gateway
         download_shipping_label: Download shipping label
-        shipping_exports: Export shipments to external API
-        manage_shipping_exports: Manage shipping export
-        shipment_data_has_been_exported: Shipment data has been exported.
-        shipping_export_error: An external error occurred while trying to export shipping data.
-        shipping_export_label: Shipping label
-        new: New
-        exported_at: Exported at
+        export_all_new_shipments: Export all new shipments
+        export_shipments: Export shipping data
         exported: Exported
+        exported_at: Exported at
+        manage_shipping_exports: Manage shipping export
+        manage_shipping_gateways: Manage shipping gateways
+        new: New
+        no_shipping_label: No label
         not_exported_yet: Not exported yet
-        no_new_shipments_to_export: There are no new shipments to export.
+        shipping_export_label: Shipping label
+        shipping_exports: Export shipments to external API
+        shipping_gateways: Shipping gateways
