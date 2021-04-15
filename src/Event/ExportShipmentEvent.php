@@ -23,6 +23,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ExportShipmentEvent extends Event
 {
     public const NAME = 'bitbag.shipping_export.export_shipment';
+
     public const SHORT_NAME = 'export_shipment';
 
     /** @var ShippingExportInterface */
@@ -101,7 +102,8 @@ class ExportShipmentEvent extends Event
         $this->shippingExportManager->flush($this->shippingExport);
     }
 
-    private function getFilename(): string {
+    private function getFilename(): string
+    {
         $shipment = $this->getShippingExport()->getShipment();
         $orderNumber = $shipment->getOrder()->getNumber();
         $shipmentId = $shipment->getId();

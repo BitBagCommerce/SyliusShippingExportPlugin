@@ -33,8 +33,8 @@ final class AdminShippingGatewayGridEventListener
                 'icon' => 'plus',
                 'route' => 'bitbag_admin_shipping_gateway_create',
                 'parameters' => [
-                    'code' => $shippingGatewayType
-                ]
+                    'code' => $shippingGatewayType,
+                ],
             ];
         }
 

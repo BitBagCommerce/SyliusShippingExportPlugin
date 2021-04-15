@@ -17,8 +17,9 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface ShippingExportInterface extends ResourceInterface
 {
-    const STATE_NEW = 'new';
-    const STATE_EXPORTED = 'exported';
+    public const STATE_NEW = 'new';
+
+    public const STATE_EXPORTED = 'exported';
 
     public function getShipment(): ?ShipmentInterface;
 

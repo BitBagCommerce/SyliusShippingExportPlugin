@@ -19,8 +19,6 @@ interface ShippingGatewayContextInterface
     public function getFormType(): ?string;
 
     /**
-     * @return string|null
-     *
      * @throws ShippingGatewayNotFoundException
      */
     public function getCode(): ?string;

@@ -86,7 +86,7 @@ final class ShippingExportController extends ResourceController
         }
 
         $response = new Response(file_get_contents($labelPath));
-        $filePathParts = explode(DIRECTORY_SEPARATOR, $labelPath);
+        $filePathParts = explode(\DIRECTORY_SEPARATOR, $labelPath);
         $labelName = end($filePathParts);
         $disposition = $response->headers->makeDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
