@@ -109,7 +109,7 @@ final class ShippingExportContext implements Context
         $orders = $this->orderRepository->findAll();
 
         foreach ($orders as $order) {
-            $this->eventDispatcher->dispatch('sylius.order.post_complete', new GenericEvent($order));
+            $this->eventDispatcher->dispatch( new GenericEvent($order), 'sylius.order.post_complete');
         }
     }
 
