@@ -275,16 +275,17 @@ $ bin/console debug:container --parameters | grep bitbag
 ## Testing
 ```bash
 $ composer install
+$ APP_ENV=test symfony server:start --port=8080 --dir=tests/Application/public --daemon
 $ cd tests/Application
 $ yarn install
 $ yarn run gulp
 $ bin/console assets:install public -e test
 $ bin/console doctrine:schema:create -e test
-$ bin/console server:run 127.0.0.1:8080 -d public -e test
 $ shipping-export
 $ open http://localhost:8080
 $ vendor/bin/behat
 $ vendor/bin/phpspec run
+$ vendor/bin/phpstan analyse -c phpstan.neon -l max src/
 ```
 
 ## Contribution
