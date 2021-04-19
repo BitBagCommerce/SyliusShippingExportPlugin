@@ -10,7 +10,6 @@ on:
     schedule:
         -
             cron: "0 1 * * 6" # Run at 1am every Saturday
-    workflow_dispatch: ~
 
 jobs:
     tests:
@@ -162,9 +161,10 @@ jobs:
                 name: Run PHPStan
                 run: vendor/bin/phpstan analyse -c phpstan.neon -l max src/
 
-            -
-                name: Run Psalm
-                run: vendor/bin/psalm
+#            TODO: Temporary disabled!
+#            -
+#                name: Run Psalm
+#                run: vendor/bin/psalm
 
             -
                 name: Run PHPSpec
