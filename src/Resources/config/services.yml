@@ -50,3 +50,11 @@ services:
             - "@bitbag.form_registry.shipping_gateway_config"
             - "@bitbag.repository.shipping_gateway"
             - "%bitbag.shipping_gateways%"
+
+    bitbag.shipping_export_plugin.controller.shipping_export_download_label_action:
+        class: BitBag\SyliusShippingExportPlugin\Controller\ShippingExportDownloadLabelAction
+        arguments:
+          - '@filesystem'
+          - '@bitbag.repository.shipping_export'
+          - '%bitbag.shipping_labels_path%'
+        tags: [ 'controller.service_arguments' ]

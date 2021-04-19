@@ -17,9 +17,6 @@ use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterfa
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Webmozart\Assert\Assert;
 
 final class ShippingExportController extends ResourceController
@@ -68,32 +65,11 @@ final class ShippingExportController extends ResourceController
 
     private function redirectToReferer(Request $request): RedirectResponse
     {
-        return new RedirectResponse($request->headers->get('referer'));
-    }
-
-    public function getLabel(Request $request): Response
-    {
-        $shippingExport = $this->repository->find($request->get('id'));
-        Assert::notNull($shippingExport);
-
-        $labelPath = $shippingExport->getLabelPath();
-        Assert::notNull($labelPath);
-
-        $fileSystem = $this->get('filesystem');
-
-        if (false === $fileSystem->exists($labelPath)) {
-            throw new NotFoundHttpException();
+        $referer = $request->headers->get('referer');
+        if (null !== $referer) {
+            return new RedirectResponse($referer);
         }
 
-        $response = new Response(file_get_contents($labelPath));
-        $filePathParts = explode(\DIRECTORY_SEPARATOR, $labelPath);
-        $labelName = end($filePathParts);
-        $disposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            $labelName
-        );
-        $response->headers->set('Content-Disposition', $disposition);
-
-        return $response;
+        return $this->redirectToRoute($request->attributes->get('_route'));
     }
 }
