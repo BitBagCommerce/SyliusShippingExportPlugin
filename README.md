@@ -286,6 +286,7 @@ $ open http://localhost:8080
 $ vendor/bin/behat
 $ vendor/bin/phpspec run
 $ vendor/bin/phpstan analyse -c phpstan.neon -l max src/
+$ vendor/bin/ecs check src
 ```
 
 ## Contribution
