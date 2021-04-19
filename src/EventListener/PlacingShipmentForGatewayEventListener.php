@@ -43,9 +43,8 @@ final class PlacingShipmentForGatewayEventListener
         $this->shippingExportFactory = $shippingExportFactory;
     }
 
-    public function prepareShippingExport(?GenericEvent $event): void
+    public function prepareShippingExport(GenericEvent $event): void
     {
-        /** @var OrderInterface $order */
         $order = $event->getSubject();
         Assert::isInstanceOf($order, OrderInterface::class);
 
@@ -56,6 +55,7 @@ final class PlacingShipmentForGatewayEventListener
         /** @var ShipmentInterface $shipment */
         foreach ($order->getShipments() as $shipment) {
             $shippingMethod = $shipment->getMethod();
+            Assert::notNull($shippingMethod);
             $shippingGateway = $this->shippingGatewayRepository->findOneByShippingMethod($shippingMethod);
 
             if ($shippingGateway instanceof ShippingGatewayInterface) {

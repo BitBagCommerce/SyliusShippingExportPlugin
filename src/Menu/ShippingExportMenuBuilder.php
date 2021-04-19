@@ -12,16 +12,18 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusShippingExportPlugin\Menu;
 
+use Knp\Menu\ItemInterface;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ShippingExportMenuBuilder
 {
     public function buildMenu(MenuBuilderEvent $event): void
     {
-        $event
-            ->getMenu()
-            ->getChild('sales')
-            ->addChild('shipping_exports', ['route' => 'bitbag_admin_shipping_export_index'])
+        $menu = $event->getMenu();
+        /** @var ItemInterface $salesMenu */
+        $salesMenu = $menu->getChild('sales');
+
+        $salesMenu->addChild('shipping_exports', ['route' => 'bitbag_admin_shipping_export_index'])
             ->setName('bitbag.ui.export_shipments')
             ->setLabelAttribute('icon', 'arrow up')
         ;

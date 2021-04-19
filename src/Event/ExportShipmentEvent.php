@@ -19,6 +19,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Webmozart\Assert\Assert;
 
 class ExportShipmentEvent extends Event
 {
@@ -91,7 +92,9 @@ class ExportShipmentEvent extends Event
 
         $this->filesystem->dumpFile($labelPath, $labelContent);
         $this->shippingExport->setLabelPath($labelPath);
-        $this->shippingExportManager->flush($this->shippingExport);
+
+        $this->shippingExportManager->persist($this->shippingExport);
+        $this->shippingExportManager->flush();
     }
 
     public function exportShipment(): void
@@ -99,13 +102,18 @@ class ExportShipmentEvent extends Event
         $this->shippingExport->setState(ShippingExportInterface::STATE_EXPORTED);
         $this->shippingExport->setExportedAt(new \DateTime());
 
-        $this->shippingExportManager->flush($this->shippingExport);
+        $this->shippingExportManager->persist($this->shippingExport);
+        $this->shippingExportManager->flush();
     }
 
     private function getFilename(): string
     {
-        $shipment = $this->getShippingExport()->getShipment();
-        $orderNumber = $shipment->getOrder()->getNumber();
+        $shipment = $this->shippingExport->getShipment();
+        Assert::notNull($shipment);
+        $order = $shipment->getOrder();
+        Assert::notNull($order);
+        $orderNumber = $order->getNumber();
+        Assert::notNull($orderNumber);
         $shipmentId = $shipment->getId();
 
         return implode('_', [

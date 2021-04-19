@@ -22,19 +22,19 @@ class ShippingGateway implements ShippingGatewayInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
-    /** @var string */
+    /** @var string|null */
     protected $name;
 
     /** @var array */
-    protected $config;
+    protected $config = [];
 
-    /** @var Collection|ShippingMethodInterface[] */
+    /** @var Collection<int, ShippingMethodInterface>|ShippingMethodInterface[] */
     protected $shippingMethods;
 
-    /** @var Collection|ShippingExportInterface[] */
+    /** @var Collection<int, ShippingExportInterface>|ShippingExportInterface[] */
     protected $shippingExports;
 
     public function __construct()
@@ -68,12 +68,12 @@ class ShippingGateway implements ShippingGatewayInterface
         return $this->name;
     }
 
-    public function setConfig(?array $config): void
+    public function setConfig(array $config): void
     {
         $this->config = $config;
     }
 
-    public function getConfig(): ?array
+    public function getConfig(): array
     {
         return $this->config;
     }
