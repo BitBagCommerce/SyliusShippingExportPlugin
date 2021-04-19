@@ -35,7 +35,6 @@ services:
             - "%bitbag.model.shipping_gateway.class%"
             - "%bitbag.shipping_gateway.validation_groups%"
             - "@bitbag.shipping_export_plugin.context.shipping_gateway_type"
-            - "@sylius.repository.shipping_method"
             - "%sylius.model.shipping_method.class%"
         tags:
             - { name: form.type }

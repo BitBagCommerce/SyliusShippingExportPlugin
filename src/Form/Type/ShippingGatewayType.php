@@ -14,37 +14,31 @@ namespace BitBag\SyliusShippingExportPlugin\Form\Type;
 
 use BitBag\SyliusShippingExportPlugin\Context\ShippingGatewayContextInterface;
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
-use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Sylius\Component\Core\Repository\ShippingMethodRepositoryInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Webmozart\Assert\Assert;
 
 final class ShippingGatewayType extends AbstractResourceType
 {
     /** @var ShippingGatewayContextInterface */
     private $shippingGatewayTypeContext;
 
-    /** @var ShippingMethodRepositoryInterface|EntityRepository */
-    private $shippingMethodRepository;
-
     /** @var string */
     private $shippingMethodModelClass;
 
     public function __construct(
         $dataClass,
-        array $validationGroups = [],
+        array $validationGroups,
         ShippingGatewayContextInterface $shippingGatewayTypeContext,
-        ShippingMethodRepositoryInterface $shippingMethodRepository,
         string $shippingMethodModelClass
     ) {
         parent::__construct($dataClass, $validationGroups);
 
         $this->shippingGatewayTypeContext = $shippingGatewayTypeContext;
-        $this->shippingMethodRepository = $shippingMethodRepository;
         $this->shippingMethodModelClass = $shippingMethodModelClass;
     }
 
@@ -69,7 +63,6 @@ final class ShippingGatewayType extends AbstractResourceType
             ->add('shippingMethods', EntityType::class, [
                 'label' => 'sylius.ui.shipping_methods',
                 'class' => $this->shippingMethodModelClass,
-                'query_builder' => $this->shippingMethodRepository->createQueryBuilder('o'),
                 'placeholder' => 'bitbag.ui.choose_shipping_method',
                 'multiple' => true,
             ])
@@ -77,13 +70,18 @@ final class ShippingGatewayType extends AbstractResourceType
                 'label' => false,
                 'auto_initialize' => false,
             ])
-            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) use ($code, $label) {
-                /** @var ShippingGatewayInterface $shippingGateway */
-                $shippingGateway = $event->getData();
+            ->addEventListener(
+                FormEvents::POST_SUBMIT,
+                function (FormEvent $event) use ($code, $label): void {
+                    Assert::string($code);
+                    Assert::string($label);
 
-                $shippingGateway->setCode($code);
-                $shippingGateway->setName($label);
-            })
+                    /** @var ShippingGatewayInterface $shippingGateway */
+                    $shippingGateway = $event->getData();
+                    $shippingGateway->setCode($code);
+                    $shippingGateway->setName($label);
+                }
+            )
         ;
     }
 
