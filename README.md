@@ -106,7 +106,7 @@ final class FrankMartinShippingGatewayType extends AbstractType
                     new NotBlank([
                         'message' => 'IBAN number cannot be blank.',
                         'groups' => 'bitbag',
-                    ])
+                    ]),
                 ],
             ])
             ->add('address', TextType::class, [
@@ -115,7 +115,7 @@ final class FrankMartinShippingGatewayType extends AbstractType
                     new NotBlank([
                         'message' => 'Address cannot be blank.',
                         'groups' => 'bitbag',
-                    ])
+                    ]),
                 ],
             ])
         ;
@@ -189,7 +189,7 @@ final class FrankMartinShippingExportEventListener
         }
 
         $this->flashBag->add('success', 'bitbag.ui.shipment_data_has_been_exported'); // Add success notification
-        $this->saveShippingLabel($shippingExport, "Some label content received from external API", 'pdf'); // Save label
+        $this->saveShippingLabel($shippingExport, 'Some label content received from external API', 'pdf'); // Save label
         $this->markShipmentAsExported($shippingExport); // Mark shipment as "Exported"
     }
 
