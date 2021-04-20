@@ -21,6 +21,9 @@ use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Webmozart\Assert\Assert;
 
+/**
+ * @deprecated The ExportShipmentEvent is deprecated since Sylius 1.8 and will be removed. Use \Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent instead
+ */
 class ExportShipmentEvent extends Event
 {
     public const NAME = 'bitbag.shipping_export.export_shipment';
@@ -53,6 +56,7 @@ class ExportShipmentEvent extends Event
         TranslatorInterface $translator,
         string $shippingLabelsPath
     ) {
+        trigger_deprecation('', '', 'The ExportShipmentEvent is deprecated since Sylius 1.8 and will be removed. Use \Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent instead');
         $this->shippingExport = $shippingExport;
         $this->flashBag = $flashBag;
         $this->shippingExportManager = $shippingExportManager;
