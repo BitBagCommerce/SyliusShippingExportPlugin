@@ -36,11 +36,13 @@ final class ShippingExportDownloadLabelActionSpec extends ObjectBehavior
     ): void {
         $request->get('id')->willReturn(1);
         $shippingExport->getLabelPath()
-            ->willReturn('/var/www/shipping_labels/../.env');
+            ->willReturn('/var/www/shipping_labels/../.env')
+        ;
         $repository->find(1)->willReturn($shippingExport);
 
         $this->shouldThrow(NotFoundHttpException::class)
-            ->during('__invoke', [$request]);
+            ->during('__invoke', [$request])
+        ;
     }
 
     function it_returns_a_streamed_response_for_label(
@@ -49,16 +51,21 @@ final class ShippingExportDownloadLabelActionSpec extends ObjectBehavior
         ShippingExportInterface $shippingExport
     ): void {
         $request->get('id')
-            ->willReturn(1);
+            ->willReturn(1)
+        ;
         $shippingExport->getLabelPath()
-            ->willReturn('/var/www/shipping_labels/label.pdf');
+            ->willReturn('/var/www/shipping_labels/label.pdf')
+        ;
         $repository->find(1)
-            ->willReturn($shippingExport);
+            ->willReturn($shippingExport)
+        ;
 
         $this->__invoke($request)
-            ->shouldBeAnInstanceOf(StreamedResponse::class);
+            ->shouldBeAnInstanceOf(StreamedResponse::class)
+        ;
         $this->__invoke($request)
             ->headers->get('Content-Disposition')
-            ->shouldReturn('attachment; filename=label.pdf');
+            ->shouldReturn('attachment; filename=label.pdf')
+        ;
     }
 }
