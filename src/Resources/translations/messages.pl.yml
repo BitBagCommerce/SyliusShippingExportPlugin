@@ -5,8 +5,8 @@ bitbag:
         download_shipping_label: Pobierz etykietę
         export_all_new_shipments: Eksportuj wszystkie nowe przesyłki
         export_shipments: Eksportuj przesyłki
-        exported: Eksportowano
-        exported_at: Eksportowano
+        exported: Wyeksportowano
+        exported_at: Wyeksportowano
         manage_shipping_exports: Zarządzaj eksportem przesyłek
         manage_shipping_gateways: Zarządzaj bramami dostawców
         new: Nowy
