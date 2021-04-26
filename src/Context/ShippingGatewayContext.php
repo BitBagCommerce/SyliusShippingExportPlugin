@@ -17,6 +17,7 @@ use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayLabelNotFound;
 use BitBag\SyliusShippingExportPlugin\Exception\ShippingGatewayNotFoundException;
 use BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ShippingGatewayContext implements ShippingGatewayContextInterface
@@ -48,19 +49,22 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     public function getFormType(): ?string
     {
         $code = $this->getCode();
+        if (null === $code) {
+            return null;
+        }
 
         return $this->shippingGatewayFormTypeRegistry->get('shipping_gateway_config', $code);
     }
 
     public function getCode(): ?string
     {
+        /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
         $id = $request->get('id');
 
         if (null !== $id) {
             return $this->getExistingShippingGateway((int) $id)->getCode();
         }
-
         $code = $request->get('code');
 
         if (false === $this->shippingGatewayFormTypeRegistry->has('shipping_gateway_config', $code)) {
@@ -88,7 +92,6 @@ final class ShippingGatewayContext implements ShippingGatewayContextInterface
     {
         /** @var ShippingGatewayInterface|null $shippingGateway */
         $shippingGateway = $this->shippingGatewayRepository->find($id);
-
         if (false === $shippingGateway instanceof ShippingGatewayInterface) {
             throw new  ShippingGatewayNotFoundException(sprintf(
                 'Gateway with %d id could not be found in the database.',

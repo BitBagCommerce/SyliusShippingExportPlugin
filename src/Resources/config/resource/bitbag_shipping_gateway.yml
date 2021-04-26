@@ -6,4 +6,3 @@ sylius_resource:
                 interface: BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface
                 repository:  BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepository
                 form: BitBag\SyliusShippingExportPlugin\Form\Type\ShippingGatewayType
-                controller: BitBag\SyliusShippingExportPlugin\Controller\ShippingGatewayController

@@ -2,7 +2,7 @@ bitbag_admin_shipping_export:
     resource: |
         alias: bitbag.shipping_export
         section: admin
-        templates: SyliusAdminBundle:Crud
+        templates: '@SyliusAdmin/Crud'
         only: ['index']
         redirect: update
         grid: bitbag_admin_shipping_export
@@ -33,4 +33,4 @@ bitbag_admin_export_single_shipment:
 bitbag_admin_get_shipping_label:
     path: /shipping-exports/label/{id}
     defaults:
-        _controller: bitbag.controller.shipping_export:getLabel
+        _controller: bitbag.shipping_export_plugin.controller.shipping_export_download_label_action

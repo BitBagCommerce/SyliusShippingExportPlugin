@@ -1,6 +1,6 @@
 parameters:
     bitbag.shipping_gateway.validation_groups: ['bitbag']
-    bitbag.shipping_labels_path: "%kernel.root_dir%/../shipping_labels"
+    bitbag.shipping_labels_path: '%kernel.project_dir%/shipping_labels'
 
 services:
     bitbag.shipping_export_plugin.menu.shipping_gateway:
@@ -22,13 +22,19 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.order.post_complete, method: prepareShippingExport }
 
+    bitbag.shipping_export_plugin.event_listener.grid.admin_shipping_gateway_grid_event_listener:
+        class: BitBag\SyliusShippingExportPlugin\EventListener\Grid\AdminShippingGatewayGridEventListener
+        arguments:
+            - '%bitbag.shipping_gateways%'
+        tags:
+            - { name: kernel.event_listener, event: sylius.grid.bitbag_admin_shipping_gateway, method: editActionLinks }
+
     bitbag.shipping_export_plugin.shipping_gateway.form.type:
         class: BitBag\SyliusShippingExportPlugin\Form\Type\ShippingGatewayType
         arguments:
             - "%bitbag.model.shipping_gateway.class%"
             - "%bitbag.shipping_gateway.validation_groups%"
             - "@bitbag.shipping_export_plugin.context.shipping_gateway_type"
-            - "@sylius.repository.shipping_method"
             - "%sylius.model.shipping_method.class%"
         tags:
             - { name: form.type }
@@ -43,3 +49,11 @@ services:
             - "@bitbag.form_registry.shipping_gateway_config"
             - "@bitbag.repository.shipping_gateway"
             - "%bitbag.shipping_gateways%"
+
+    bitbag.shipping_export_plugin.controller.shipping_export_download_label_action:
+        class: BitBag\SyliusShippingExportPlugin\Controller\ShippingExportDownloadLabelAction
+        arguments:
+          - '@filesystem'
+          - '@bitbag.repository.shipping_export'
+          - '%bitbag.shipping_labels_path%'
+        tags: [ 'controller.service_arguments' ]

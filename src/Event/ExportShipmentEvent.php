@@ -15,14 +15,20 @@ namespace BitBag\SyliusShippingExportPlugin\Event;
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\EventDispatcher\Event;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Webmozart\Assert\Assert;
 
+/**
+ * @deprecated The ExportShipmentEvent is deprecated since Sylius 1.8 and will be removed. Use \Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent instead
+ */
 class ExportShipmentEvent extends Event
 {
-    const NAME = 'bitbag.export_shipment';
+    public const NAME = 'bitbag.shipping_export.export_shipment';
+
+    public const SHORT_NAME = 'export_shipment';
 
     /** @var ShippingExportInterface */
     private $shippingExport;
@@ -50,6 +56,7 @@ class ExportShipmentEvent extends Event
         TranslatorInterface $translator,
         string $shippingLabelsPath
     ) {
+        trigger_deprecation('', '', 'The ExportShipmentEvent is deprecated since Sylius 1.8 and will be removed. Use \Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent instead');
         $this->shippingExport = $shippingExport;
         $this->flashBag = $flashBag;
         $this->shippingExportManager = $shippingExportManager;
@@ -89,7 +96,9 @@ class ExportShipmentEvent extends Event
 
         $this->filesystem->dumpFile($labelPath, $labelContent);
         $this->shippingExport->setLabelPath($labelPath);
-        $this->shippingExportManager->flush($this->shippingExport);
+
+        $this->shippingExportManager->persist($this->shippingExport);
+        $this->shippingExportManager->flush();
     }
 
     public function exportShipment(): void
@@ -97,12 +106,18 @@ class ExportShipmentEvent extends Event
         $this->shippingExport->setState(ShippingExportInterface::STATE_EXPORTED);
         $this->shippingExport->setExportedAt(new \DateTime());
 
-        $this->shippingExportManager->flush($this->shippingExport);
+        $this->shippingExportManager->persist($this->shippingExport);
+        $this->shippingExportManager->flush();
     }
 
-    private function getFilename(): string {
-        $shipment = $this->getShippingExport()->getShipment();
-        $orderNumber = $shipment->getOrder()->getNumber();
+    private function getFilename(): string
+    {
+        $shipment = $this->shippingExport->getShipment();
+        Assert::notNull($shipment);
+        $order = $shipment->getOrder();
+        Assert::notNull($order);
+        $orderNumber = $order->getNumber();
+        Assert::notNull($orderNumber);
         $shipmentId = $shipment->getId();
 
         return implode('_', [

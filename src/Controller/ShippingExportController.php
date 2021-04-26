@@ -12,30 +12,36 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusShippingExportPlugin\Controller;
 
-use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
+use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Webmozart\Assert\Assert;
 
 final class ShippingExportController extends ResourceController
 {
+    /** @var ShippingExportRepositoryInterface */
+    protected $repository;
+
     public function exportAllNewShipmentsAction(Request $request): RedirectResponse
     {
-        $shippingExports = $this->get('bitbag.repository.shipping_export')->findAllWithNewState();
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
+        $shippingExports = $this->repository->findAllWithNewState();
 
         if (0 === count($shippingExports)) {
-            $this->addFlash('error', $this->get('translator')->trans('bitbag.ui.no_new_shipments_to_export'));
+            $this->addFlash('error', 'bitbag.ui.no_new_shipments_to_export');
 
             return $this->redirectToReferer($request);
         }
 
         foreach ($shippingExports as $shippingExport) {
-            $this->dispatchExportShipmentEvent($shippingExport);
+            $this->eventDispatcher->dispatch(
+                ExportShipmentEvent::SHORT_NAME,
+                $configuration,
+                $shippingExport
+            );
         }
 
         return $this->redirectToReferer($request);
@@ -43,60 +49,27 @@ final class ShippingExportController extends ResourceController
 
     public function exportSingleShipmentAction(Request $request): RedirectResponse
     {
-        $shippingExport = $this->get('bitbag.repository.shipping_export')->find($request->get('id'));
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
-        $this->dispatchExportShipmentEvent($shippingExport);
+        $shippingExport = $this->repository->find($request->get('id'));
+        Assert::notNull($shippingExport);
+
+        $this->eventDispatcher->dispatch(
+            ExportShipmentEvent::SHORT_NAME,
+            $configuration,
+            $shippingExport
+        );
 
         return $this->redirectToReferer($request);
     }
 
     private function redirectToReferer(Request $request): RedirectResponse
     {
-        return new RedirectResponse($request->headers->get('referer'));
-    }
-
-    public function getLabel(Request $request): Response
-    {
-        $shippingExport = $this->get('bitbag.repository.shipping_export')->find($request->get('id'));
-
-        $labelPath = $shippingExport->getLabelPath();
-        Assert::notNull($labelPath);
-
-        $fileSystem = $this->get('filesystem');
-
-        if (false === $fileSystem->exists($labelPath)) {
-            throw new NotFoundHttpException();
+        $referer = $request->headers->get('referer');
+        if (null !== $referer) {
+            return new RedirectResponse($referer);
         }
 
-        $response = new Response(file_get_contents($labelPath));
-        $filePathParts = explode('/', $labelPath);
-        $labelName = end($filePathParts);
-        $disposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            $labelName
-        );
-        $response->headers->set('Content-Disposition', $disposition);
-
-        return $response;
-    }
-
-    private function dispatchExportShipmentEvent(ShippingExportInterface $shippingExport): void
-    {
-        $flashBag = $this->get('session')->getFlashBag();
-        $shippingExportManager = $this->get('bitbag.manager.shipping_export');
-        $eventDispatcher = $this->get('event_dispatcher');
-        $filesystem = $this->get('filesystem');
-        $translator = $this->get('translator');
-        $shippingLabelsPath = $this->getParameter('bitbag.shipping_labels_path');
-        $event = new ExportShipmentEvent(
-            $shippingExport,
-            $flashBag,
-            $shippingExportManager,
-            $filesystem,
-            $translator,
-            $shippingLabelsPath
-        );
-
-        $eventDispatcher->dispatch(ExportShipmentEvent::NAME, $event);
+        return $this->redirectToRoute($request->attributes->get('_route'));
     }
 }

@@ -19,22 +19,22 @@ class ShippingExport implements ShippingExportInterface
     /** @var int */
     protected $id;
 
-    /** @var ShipmentInterface */
+    /** @var ShipmentInterface|null */
     protected $shipment;
 
-    /** @var string */
+    /** @var string|null */
     protected $externalId;
 
-    /** @var ShippingGatewayInterface */
+    /** @var ShippingGatewayInterface|null */
     protected $shippingGateway;
 
-    /** @var \DateTime */
+    /** @var \DateTime|null */
     protected $exportedAt;
 
-    /** @var string */
+    /** @var string|null */
     protected $labelPath;
 
-    /** @var string */
+    /** @var string|null */
     protected $state = ShippingExportInterface::STATE_NEW;
 
     public function getId(): int

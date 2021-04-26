@@ -26,12 +26,14 @@ interface ShippingGatewayInterface extends ResourceInterface
 
     public function getName(): ?string;
 
-    public function setConfig(?array $config): void;
+    public function setConfig(array $config): void;
 
-    public function getConfig(): ?array;
+    public function getConfig(): array;
 
+    /** @return mixed */
     public function getConfigValue(string $key);
 
+    /** @return Collection<int, ShippingMethodInterface> */
     public function getShippingMethods(): ?Collection;
 
     public function addShippingMethod(ShippingMethodInterface $shippingMethod): void;
@@ -40,6 +42,7 @@ interface ShippingGatewayInterface extends ResourceInterface
 
     public function hasShippingMethod(ShippingMethodInterface $shippingMethod): bool;
 
+    /** @return Collection<int, ShippingExportInterface>|ShippingExportInterface[] */
     public function getShippingExports(): ?Collection;
 
     public function addShippingExport(ShippingExportInterface $shippingExport): void;

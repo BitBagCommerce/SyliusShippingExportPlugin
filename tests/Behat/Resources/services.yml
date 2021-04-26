@@ -9,5 +9,10 @@ services:
 
     bitbag.shipping_gateway_plugin.mock.event_listener.frank_martin_shipping_export:
         class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener\FrankMartinShippingExportEventListener
+        arguments:
+            - '@session.flash_bag'
+            - '@filesystem'
+            - '@bitbag.manager.shipping_export'
+            - '%bitbag.shipping_labels_path%'
         tags:
-            - { name: kernel.event_listener, event: 'bitbag.export_shipment', method: exportShipment }
+            - { name: kernel.event_listener, event: 'bitbag.shipping_export.export_shipment', method: exportShipment }

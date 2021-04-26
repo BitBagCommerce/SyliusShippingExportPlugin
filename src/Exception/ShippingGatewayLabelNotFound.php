@@ -14,8 +14,10 @@ namespace BitBag\SyliusShippingExportPlugin\Exception;
 
 final class ShippingGatewayLabelNotFound extends \Exception
 {
-    public function __construct(string $code)
+    public function __construct(?string $code)
     {
-        parent::__construct(sprintf('Shipping gateway label for %s code was not found.', $code));
+        parent::__construct(
+            sprintf('Shipping gateway label for %s code was not found.', $code ?? '"null"')
+        );
     }
 }

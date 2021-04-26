@@ -1,4 +1,7 @@
 sylius_grid:
+    templates:
+        action:
+            export_shipments: "@BitBagSyliusShippingExportPlugin/ShippingExport/Action/_exportShipments.html.twig"
     grids:
         bitbag_admin_shipping_export:
             driver:

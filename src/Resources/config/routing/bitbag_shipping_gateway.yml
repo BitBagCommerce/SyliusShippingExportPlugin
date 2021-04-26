@@ -2,7 +2,7 @@ bitbag_admin_shipping_gateway:
     resource: |
         alias: bitbag.shipping_gateway
         section: admin
-        templates: SyliusAdminBundle:Crud
+        templates: '@SyliusAdmin/Crud'
         except: ['show']
         redirect: update
         grid: bitbag_admin_shipping_gateway
@@ -25,7 +25,7 @@ bitbag_admin_shipping_gateway_create:
         _controller: bitbag.controller.shipping_gateway:createAction
         _sylius:
             section: admin
-            template: SyliusAdminBundle:Crud:create.html.twig
+            template: '@SyliusAdmin/Crud/create.html.twig'
             redirect: bitbag_admin_shipping_gateway_index
             permission: true
             vars:
@@ -35,9 +35,3 @@ bitbag_admin_shipping_gateway_create:
                     parameters:
                         code: $code
 
-bitbag_admin_get_shipping_gateways:
-    path: /shipping-gateways/list
-    methods: [GET]
-    defaults:
-        _controller: bitbag.controller.shipping_gateway:getShippingGatewaysAction
-        template: BitBagSyliusShippingExportPlugin:ShippingGateway/Gateways:shippingGateways.html.twig
