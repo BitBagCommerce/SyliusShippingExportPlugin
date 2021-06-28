@@ -24,7 +24,6 @@ At BitBag we do believe in open source. However, we are able to do it just becau
 
 * [Overview](#overview)
 * [Installation](#installation)
-* [Installation](#installation)
 * [Usage](#usage)
 * [About us](#about-us)
   * [Community](#community)
