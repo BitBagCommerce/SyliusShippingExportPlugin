@@ -52,7 +52,7 @@ We work on stable, supported and up-to-date versions of packages. We recommend y
 | Package    | Version      |
 |:----------:|:-------------|
 |PHP         |  ^7.4        |
-|Sylius      |  ^1.10       |
+|Sylius      |  ^1.8        |
 ---
 
 ```bash
