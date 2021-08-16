@@ -53,7 +53,7 @@ We work on stable, supported and up-to-date versions of packages. We recommend y
 
 | Package    | Version                      |
 |:----------:|:-----------------------------|
-|PHP         |  7.3 ⎮⎮ ^8.0                 |
+|PHP         |  ^7.3 ⎮⎮ ^8.0                 |
 |Sylius      |  ~1.8.0 ⎮⎮ ~1.9.0 ⎮⎮ ~1.10.0 |
 ---
 
