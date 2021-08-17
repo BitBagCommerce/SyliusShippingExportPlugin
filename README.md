@@ -47,16 +47,6 @@ If you are curious about the details of this plugin, read [this blog post](https
 
 ## Installation
 
-### Requirements
-
-We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
-
-| Package    | Version                      |
-|:----------:|:-----------------------------|
-|PHP         |  ^7.3 ⎮⎮ ^8.0                 |
-|Sylius      |  ~1.8.0 ⎮⎮ ~1.9.0 ⎮⎮ ~1.10.0 |
----
-
 ```bash
 $ composer require bitbag/shipping-export-plugin
 ```
