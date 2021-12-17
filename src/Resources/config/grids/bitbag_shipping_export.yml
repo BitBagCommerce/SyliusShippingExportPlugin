@@ -60,10 +60,7 @@ sylius_grid:
                     type: string
                     label: sylius.ui.search
                     options:
-                        fields: [code, translation.name]
-                state:
-                    type: string
-                    label: sylius.ui.enabled
+                        fields: [shipment.order.number]
             actions:
                 main:
                     create:
