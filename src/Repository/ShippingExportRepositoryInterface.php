@@ -17,5 +17,10 @@ interface ShippingExportRepositoryInterface extends RepositoryInterface
 {
     public function createListQueryBuilder(): QueryBuilder;
 
+    /**
+     * @depracated since SyliusShippingExportPlugin 1.6, use ShippingExportRepository::findAllWithNewOrPendingState instead.
+     */
+    public function findAllWithNewState(): array;
+
     public function findAllWithNewOrPendingState(): array;
 }

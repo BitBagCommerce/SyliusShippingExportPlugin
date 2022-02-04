@@ -27,6 +27,21 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
         ;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function findAllWithNewState(): array
+    {
+        trigger_deprecation('bitbag/shipping-export-plugin', '1.6', 'The "%s()" method is deprecated, use "ShippingExportRepository::findAllWithNewOrPendingState" instead.', __METHOD__);
+
+        return $this->createQueryBuilder('o')
+            ->where('o.state = :newState')
+            ->setParameter(self::NEW_STATE_PARAMETER, ShippingExportInterface::STATE_NEW)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findAllWithNewOrPendingState(): array
     {
         return $this->createQueryBuilder('o')
