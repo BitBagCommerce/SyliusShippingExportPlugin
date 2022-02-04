@@ -1,4 +1,7 @@
 <form action="{{ path('bitbag_admin_export_single_shipment', {'id' : data.id}) }}" method="POST">
     <input type="hidden" name="_method" value="PUT">
-    <button class="ui labeled icon primary button mini shipping-export-state"><i class="arrow up icon"></i> {{ value|trans }}</button>
+    <button class="ui labeled icon {% if data.state == 'new' %} primary {% endif %} {% if data.state == 'pending' %} yellow {% endif %} button mini shipping-export-state">
+        <i class="{% if data.state == 'new' %} arrow up {% endif %} {% if data.state == 'pending' %} clock outline {% endif %} icon"></i>
+        {{ value|trans }}
+    </button>
 </form>

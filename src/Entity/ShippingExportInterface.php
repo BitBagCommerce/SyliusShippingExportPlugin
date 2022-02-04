@@ -17,6 +17,8 @@ interface ShippingExportInterface extends ResourceInterface
 {
     public const STATE_NEW = 'new';
 
+    public const STATE_PENDING = 'pending';
+
     public const STATE_EXPORTED = 'exported';
 
     public function getShipment(): ?ShipmentInterface;

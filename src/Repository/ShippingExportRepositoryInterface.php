@@ -17,5 +17,5 @@ interface ShippingExportRepositoryInterface extends RepositoryInterface
 {
     public function createListQueryBuilder(): QueryBuilder;
 
-    public function findAllWithNewState(): array;
+    public function findAllWithNewOrPendingState(): array;
 }
