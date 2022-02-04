@@ -47,7 +47,7 @@ final class ShippingExportContext implements Context
      */
     public function iShouldSeeNewShipmentsToExportWithState(string $number, string $state): void
     {
-        Assert::eq((int) $number, count($this->indexPage->getShipmentsWithState($state)));
+        Assert::eq(count($this->indexPage->getShipmentsWithState($state)), (int) $number);
     }
 
     /**
