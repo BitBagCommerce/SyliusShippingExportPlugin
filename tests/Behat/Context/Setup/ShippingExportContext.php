@@ -12,6 +12,7 @@ namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingExport;
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
 use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use BitBag\SyliusShippingExportPlugin\Repository\ShippingGatewayRepositoryInterface;
@@ -127,5 +128,19 @@ final class ShippingExportContext implements Context
         $shippingExport->setShippingGateway($shippingGateway);
 
         $this->shippingExportRepository->add($shippingExport);
+    }
+
+    /**
+     * @Given there are :numberOfExports exports marked as pending
+     */
+    public function thereAreExportsMarkedAsPending(int $numberOfExports): void
+    {
+        /** @var ShippingExportInterface[] $exports */
+        $exports = $this->shippingExportRepository->findBy([], null, $numberOfExports);
+
+        foreach ($exports as $export) {
+            $export->setState(ShippingExportInterface::STATE_PENDING);
+            $this->shippingExportRepository->add($export);
+        }
     }
 }
