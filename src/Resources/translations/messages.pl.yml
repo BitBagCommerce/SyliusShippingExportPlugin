@@ -10,6 +10,7 @@ bitbag:
         manage_shipping_exports: Zarządzaj eksportem przesyłek
         manage_shipping_gateways: Zarządzaj bramami dostawców
         new: Nowy
+        pending: Oczekujący
         no_shipping_label: Brak etykiety
         not_exported_yet: Nie eksportowano
         shipping_export_label: Etykieta przesyłki

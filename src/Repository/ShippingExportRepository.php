@@ -16,6 +16,10 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class ShippingExportRepository extends EntityRepository implements ShippingExportRepositoryInterface
 {
+    public const NEW_STATE_PARAMETER = 'newState';
+
+    public const PENDING_STATE_PARAMETER = 'pendingState';
+
     public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -23,11 +27,27 @@ class ShippingExportRepository extends EntityRepository implements ShippingExpor
         ;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function findAllWithNewState(): array
     {
+        trigger_deprecation('bitbag/shipping-export-plugin', '1.6', 'The "%s()" method is deprecated, use "ShippingExportRepository::findAllWithNewOrPendingState" instead.', __METHOD__);
+
         return $this->createQueryBuilder('o')
             ->where('o.state = :newState')
-            ->setParameter('newState', ShippingExportInterface::STATE_NEW)
+            ->setParameter(self::NEW_STATE_PARAMETER, ShippingExportInterface::STATE_NEW)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findAllWithNewOrPendingState(): array
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.state = :newState OR o.state = :pendingState')
+            ->setParameter(self::NEW_STATE_PARAMETER, ShippingExportInterface::STATE_NEW)
+            ->setParameter(self::PENDING_STATE_PARAMETER, ShippingExportInterface::STATE_PENDING)
             ->getQuery()
             ->getResult()
         ;

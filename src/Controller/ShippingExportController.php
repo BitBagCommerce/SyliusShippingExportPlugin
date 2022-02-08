@@ -13,6 +13,7 @@ namespace BitBag\SyliusShippingExportPlugin\Controller;
 use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
 use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Webmozart\Assert\Assert;
@@ -26,7 +27,7 @@ final class ShippingExportController extends ResourceController
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
-        $shippingExports = $this->repository->findAllWithNewState();
+        $shippingExports = $this->repository->findAllWithNewOrPendingState();
 
         if (0 === count($shippingExports)) {
             $this->addFlash('error', 'bitbag.ui.no_new_shipments_to_export');
@@ -49,6 +50,7 @@ final class ShippingExportController extends ResourceController
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
+        /** @var ResourceInterface|null $shippingExport */
         $shippingExport = $this->repository->find($request->get('id'));
         Assert::notNull($shippingExport);
 

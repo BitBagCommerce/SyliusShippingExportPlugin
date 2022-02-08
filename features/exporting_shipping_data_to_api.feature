@@ -43,6 +43,14 @@ Feature: Managing shipping gateway
         Then I should be notified that there are no new shipments to export
 
     @ui
+    Scenario: Exporting all new and pending shipments
+        Given there are 2 exports marked as pending
+        When I go to the shipping export page
+        And I export all new shipments
+        Then I should be notified that the shipment has been exported
+        And all 5 shipments should have "Exported" state
+
+    @ui
     Scenario: Throwing an external API error while exporting shipments
         Given the external shipping API is down
         When I go to the shipping export page

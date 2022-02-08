@@ -10,6 +10,7 @@ bitbag:
         manage_shipping_exports: Manage shipping export
         manage_shipping_gateways: Manage shipping gateways
         new: New
+        pending: Pending
         no_shipping_label: No label
         not_exported_yet: Not exported yet
         shipping_export_label: Shipping label
