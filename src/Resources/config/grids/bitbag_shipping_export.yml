@@ -77,7 +77,7 @@ sylius_grid:
                     form_options:
                         class: "%sylius.model.shipping_method.class%"
                     options:
-                        field: shipment.method
+                        fields: [shipment.method]
                 createdAt:
                     type: date
                     label: sylius.ui.created_at
