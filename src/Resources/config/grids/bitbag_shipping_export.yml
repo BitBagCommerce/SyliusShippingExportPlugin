@@ -56,14 +56,36 @@ sylius_grid:
                     options:
                         template: "@BitBagSyliusShippingExportPlugin/ShippingExport/Grid/Field/state.html.twig"
             filters:
-                search:
+                order:
                     type: string
-                    label: sylius.ui.search
+                    label: sylius.ui.order
+                    form_options:
+                        type: contains
                     options:
-                        fields: [code, translation.name]
+                        fields: [shipment.order.number]
                 state:
-                    type: string
-                    label: sylius.ui.enabled
+                    type: select
+                    label: sylius.ui.state
+                    form_options:
+                        choices:
+                            bitbag.ui.new: New
+                            bitbag.ui.pending: Pending
+                            bitbag.ui.exported: Exported
+                shippingMethod:
+                    type: entity
+                    label: sylius.ui.shipping_method
+                    form_options:
+                        class: "%sylius.model.shipping_method.class%"
+                    options:
+                        fields: [shipment.method]
+                createdAt:
+                    type: date
+                    label: sylius.ui.created_at
+                    options:
+                        field: shipment.createdAt
+                exportedAt:
+                    type: date
+                    label: bitbag.ui.exported_at
             actions:
                 main:
                     create:
