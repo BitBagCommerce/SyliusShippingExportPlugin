@@ -35,7 +35,8 @@
         "symfony/intl": "^4.4 || ^5.2",
         "symfony/web-profiler-bundle": "^4.4 || ^5.2",
         "vimeo/psalm": "4.7.1",
-        "polishsymfonycommunity/symfony-mocker-container": "^1.0"
+        "polishsymfonycommunity/symfony-mocker-container": "^1.0",
+        "friendsofsymfony/oauth-server-bundle": ">2.0.0-alpha.0 ^2.0@dev"
     },
     "config": {
         "sort-packages": true,
