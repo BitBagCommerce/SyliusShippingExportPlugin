@@ -8,7 +8,7 @@ use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import('vendor/sylius-labs/coding-standard/ecs.php');
+    $containerConfigurator->import('vendor/bitbag/coding-standard/ecs.php');
     $services = $containerConfigurator->services();
     $services->set(ArraySyntaxFixer::class)
         ->call('configure', [[
