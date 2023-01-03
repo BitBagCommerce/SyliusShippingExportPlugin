@@ -22,7 +22,7 @@ bitbag_admin_shipping_gateway_create:
     path: /shipping-gateways/new/{code}
     methods: [GET, POST]
     defaults:
-        _controller: bitbag.controller.shipping_gateway:createAction
+        _controller: bitbag.controller.shipping_gateway::createAction
         _sylius:
             section: admin
             template: '@SyliusAdmin/Crud/create.html.twig'
