@@ -38,7 +38,7 @@ sylius_grid:
                     type: twig
                     label: sylius.ui.shipping_method
                     path: .
-                    sortable: ~
+                    sortable: shipment.method
                     options:
                         template: "@BitBagSyliusShippingExportPlugin/ShippingExport/Grid/Field/shippingMethod.html.twig"
                 labelPath:
