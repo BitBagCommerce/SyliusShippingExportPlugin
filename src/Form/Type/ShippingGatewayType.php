@@ -22,11 +22,9 @@ use Webmozart\Assert\Assert;
 
 final class ShippingGatewayType extends AbstractResourceType
 {
-    /** @var ShippingGatewayContextInterface */
-    private $shippingGatewayTypeContext;
+    private ShippingGatewayContextInterface $shippingGatewayTypeContext;
 
-    /** @var string */
-    private $shippingMethodModelClass;
+    private string $shippingMethodModelClass;
 
     public function __construct(
         $dataClass,

@@ -21,14 +21,11 @@ use Webmozart\Assert\Assert;
 
 final class ShippingExportDownloadLabelAction
 {
-    /** @var Filesystem */
-    private $filesystem;
+    private Filesystem $filesystem;
 
-    /** @var ShippingExportRepositoryInterface */
-    private $repository;
+    private ShippingExportRepositoryInterface $repository;
 
-    /** @var string */
-    private $shippingLabelsPath;
+    private string $shippingLabelsPath;
 
     public function __construct(
         Filesystem $filesystem,

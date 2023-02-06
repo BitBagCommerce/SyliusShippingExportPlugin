@@ -28,23 +28,17 @@ class ExportShipmentEvent extends Event
 
     public const SHORT_NAME = 'export_shipment';
 
-    /** @var ShippingExportInterface */
-    private $shippingExport;
+    private ShippingExportInterface $shippingExport;
 
-    /** @var FlashBagInterface */
-    private $flashBag;
+    private FlashBagInterface $flashBag;
 
-    /** @var EntityManagerInterface|EntityManager */
-    private $shippingExportManager;
+    private EntityManagerInterface $shippingExportManager;
 
-    /** @var Filesystem */
-    private $filesystem;
+    private Filesystem $filesystem;
 
-    /** @var TranslatorInterface */
-    private $translator;
+    private TranslatorInterface $translator;
 
-    /** @var string */
-    private $shippingLabelsPath;
+    private string $shippingLabelsPath;
 
     public function __construct(
         ShippingExportInterface $shippingExport,

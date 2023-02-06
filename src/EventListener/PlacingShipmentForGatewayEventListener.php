@@ -22,14 +22,11 @@ use Webmozart\Assert\Assert;
 
 final class PlacingShipmentForGatewayEventListener
 {
-    /** @var ShippingGatewayRepositoryInterface */
-    private $shippingGatewayRepository;
+    private ShippingGatewayRepositoryInterface $shippingGatewayRepository;
 
-    /** @var ShippingExportRepositoryInterface */
-    private $shippingExportRepository;
+    private ShippingExportRepositoryInterface $shippingExportRepository;
 
-    /** @var FactoryInterface */
-    private $shippingExportFactory;
+    private FactoryInterface $shippingExportFactory;
 
     public function __construct(
         ShippingGatewayRepositoryInterface $shippingGatewayRepository,
