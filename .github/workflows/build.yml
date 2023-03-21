@@ -139,7 +139,7 @@ jobs:
             -
                 name: Copy package.json.dist to package.json
                 if: matrix.sylius != ''
-                run: (cd tests/Application && cp package.json.${{ matrix.sylius }}.dist package.json)
+                run: (cd tests/Application && cp package.json.\${{ matrix.sylius }}.dist package.json)
 
             -
                 name: Prepare test application assets
