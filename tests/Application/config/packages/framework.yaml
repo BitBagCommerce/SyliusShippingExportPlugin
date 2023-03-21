@@ -3,4 +3,10 @@ framework:
     form: true
     csrf_protection: true
     session:
-        handler_id: ~
+#        handler_id: 'session.handler.native_file'
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        handler_id: null
+            # improves the security of the cookies used for sessions
+        cookie_secure: auto
+        cookie_samesite: lax
+        storage_factory_id: session.storage.factory.native

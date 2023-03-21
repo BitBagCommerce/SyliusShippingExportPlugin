@@ -28,7 +28,7 @@ final class ShippingExportController extends ResourceController
         $shippingExports = $this->repository->findAllWithNewOrPendingState();
 
         if (0 === count($shippingExports)) {
-            $this->addFlash('error', 'bitbag.ui.no_new_shipments_to_export');
+            $request->getSession()->getBag('flashes')->add('error', 'bitbag.ui.no_new_shipments_to_export');
 
             return $this->redirectToReferer($request);
         }

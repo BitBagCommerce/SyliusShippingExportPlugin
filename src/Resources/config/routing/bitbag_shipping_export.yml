@@ -22,13 +22,13 @@ bitbag_admin_export_all_new_shipments:
     path: /shipping-exports/export/all
     methods: [POST, PUT]
     defaults:
-        _controller: bitbag.controller.shipping_export:exportAllNewShipmentsAction
+        _controller: bitbag.controller.shipping_export::exportAllNewShipmentsAction
 
 bitbag_admin_export_single_shipment:
     path: /shipping-exports/export/{id}
     methods: [POST, PUT]
     defaults:
-        _controller: bitbag.controller.shipping_export:exportSingleShipmentAction
+        _controller: bitbag.controller.shipping_export::exportSingleShipmentAction
 
 bitbag_admin_get_shipping_label:
     path: /shipping-exports/label/{id}
