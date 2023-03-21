@@ -65,5 +65,10 @@
         "classmap": [
             "tests/Application/Kernel.php"
         ]
+    },
+    "extra": {
+        "symfony": {
+            "require": "^5.4"
+        }
     }
 }
