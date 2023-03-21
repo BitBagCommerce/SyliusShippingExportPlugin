@@ -46,6 +46,7 @@ final class ShippingExportDownloadLabelActionSpec extends ObjectBehavior
     }
 
     function it_returns_a_streamed_response_for_label(
+        Filesystem $filesystem,
         Request $request,
         ShippingExportRepositoryInterface $repository,
         ShippingExportInterface $shippingExport
@@ -59,13 +60,16 @@ final class ShippingExportDownloadLabelActionSpec extends ObjectBehavior
         $repository->find(1)
             ->willReturn($shippingExport)
         ;
+        $filesystem->exists('/var/www/shipping_labels/label.pdf')->willReturn(true);
 
         $this->__invoke($request)
             ->shouldBeAnInstanceOf(StreamedResponse::class)
         ;
+
         $this->__invoke($request)
             ->headers->get('Content-Disposition')
             ->shouldReturn('attachment; filename=label.pdf')
         ;
     }
+
 }
