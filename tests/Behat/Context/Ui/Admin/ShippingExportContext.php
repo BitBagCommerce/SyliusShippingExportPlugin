@@ -82,7 +82,6 @@ final class ShippingExportContext implements Context
      */
     public function iShouldBeNotifiedThatThereAreNoNewShipmentsToExport(): void
     {
-
         $this->notificationChecker->checkNotification(
             'There are no new shipments to export.',
             NotificationType::failure()
