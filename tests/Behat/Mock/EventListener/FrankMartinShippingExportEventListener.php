@@ -12,12 +12,12 @@ namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener;
 
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\Persistence\ObjectManager;
-use Sylius\Bundle\CoreBundle\Provider\FlashBagProvider;
+use Sylius\Bundle\CoreBundle\Provider\requestStackProvider;
 use Sylius\Bundle\ResourceBundle\Controller\FlashHelperInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpFoundation\Session\Flash\requestStackInterface;
 use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
@@ -25,8 +25,8 @@ final class FrankMartinShippingExportEventListener
     /** @var bool */
     private static $success = true;
 
-    /** @var FlashHelperInterface */
-    private $flashBag;
+    /** @var RequestStack */
+    private $requestStack;
 
     /** @var Filesystem */
     private $filesystem;
@@ -43,7 +43,7 @@ final class FrankMartinShippingExportEventListener
         ObjectManager $shippingExportManager,
         string $shippingLabelsPath
     ) {
-        $this->flashBag = $requestStack;
+        $this->requestStack = $requestStack;
         $this->filesystem = $filesystem;
         $this->shippingExportManager = $shippingExportManager;
         $this->shippingLabelsPath = $shippingLabelsPath;
@@ -63,12 +63,12 @@ final class FrankMartinShippingExportEventListener
         }
 
         if (false === self::$success) {
-            $this->flashBag->getSession()->getBag('flashes')
+            $this->requestStack->getSession()->getBag('flashes')
                 ->add('error', 'bitbag.ui.shipping_export_error'); // Add an error notification
 
             return;
         }
-        $this->flashBag->getSession()->getBag('flashes')
+        $this->requestStack->getSession()->getBag('flashes')
             ->add('success', 'bitbag.ui.shipment_data_has_been_exported'); // Add success notification
         $this->saveShippingLabel($shippingExport, $this->mockLabelContent(), 'pdf'); // Save label
         $this->markShipmentAsExported($shippingExport); // Mark shipment as "Exported"
