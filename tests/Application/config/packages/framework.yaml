@@ -3,7 +3,6 @@ framework:
     form: true
     csrf_protection: true
     session:
-#        handler_id: 'session.handler.native_file'
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
         handler_id: ~
         cookie_secure: auto
