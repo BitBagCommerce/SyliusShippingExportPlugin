@@ -14,7 +14,8 @@ use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\Persistence\ObjectManager;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\Session\Flash\RequestStackInterface;
+
+use Symfony\Component\HttpFoundation\RequestStack;
 use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
@@ -35,7 +36,7 @@ final class FrankMartinShippingExportEventListener
     private $shippingLabelsPath;
 
     public function __construct(
-        RequestStackInterface $requestStack,
+        RequestStack $requestStack,
         Filesystem $filesystem,
         ObjectManager $shippingExportManager,
         string $shippingLabelsPath
