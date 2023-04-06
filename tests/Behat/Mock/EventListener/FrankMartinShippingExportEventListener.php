@@ -12,12 +12,8 @@ namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener;
 
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\Persistence\ObjectManager;
-use Sylius\Bundle\CoreBundle\Provider\requestStackProvider;
-use Sylius\Bundle\ResourceBundle\Controller\FlashHelperInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Flash\requestStackInterface;
 use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
@@ -38,7 +34,7 @@ final class FrankMartinShippingExportEventListener
     private $shippingLabelsPath;
 
     public function __construct(
-        RequestStack $requestStack,
+        RequestStackInterface $requestStack,
         Filesystem $filesystem,
         ObjectManager $shippingExportManager,
         string $shippingLabelsPath
