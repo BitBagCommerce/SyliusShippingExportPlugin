@@ -14,6 +14,7 @@ use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\Persistence\ObjectManager;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\Session\Flash\RequestStackInterface;
 use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
