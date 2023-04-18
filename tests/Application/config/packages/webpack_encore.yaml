@@ -3,5 +3,3 @@ webpack_encore:
   builds:
     shop: '%kernel.project_dir%/public/build/shop'
     admin: '%kernel.project_dir%/public/build/admin'
-    cs_shop: '%kernel.project_dir%/public/build/bitbag/cs/shop'
-    cs_admin: '%kernel.project_dir%/public/build/bitbag/cs/admin'

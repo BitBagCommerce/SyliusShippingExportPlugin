@@ -1,6 +1,5 @@
 const path = require('path');
 const Encore = require('@symfony/webpack-encore');
-const [bitbagCsShop, bitbagCsAdmin] = require('../../webpack.config.js');
 
 const syliusBundles = path.resolve(__dirname, '../../vendor/sylius/sylius/src/Sylius/Bundle/');
 const uiBundleScripts = path.resolve(syliusBundles, 'UiBundle/Resources/private/js/');
@@ -44,4 +43,4 @@ adminConfig.resolve.alias['chart.js/dist/Chart.min'] = path.resolve(__dirname, '
 adminConfig.externals = Object.assign({}, adminConfig.externals, {window: 'window', document: 'document'});
 adminConfig.name = 'admin';
 
-module.exports = [shopConfig, adminConfig, bitbagCsShop, bitbagCsAdmin];
+module.exports = [shopConfig, adminConfig];
