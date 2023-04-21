@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusShippingExportPlugin\Controller;
 
+use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,6 +43,7 @@ final class ShippingExportDownloadLabelAction
 
     public function __invoke(Request $request): Response
     {
+        /** @var ?ShippingExportInterface $shippingExport */
         $shippingExport = $this->repository->find($request->get('id'));
         Assert::notNull($shippingExport);
         $labelPath = $shippingExport->getLabelPath();

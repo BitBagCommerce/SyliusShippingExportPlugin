@@ -16,6 +16,7 @@ use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Webmozart\Assert\Assert;
 
 final class ShippingExportController extends ResourceController
@@ -28,7 +29,9 @@ final class ShippingExportController extends ResourceController
         $shippingExports = $this->repository->findAllWithNewOrPendingState();
 
         if (0 === count($shippingExports)) {
-            $this->addFlash('error', 'bitbag.ui.no_new_shipments_to_export');
+            /** @var FlashBagInterface $flashBag */
+            $flashBag = $request->getSession()->getBag('flashes');
+            $flashBag->add('error', 'bitbag.ui.no_new_shipments_to_export');
 
             return $this->redirectToReferer($request);
         }

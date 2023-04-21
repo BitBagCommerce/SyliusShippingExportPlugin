@@ -12,9 +12,16 @@ namespace BitBag\SyliusShippingExportPlugin\Repository;
 
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingGatewayInterface;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ObjectRepository;
+use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 
+/**
+ * @template T of ResourceInterface
+ *
+ * @extends RepositoryInterface<T>
+ */
 interface ShippingGatewayRepositoryInterface extends RepositoryInterface
 {
     public function createListQueryBuilder(): QueryBuilder;
