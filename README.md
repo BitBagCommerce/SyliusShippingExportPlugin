@@ -86,6 +86,10 @@ bitbag_shipping_export_plugin:
 ### Adding shipping export configuration form
 
 ```php
+<?php
+
+declare(strict_types=1);
+
 namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -132,19 +136,23 @@ services:
 
 ### Adding shipping export event listener
 ```php
+<?php
+
+declare(strict_types=1);
+
 namespace App\EventListener;
 
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\Persistence\ObjectManager;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
 {
-    /** @var FlashBagInterface */
-    private $flashBag;
+    /** @var RequestStack */
+    private $requestStack;
 
     /** @var Filesystem */
     private $filesystem;
@@ -156,12 +164,12 @@ final class FrankMartinShippingExportEventListener
     private $shippingLabelsPath;
 
     public function __construct(
-        FlashBagInterface $flashBag,
+        RequestStack $requestStack,
         Filesystem $filesystem,
         ObjectManager $shippingExportManager,
         string $shippingLabelsPath
     ) {
-        $this->flashBag = $flashBag;
+        $this->requestStack = $requestStack;
         $this->filesystem = $filesystem;
         $this->shippingExportManager = $shippingExportManager;
         $this->shippingLabelsPath = $shippingLabelsPath;
@@ -180,13 +188,16 @@ final class FrankMartinShippingExportEventListener
             return;
         }
 
+        $session = $this->requestStack->getSession();
+        $flashBag = $session->getBag('flashes');
+
         if (false) {
-            $this->flashBag->add('error', 'bitbag.ui.shipping_export_error'); // Add an error notification
+            $flashBag->add('error', 'bitbag.ui.shipping_export_error'); // Add an error notification
 
             return;
         }
 
-        $this->flashBag->add('success', 'bitbag.ui.shipment_data_has_been_exported'); // Add success notification
+        $flashBag->add('success', 'bitbag.ui.shipment_data_has_been_exported'); // Add success notification
         $this->saveShippingLabel($shippingExport, 'Some label content received from external API', 'pdf'); // Save label
         $this->markShipmentAsExported($shippingExport); // Mark shipment as "Exported"
     }
