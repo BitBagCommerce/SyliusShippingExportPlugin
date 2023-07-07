@@ -6,7 +6,7 @@
 
 [![](https://img.shields.io/packagist/l/bitbag/shipping-export-plugin.svg)](https://packagist.org/packages/bitbag/shipping-export-plugin "License") 
 [![](https://img.shields.io/packagist/v/bitbag/shipping-export-plugin.svg)](https://packagist.org/packages/bitbag/shipping-export-plugin "Version")
-[![](https://img.shields.io/github/workflow/status/BitBagCommerce/SyliusShippingExportPlugin/Build)](https://github.com/BitBagCommerce/SyliusShippingExportPlugin/actions "Build status")
+[![](https://img.shields.io/github/actions/workflow/status/BitBagCommerce/SyliusShippingExportPlugin/build.yml?branch=master)](https://github.com/BitBagCommerce/SyliusShippingExportPlugin/actions "Build status")
 [![](https://img.shields.io/scrutinizer/quality/g/BitBagCommerce/SyliusShippingExportPlugin.svg)](https://scrutinizer-ci.com/g/BitBagCommerce/SyliusShippingExportPlugin/ "Scrutinizer") 
 [![](https://poser.pugx.org/bitbag/shipping-export-plugin/downloads)](https://packagist.org/packages/bitbag/shipping-export-plugin "Total Downloads")
 [![Slack](https://img.shields.io/badge/community%20chat-slack-FF1493.svg)](http://sylius-devs.slack.com)
