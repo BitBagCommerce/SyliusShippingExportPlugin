@@ -256,7 +256,7 @@ services:
     app.event_listener.frank_martin_shipping_export:
         class: App\EventListener\FrankMartinShippingExportEventListener
         arguments:
-            - '@session.flash_bag'
+            - '@request_stack'
             - '@filesystem'
             - '@bitbag.manager.shipping_export'
             - '%bitbag.shipping_labels_path%'
