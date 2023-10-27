@@ -48,7 +48,7 @@ If you are curious about the details of this plugin, read [this blog post](https
 ## Installation
 
 ```bash
-$ composer require bitbag/shipping-export-plugin
+composer require bitbag/shipping-export-plugin
 ```
 
 Add plugin dependencies to your `config/bundles.php` file:
