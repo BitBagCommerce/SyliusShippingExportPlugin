@@ -12,7 +12,7 @@
 
         <field name="code" column="code" type="string" nullable="false"/>
 
-        <field name="config" column="config" type="array" nullable="false"/>
+        <field name="config" column="config" type="json" nullable="false"/>
 
         <field name="name" column="name" type="string" nullable="false"/>
 
