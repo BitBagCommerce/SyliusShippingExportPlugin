@@ -10,7 +10,6 @@ sylius_grid:
                     class: "%bitbag.model.shipping_export.class%"
                     repository:
                         method: createListQueryBuilder
-                        arguments: ["expr:service('sylius.context.locale').getLocaleCode()"]
             sorting:
                 shipment: desc
             fields:
