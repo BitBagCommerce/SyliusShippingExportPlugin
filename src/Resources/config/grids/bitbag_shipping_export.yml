@@ -10,6 +10,7 @@ sylius_grid:
                     class: "%bitbag.model.shipping_export.class%"
                     repository:
                         method: createListQueryBuilder
+                        arguments: ["expr:service('sylius.context.locale').getLocaleCode()"]
             sorting:
                 shipment: desc
             fields:
@@ -17,7 +18,7 @@ sylius_grid:
                     type: twig
                     label: sylius.ui.order
                     path: .
-                    sortable: shipment.order
+                    sortable: shipment.order.number
                     options:
                         template: "@BitBagSyliusShippingExportPlugin/ShippingExport/Grid/Field/orderNumber.html.twig"
                 shipment:
@@ -38,7 +39,7 @@ sylius_grid:
                     type: twig
                     label: sylius.ui.shipping_method
                     path: .
-                    sortable: shipment.method
+                    sortable: shipment.method.code
                     options:
                         template: "@BitBagSyliusShippingExportPlugin/ShippingExport/Grid/Field/shippingMethod.html.twig"
                 labelPath:
