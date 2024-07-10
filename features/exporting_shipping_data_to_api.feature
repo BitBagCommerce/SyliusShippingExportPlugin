@@ -11,7 +11,7 @@ Feature: Managing shipping gateway
         And there is a registered "frank_martin_shipping_gateway" shipping gateway for this shipping method named "Transporter Gateway"
         And it has "IBAN" field set to "GB29 RBOS 6016 1331 9268 19"
         And it has "Address" field set to "Nick King, Main Square 27, Opole 45015, Poland"
-        And the store has a product "Chicken" priced at "$2" in "Web-US" channel
+        And the store has a product "Chicken" priced at "$2.00" in "Web-US" channel
         And customer "mikolaj.krol@bitbag.pl" has placed 5 orders on the "Web-US" channel in each buying 5 "Chicken" products
         And those orders were placed with "Frank Martin Parcels" shipping method
 
