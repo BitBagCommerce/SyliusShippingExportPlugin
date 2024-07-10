@@ -16,8 +16,6 @@ use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPage;
 interface IndexPageInterface extends BaseIndexPage
 {
     /**
-     * @param string $state
-     *
      * @return ElementInterface[]
      */
     public function getShipmentsWithState(string $state): array;

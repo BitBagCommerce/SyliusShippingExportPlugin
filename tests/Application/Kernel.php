@@ -13,7 +13,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Routing\RouteCollectionBuilder;
 
 final class Kernel extends BaseKernel
 {
@@ -104,7 +103,6 @@ final class Kernel extends BaseKernel
         foreach ($contents as $class => $envs) {
             if (isset($envs['all']) || isset($envs[$this->environment])) {
                 yield new $class();
-
             }
         }
     }
