@@ -28,8 +28,8 @@ jobs:
                 mysql: [5.7, 8.0]
                 
                 exclude:
-                  - sylius: ~1.13.x
-                    php: "^8.0"
+                  - sylius: "~1.13.0"
+                    php: "8.0"
 
         env:
             APP_ENV: test
