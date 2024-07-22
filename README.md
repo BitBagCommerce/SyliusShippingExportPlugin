@@ -25,6 +25,7 @@ Like what we do? Want to join us? Check out our job listings on our [career page
 ***
 
 * [Overview](#overview)
+* [Functionalities](#functionalities)
 * [Installation](#installation)
 * [Usage](#usage)
 * [About us](#about-us)
@@ -44,6 +45,10 @@ book a courier for an order with one click and get shipping label file if any wa
 The implementation limits to writing a shipping provider gateway configuration form, one event listener and webservice access layer.
 
 If you are curious about the details of this plugin, read [this blog post](https://bitbag.shop/blog/bitbag-shipping-export-plugin-simple-way-to-control-shipments-in-your-online-store).
+
+## Functionalities
+
+If you are curious about the details of this plugin and its finctionalities, check [this file](https://github.com/BitBagCommerce/SyliusShippingExportPlugin/blob/master/doc/functionalities.md).
 
 ## Installation
 
