@@ -6,8 +6,10 @@
  * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
 */
 
+declare(strict_types=1);
+
 return [
-    League\FlysystemBundle\FlysystemBundle::class => ['all'=> true],
+    League\FlysystemBundle\FlysystemBundle::class => ['all' => true],
     Sylius\Calendar\SyliusCalendarBundle::class => ['all' => true],
-    BabDev\PagerfantaBundle\BabDevPagerfantaBundle::class => ['all' => true]
+    BabDev\PagerfantaBundle\BabDevPagerfantaBundle::class => ['all' => true],
 ];

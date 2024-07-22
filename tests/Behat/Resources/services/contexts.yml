@@ -29,7 +29,10 @@ services:
             - '@bitbag.factory.shipping_export'
             - '@bitbag.repository.shipping_export'
             - "@event_dispatcher"
-
+    
+    bitbag.behat.context.transform.lexical:
+      class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Transform\LexicalContext
+      
     bitbag.behat.context.ui.admin.shipping_gateway:
         class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Ui\Admin\ShippingGatewayContext
         arguments:

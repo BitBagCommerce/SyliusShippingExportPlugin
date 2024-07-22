@@ -40,6 +40,8 @@ default:
                 - bitbag.behat.context.setup.shipping_gateway
                 - bitbag.behat.context.setup.shipping_export
 
+                - bitbag.behat.context.transform.lexical
+                
                 - bitbag.behat.context.ui.admin.shipping_gateway
                 - bitbag.behat.context.ui.admin.shipping_export
             filters:
