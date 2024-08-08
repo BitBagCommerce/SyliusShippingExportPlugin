@@ -22,7 +22,6 @@ jobs:
         symfony: [ "^5.4", "^6.4" ]
         sylius: [ "^1.12", "^1.13" ]
         node: [ "18.x", "20.x" ]
-        mysql: [ "8.0" ]
 
         exclude:
           - sylius: ^1.13
