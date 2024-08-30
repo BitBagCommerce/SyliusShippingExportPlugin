@@ -48,43 +48,26 @@ If you are curious about the details of this plugin, read [this blog post](https
 
 ## Functionalities
 
-If you are curious about the details of this plugin and its finctionalities, check [this file](https://github.com/BitBagCommerce/SyliusShippingExportPlugin/blob/master/doc/functionalities.md).
+If you are curious about the details of this plugin and its functionalities, check [this file](https://github.com/BitBagCommerce/SyliusShippingExportPlugin/blob/master/doc/functionalities.md).
 
 ## Installation
 
-```bash
-composer require bitbag/shipping-export-plugin
-```
+----
+### Requirements
 
-Add plugin dependencies to your `config/bundles.php` file:
+We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
 
-```php
-return [
-    ...
+| Package       | Version         |
+|---------------|-----------------|
+| PHP           | \>=8.0          |
+| sylius/sylius | 1.12.x - 1.13.x |
+| MySQL         | \>= 5.7         |
+| NodeJS        | \>= 18.x        |
 
-    BitBag\SyliusShippingExportPlugin\BitBagSyliusShippingExportPlugin::class => ['all' => true],
-];
-```
+----
 
-Import required config in your `config/packages/_sylius.yaml` file:
-```yaml
-# config/packages/_sylius.yaml
-
-imports:
-    ...
-
-    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/config.yml" }
-```
-
-Import routing in your config/routes.yaml file:
-
-```yaml
-# config/routes.yaml
-
-bitbag_shipping_export_plugin:
-    resource: "@BitBagSyliusShippingExportPlugin/Resources/config/routing.yml"
-    prefix: /admin
-```
+### Full installation guide
+- [See the full installation guide](doc/installation.md)
 
 ## Usage
 
