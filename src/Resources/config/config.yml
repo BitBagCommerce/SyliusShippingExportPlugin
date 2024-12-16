@@ -2,3 +2,4 @@ imports:
     - { resource: "resource/**/*.yml" }
     - { resource: "grids/**/*.yml" }
     - { resource: "services.yml" }
+    - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/twig_hooks/twig_hooks.yaml" }

@@ -29,6 +29,7 @@ Encore.reset();
 Encore.setOutputPath('public/build/admin/')
     .setPublicPath('/build/admin')
     .addEntry('admin-entry', './assets/admin/entry.js')
+    .addEntry('admin-product-entry', './assets/admin/product-entry.js')
     .enableStimulusBridge('./assets/controllers.json')
     .disableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()

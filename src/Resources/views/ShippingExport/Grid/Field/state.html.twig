@@ -3,5 +3,8 @@
 {% if  data.state == 'new' or data.state == 'pending' %}
     {% include '@BitBagSyliusShippingExportPlugin/ShippingExport/Partial/_exportShipment.html.twig' %}
 {% else %}
-    <span class="shipping-export-state ui green label"><i class="check icon"></i> {{ value|trans }}</span>
+    <button class="btn btn-success gap-1 shipping-export-state">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12l5 5L20 7"></path></svg>
+        {{ value|trans }}
+    </button>
 {% endif %}
