@@ -1,13 +1,11 @@
 imports:
     - { resource: "@SyliusCoreBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
-
+    - { resource: "@SyliusPayumBundle/Resources/config/app/config.yaml" }
     - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/config.yml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
 
