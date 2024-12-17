@@ -19,7 +19,7 @@ trait ContainsError
 {
     use DocumentAccessor;
 
-    public function hasError(string $message, string $errorClass = '.sylius-validation-error'): bool
+    public function hasError(string $message, string $errorClass = '.invalid-feedback'): bool
     {
         $errors = $this->getDocument()->findAll('css', $errorClass);
 

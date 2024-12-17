@@ -40,10 +40,10 @@ services:
             - '@bitbag.behat.page.admin.shipping_gateway.update'
             - '@sylius.behat.current_page_resolver'
             - '@sylius.behat.shared_storage'
-            - '@sylius.behat.notification_checker'
+            - '@sylius.behat.notification_checker.admin'
 
     bitbag.behat.context.ui.admin.shipping_export:
         class: Tests\BitBag\SyliusShippingExportPlugin\Behat\Context\Ui\Admin\ShippingExportContext
         arguments:
             - '@bitbag.behat.page.admin.shipping_export.index'
-            - '@sylius.behat.notification_checker'
+            - '@sylius.behat.notification_checker.admin'
