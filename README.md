@@ -80,12 +80,12 @@ For the full installation guide, please go [here](doc/installation.md).
 
 We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
 
-| Package       | Version         |
-|---------------|-----------------|
-| PHP           | \>=8.0          |
-| sylius/sylius | 1.12.x - 1.13.x |
-| MySQL         | \>= 5.7         |
-| NodeJS        | \>= 18.x        |
+| Package       | Version       |
+|---------------|---------------|
+| PHP           | \>=8.2        |
+| sylius/sylius | 2.0.x         |
+| MySQL         | \>= 8.0       |
+| NodeJS        | \>=20.x, 22.x |
 
 ----
 
