@@ -1,6 +1,6 @@
 framework:
     mailer:
-        dsn: 'null://null'
+        dsn: '%env(MAILER_DSN)%'
     cache:
         pools:
             test.mailer_pool:
