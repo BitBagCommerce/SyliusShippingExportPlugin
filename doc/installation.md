@@ -15,7 +15,7 @@ We work on stable, supported and up-to-date versions of packages. We recommend y
 
 | Package       | Version       |
 |---------------|---------------|
-| PHP           | \>=8.2        |
+| PHP           | 8.2, 8.3      |
 | sylius/sylius | 2.0.x         |
 | MySQL         | \>= 8.0       |
 | NodeJS        | \>=20.x, 22.x |
