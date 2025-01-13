@@ -1,0 +1,2 @@
+imports:
+  - { resource: "@BitBagSyliusShippingExportPlugin/Resources/config/twig_hooks/**/**/*.yaml" }

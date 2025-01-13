@@ -19,7 +19,6 @@ use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 
 /**
  * @template T of ResourceInterface
- * @extends RepositoryInterface<T>
  */
 interface ShippingGatewayRepositoryInterface extends RepositoryInterface
 {

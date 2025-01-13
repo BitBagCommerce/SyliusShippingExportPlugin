@@ -2,7 +2,7 @@ bitbag_admin_shipping_gateway:
     resource: |
         alias: bitbag.shipping_gateway
         section: admin
-        templates: '@SyliusAdmin/Crud'
+        templates: "@SyliusAdmin\\shared\\crud"
         except: ['show']
         redirect: update
         grid: bitbag_admin_shipping_gateway
@@ -25,7 +25,7 @@ bitbag_admin_shipping_gateway_create:
         _controller: bitbag.controller.shipping_gateway::createAction
         _sylius:
             section: admin
-            template: '@SyliusAdmin/Crud/create.html.twig'
+            template: "@SyliusAdmin/shared/crud/create.html.twig"
             redirect: bitbag_admin_shipping_gateway_index
             permission: true
             vars:

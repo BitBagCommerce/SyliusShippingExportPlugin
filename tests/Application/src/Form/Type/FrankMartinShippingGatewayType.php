@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\Form\Type;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Application\src\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

@@ -37,7 +37,7 @@ final class AdminShippingGatewayGridEventListener
         foreach ($this->shippingGateways as $shippingGatewayType => $shippingGatewayLabel) {
             $options['links'][$shippingGatewayType] = [
                 'label' => $shippingGatewayLabel,
-                'icon' => 'plus',
+                'icon' => 'tabler:plus',
                 'route' => 'bitbag_admin_shipping_gateway_create',
                 'parameters' => [
                     'code' => $shippingGatewayType,

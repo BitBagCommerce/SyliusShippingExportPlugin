@@ -1,10 +1,17 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
 declare(strict_types=1);
 
-use Tests\BitBag\SyliusShippingExportPlugin\Application\Kernel;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
+use Tests\BitBag\SyliusShippingExportPlugin\Application\Kernel;
 
 require dirname(__DIR__) . '/config/bootstrap.php';
 

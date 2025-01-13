@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusShippingExportPlugin\Behat\Mock\EventListener;
+namespace Tests\BitBag\SyliusShippingExportPlugin\Application\src\EventListener;
 
 use BitBag\SyliusShippingExportPlugin\Entity\ShippingExportInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -20,9 +20,6 @@ use Webmozart\Assert\Assert;
 
 final class FrankMartinShippingExportEventListener
 {
-    /** @var bool */
-    private static $success = true;
-
     /** @var RequestStack */
     private $requestStack;
 
@@ -60,30 +57,18 @@ final class FrankMartinShippingExportEventListener
             return;
         }
 
-        if (false === self::$success) {
-            $this->requestStack->getSession()->getBag('flashes')
-                ->add('error', 'bitbag.ui.shipping_export_error'); // Add an error notification
+        $session = $this->requestStack->getSession();
+        $flashBag = $session->getBag('flashes');
+
+        if (false) {
+            $flashBag->add('error', 'bitbag.ui.shipping_export_error'); // Add an error notification
 
             return;
         }
-        $this->requestStack->getSession()->getBag('flashes')
-            ->add('success', 'bitbag.ui.shipment_data_has_been_exported'); // Add success notification
-        $this->saveShippingLabel($shippingExport, $this->mockLabelContent(), 'pdf'); // Save label
+
+        $flashBag->add('success', 'bitbag.ui.shipment_data_has_been_exported'); // Add success notification
+        $this->saveShippingLabel($shippingExport, 'Some label content received from external API', 'pdf'); // Save label
         $this->markShipmentAsExported($shippingExport); // Mark shipment as "Exported"
-    }
-
-    public static function toggleSuccess($toggle): void
-    {
-        self::$success = $toggle;
-    }
-
-    public function mockLabelContent(): string
-    {
-        $content = file_get_contents(__DIR__ . '/../../Resources/fixtures/frank_marting_a8d3w12.pdf');
-
-        Assert::string($content);
-
-        return $content;
     }
 
     public function saveShippingLabel(

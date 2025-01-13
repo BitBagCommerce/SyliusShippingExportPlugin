@@ -4,6 +4,9 @@ parameters:
     paths:
         - src
 
+    reportUnmatchedIgnoredErrors: false
+    treatPhpDocTypesAsCertain: false
+
     excludePaths:
         # Makes PHPStan crash
         - 'src/DependencyInjection/Configuration.php'

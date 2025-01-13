@@ -2,3 +2,22 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en_US
+    
+    bitbag.shipping_gateway.validation_groups: [ 'bitbag' ]
+    bitbag.shipping_labels_path: '%kernel.project_dir%/shipping_labels'
+    
+services:
+    app.form.type.frank_martin_shipping_gateway:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Application\src\Form\Type\FrankMartinShippingGatewayType
+        tags:
+            - { name: bitbag.shipping_gateway_configuration_type, type: "frank_martin_shipping_gateway", label: "Transporter Gateway" }
+
+    app.event_listener.frank_martin_shipping_export:
+        class: Tests\BitBag\SyliusShippingExportPlugin\Application\src\EventListener\FrankMartinShippingExportEventListener
+        arguments:
+            - '@request_stack'
+            - '@filesystem'
+            - '@bitbag.manager.shipping_export'
+            - '%bitbag.shipping_labels_path%'
+        tags:
+            - { name: kernel.event_listener, event: 'bitbag.shipping_export.export_shipment', method: exportShipment }
