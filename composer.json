@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "sylius/sylius": "~2.0.0",
+        "sylius/sylius": "^2.0",
         "dompdf/dompdf": "^2.0",
         "sylius/twig-hooks": "0.*",
         "sylius/twig-extra": "0.*",
