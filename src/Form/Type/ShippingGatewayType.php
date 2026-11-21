@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormTypeInterface;
 use Webmozart\Assert\Assert;
 
 final class ShippingGatewayType extends AbstractResourceType
@@ -46,6 +47,9 @@ final class ShippingGatewayType extends AbstractResourceType
         $code = $this->shippingGatewayTypeContext->getCode();
         $label = $this->shippingGatewayTypeContext->getLabelByCode($code);
         $shippingGatewayType = $this->shippingGatewayTypeContext->getFormType();
+        if (null !== $shippingGatewayType) {
+            Assert::subclassOf($shippingGatewayType, FormTypeInterface::class);
+        }
 
         $builder
             ->add('code', TextType::class, [
