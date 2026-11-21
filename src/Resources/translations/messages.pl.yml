@@ -15,4 +15,5 @@ bitbag:
         not_exported_yet: Nie eksportowano
         shipping_export_label: Etykieta przesyłki
         shipping_exports: Eksportuj przesyłki do zewnętrznego API
+        shipping_gateway: Brama dostawcy
         shipping_gateways: Bramy dostawców

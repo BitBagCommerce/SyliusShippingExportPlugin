@@ -15,4 +15,5 @@ bitbag:
         not_exported_yet: Non exporté
         shipping_export_label: Etiquette
         shipping_exports: Expéditions
+        shipping_gateway: Passerelle d'expédition
         shipping_gateways: Passerelles d'expédition
