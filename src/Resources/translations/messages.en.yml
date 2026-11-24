@@ -15,4 +15,5 @@ bitbag:
         not_exported_yet: Not exported yet
         shipping_export_label: Shipping label
         shipping_exports: Export shipments to external API
+        shipping_gateway: Shipping gateway
         shipping_gateways: Shipping gateways
